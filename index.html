@@ -136,6 +136,7 @@
     position: absolute;
     z-index: 4;
     touch-action: none;
+    -webkit-tap-highlight-color: transparent;
     left: 50%;
     top: 50%;
     transform: translate(58px, -50%);
@@ -569,34 +570,45 @@
 (function () {
   "use strict";
 
-  const PRIVATE_INVITE_HASH = "d640b7db3fa1d735f3dfcc9be7823a59093821745b5420d75150f3b560c5121e";
+  /* ---------- PRIVATE LINK ---------- */
+  const PRIVATE_INVITE_HASH = "5747f2330979732d56f0fe586c90cb9c81240449b44a39adb7d35e8e23dec01b";
   const accessDenied = document.getElementById("accessDenied");
 
   async function sha256(text) {
     const data = new TextEncoder().encode(text);
-    const hashBuffer = await crypto.subtle.digest("SHA-256", data);
-    return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, "0")).join("");
+    const buffer = await crypto.subtle.digest("SHA-256", data);
+    return Array.from(new Uint8Array(buffer))
+      .map(b => b.toString(16).padStart(2, "0"))
+      .join("");
   }
 
-  async function unlockPrivateInvitation() {
-    const params = new URLSearchParams(window.location.hash.replace(/^#/, ""));
+  async function checkPrivateLink() {
+    const raw = window.location.hash.replace(/^#/, "");
+    const params = new URLSearchParams(raw);
     const suppliedToken = params.get("invite") || "";
-    if (!suppliedToken) return false;
-    const suppliedHash = await sha256(suppliedToken);
-    return suppliedHash === PRIVATE_INVITE_HASH;
-  }
 
-  unlockPrivateInvitation().then(function (unlocked) {
-    if (!unlocked) {
+    if (!suppliedToken) {
       document.body.classList.add("locked");
       accessDenied.classList.add("show");
-      accessDenied.setAttribute("aria-hidden", "false");
       return;
     }
-    document.body.classList.remove("locked");
-    accessDenied.classList.remove("show");
-    accessDenied.setAttribute("aria-hidden", "true");
 
+    try {
+      const suppliedHash = await sha256(suppliedToken);
+      if (suppliedHash === PRIVATE_INVITE_HASH) {
+        document.body.classList.remove("locked");
+        accessDenied.classList.remove("show");
+      } else {
+        document.body.classList.add("locked");
+        accessDenied.classList.add("show");
+      }
+    } catch (err) {
+      document.body.classList.add("locked");
+      accessDenied.classList.add("show");
+    }
+  }
+
+  /* ---------- DOM ---------- */
   const screen1 = document.getElementById("screen1");
   const screen2 = document.getElementById("screen2");
   const screen3 = document.getElementById("screen3");
@@ -632,15 +644,18 @@
   ];
 
   function showScreen(screen) {
-    [screen1, screen2, screen3].forEach(s => s.classList.remove("active"));
+    [screen1, screen2, screen3].forEach(function (s) {
+      s.classList.remove("active");
+    });
     screen.classList.add("active");
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo(0, 0);
   }
 
-  // Floating hearts
+  /* ---------- FLOATING HEARTS ---------- */
   function createHearts(containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
+
     const symbols = ["❤️", "💕", "💗", "💖", "♡"];
     for (let i = 0; i < 18; i++) {
       const h = document.createElement("span");
@@ -658,12 +673,12 @@
   createHearts("hearts2");
   createHearts("hearts3");
 
-  // YES
+  /* ---------- YES ---------- */
   yesBtn.addEventListener("click", function () {
     showScreen(screen2);
   });
 
-  // NO button dodges touch/click attempts.
+  /* ---------- NO BUTTON ESCAPES ---------- */
   function dodgeNo(event) {
     if (event) {
       event.preventDefault();
@@ -671,46 +686,49 @@
     }
 
     noAttempts++;
-    tease.textContent = teaseMessages[Math.min(noAttempts - 1, teaseMessages.length - 1)];
+    tease.textContent =
+      teaseMessages[Math.min(noAttempts - 1, teaseMessages.length - 1)];
 
-    const areaRect = questionArea.getBoundingClientRect();
-    const btnRect = noBtn.getBoundingClientRect();
+    const area = questionArea.getBoundingClientRect();
+    const btn = noBtn.getBoundingClientRect();
 
-    const pad = 8;
-    const maxX = Math.max(pad, areaRect.width - btnRect.width - pad);
-    const maxY = Math.max(pad, areaRect.height - btnRect.height - pad);
+    const pad = 6;
+    const maxLeft = Math.max(pad, area.width - btn.width - pad);
+    const maxTop = Math.max(pad, area.height - btn.height - pad);
 
-    // Pick a genuinely different location each time.
-    let x = pad + Math.random() * Math.max(1, maxX - pad);
-    let y = pad + Math.random() * Math.max(1, maxY - pad);
+    let left = pad + Math.random() * Math.max(1, maxLeft - pad);
+    let top = pad + Math.random() * Math.max(1, maxTop - pad);
 
-    // Keep the NO button away from the central YES button.
-    const yesRect = yesBtn.getBoundingClientRect();
-    const yesCenterX = yesRect.left + yesRect.width / 2 - areaRect.left;
-    const yesCenterY = yesRect.top + yesRect.height / 2 - areaRect.top;
-    const noCenterX = x + btnRect.width / 2;
-    const noCenterY = y + btnRect.height / 2;
+    /* Keep it away from YES. */
+    const yes = yesBtn.getBoundingClientRect();
+    const yesX = yes.left - area.left + yes.width / 2;
+    const yesY = yes.top - area.top + yes.height / 2;
+    const noX = left + btn.width / 2;
+    const noY = top + btn.height / 2;
 
-    if (Math.hypot(noCenterX - yesCenterX, noCenterY - yesCenterY) < 105) {
-      x = x < maxX / 2 ? maxX : pad;
-      y = y < maxY / 2 ? maxY : pad;
+    if (Math.hypot(noX - yesX, noY - yesY) < 120) {
+      left = left < maxLeft / 2 ? maxLeft : pad;
+      top = top < maxTop / 2 ? maxTop : pad;
     }
 
-    noBtn.style.left = x + "px";
-    noBtn.style.top = y + "px";
-    noBtn.style.transform = "rotate(" + (Math.random() * 14 - 7) + "deg)";
+    noBtn.style.left = left + "px";
+    noBtn.style.top = top + "px";
+    noBtn.style.transform =
+      "rotate(" + (Math.random() * 18 - 9) + "deg) scale(.96)";
+
     noBtn.classList.remove("dodge-flash");
     void noBtn.offsetWidth;
     noBtn.classList.add("dodge-flash");
   }
 
-  ["pointerdown", "pointerenter", "focus"].forEach(evt => {
-    noBtn.addEventListener(evt, dodgeNo, { passive: false });
-  });
+  /* pointerdown is the important one for Android touch. */
+  noBtn.addEventListener("pointerdown", dodgeNo, { passive: false });
+  noBtn.addEventListener("touchstart", dodgeNo, { passive: false });
+  noBtn.addEventListener("mouseenter", dodgeNo, { passive: false });
+  noBtn.addEventListener("focus", dodgeNo, { passive: false });
+  noBtn.addEventListener("click", dodgeNo, { passive: false });
 
-  noBtn.addEventListener("click", dodgeNo);
-
-  // Date picker: disable all dates before today.
+  /* ---------- DATE ---------- */
   function getLocalDateString(date) {
     const y = date.getFullYear();
     const m = String(date.getMonth() + 1).padStart(2, "0");
@@ -723,54 +741,51 @@
   const todayString = getLocalDateString(today);
   dateInput.min = todayString;
 
-  // Generate every 30-minute slot for a full 24-hour day.
+  /* ---------- TIME SLOTS ---------- */
   function formatTime(totalMinutes) {
-    let hour24 = Math.floor(totalMinutes / 60);
+    const hour24 = Math.floor(totalMinutes / 60);
     const minutes = totalMinutes % 60;
     const ampm = hour24 >= 12 ? "PM" : "AM";
     const hour12 = hour24 % 12 || 12;
     return hour12 + ":" + String(minutes).padStart(2, "0") + " " + ampm;
   }
 
-  function makeSlots() {
-    for (let mins = 0; mins < 1440; mins += 30) {
-      const end = (mins + 30) % 1440;
-      const startText = formatTime(mins);
-      const endText = end === 0 ? "12:00 AM" : formatTime(end);
+  for (let mins = 0; mins < 1440; mins += 30) {
+    const end = (mins + 30) % 1440;
+    const startText = formatTime(mins);
+    const endText = end === 0 ? "12:00 AM" : formatTime(end);
 
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "slot";
-      button.textContent = startText + " – " + endText;
-      button.dataset.start = mins;
-      button.dataset.label = startText + " – " + endText;
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "slot";
+    button.textContent = startText + " – " + endText;
+    button.dataset.label = startText + " – " + endText;
 
-      button.addEventListener("click", function () {
-        document.querySelectorAll(".slot").forEach(s => s.classList.remove("selected"));
-        button.classList.add("selected");
-        selectedTime = button.dataset.label;
-        plannerError.textContent = "";
-        validatePlanner();
+    button.addEventListener("click", function () {
+      document.querySelectorAll(".slot").forEach(function (s) {
+        s.classList.remove("selected");
       });
+      button.classList.add("selected");
+      selectedTime = button.dataset.label;
+      plannerError.textContent = "";
+      validatePlanner();
+    });
 
-      slotsContainer.appendChild(button);
-    }
+    slotsContainer.appendChild(button);
   }
-  makeSlots();
 
   function validatePlanner() {
-    const dateOkay = !!dateInput.value;
-    const timeOkay = !!selectedTime;
-    confirmBtn.disabled = !(dateOkay && timeOkay);
+    confirmBtn.disabled = !(dateInput.value && selectedTime);
   }
 
   dateInput.addEventListener("change", function () {
     if (dateInput.value && dateInput.value < todayString) {
       dateInput.value = "";
-      plannerError.textContent = "Please choose today or a future date. ❤️";
-      return;
+      plannerError.textContent =
+        "Please choose today or a future date. ❤️";
+    } else {
+      plannerError.textContent = "";
     }
-    plannerError.textContent = "";
     validatePlanner();
   });
 
@@ -780,13 +795,16 @@
     validatePlanner();
   });
 
+  /* ---------- CONFIRM ---------- */
   confirmBtn.addEventListener("click", function () {
     if (!dateInput.value || !selectedTime) {
-      plannerError.textContent = "Please choose both a date and a time. ❤️";
+      plannerError.textContent =
+        "Please choose both a date and a time. ❤️";
       return;
     }
 
     const chosen = new Date(dateInput.value + "T00:00:00");
+
     finalDate.textContent = chosen.toLocaleDateString(undefined, {
       day: "numeric",
       month: "long",
@@ -802,7 +820,7 @@
     showScreen(screen2);
   });
 
-
+  /* ---------- WHATSAPP ---------- */
   sendAnswer.addEventListener("click", function () {
     const message =
       "Hi ❤️ I have an answer for you!\n\n" +
@@ -811,25 +829,28 @@
       "⏰ Time: " + finalTime.textContent + "\n\n" +
       "See you then! ❤️🌙";
 
-    const whatsappUrl = "https://wa.me/?text=" + encodeURIComponent(message);
-    window.open(whatsappUrl, "_blank");
+    window.location.href =
+      "https://wa.me/?text=" + encodeURIComponent(message);
   });
 
   function launchCelebration() {
     const container = document.getElementById("hearts3");
+    if (!container) return;
+
     for (let i = 0; i < 20; i++) {
       const h = document.createElement("span");
       h.className = "heart";
-      h.textContent = ["❤️","💖","💕","✨"][Math.floor(Math.random()*4)];
-      h.style.left = (10 + Math.random()*80) + "%";
-      h.style.fontSize = (16 + Math.random()*22) + "px";
-      h.style.animationDuration = (4 + Math.random()*5) + "s";
+      h.textContent = ["❤️", "💖", "💕", "✨"][Math.floor(Math.random() * 4)];
+      h.style.left = (10 + Math.random() * 80) + "%";
+      h.style.fontSize = (16 + Math.random() * 22) + "px";
+      h.style.animationDuration = (4 + Math.random() * 5) + "s";
       h.style.animationDelay = "0s";
       container.appendChild(h);
     }
   }
 
-  });
+  /* Run the access check separately; it must NOT delay the buttons. */
+  checkPrivateLink();
 })();
 </script>
 
