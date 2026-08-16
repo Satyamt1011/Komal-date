@@ -469,6 +469,125 @@
     color: rgba(122,56,80,.72);
   }
 
+
+  /* Food selection page */
+  #screen4 {
+    background:
+      radial-gradient(circle at 18% 12%, rgba(255,255,255,.72) 0 2px, transparent 3px),
+      radial-gradient(circle at 82% 22%, rgba(255,255,255,.72) 0 2px, transparent 3px),
+      linear-gradient(135deg, #fff5f8 0%, #ffe0ea 48%, #fff7fa 100%);
+    background-size: 170px 170px, 230px 230px, auto;
+  }
+
+  .food-card { text-align: center; }
+  .food-header h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    color: #df2862;
+    font-size: clamp(38px, 10vw, 62px);
+    line-height: 1.05;
+    margin: 0 0 8px;
+  }
+  .food-header p {
+    margin: 0 auto 22px;
+    color: #74334b;
+    line-height: 1.5;
+  }
+
+  .food-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .food-option {
+    min-height: 116px;
+    border: 1px solid #f0c3d1;
+    border-radius: 20px;
+    background: rgba(255,255,255,.84);
+    color: #641c36;
+    padding: 14px 10px;
+    cursor: pointer;
+    box-shadow: 0 8px 22px rgba(167,39,81,.08);
+    transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .food-option:active { transform: scale(.98); }
+
+  .food-option.selected {
+    border-color: #df2862;
+    background: linear-gradient(145deg, #fff0f5, #ffe0ea);
+    box-shadow: 0 10px 28px rgba(223,40,98,.20);
+    transform: translateY(-2px);
+  }
+
+  .food-emoji {
+    display: block;
+    font-size: 34px;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+
+  .food-name {
+    display: block;
+    font-size: 15px;
+    font-weight: 850;
+  }
+
+  .food-note {
+    margin: 15px 0 0;
+    min-height: 20px;
+    color: #bd3d62;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  #screen5 {
+    background:
+      radial-gradient(circle at 78% 14%, rgba(255,244,194,.16) 0 58px, transparent 61px),
+      linear-gradient(180deg, #091431 0%, #132754 48%, #302c59 100%);
+  }
+  #screen5::before {
+    content: "";
+    position: absolute;
+    width: 96px;
+    height: 96px;
+    right: 11%;
+    top: 8%;
+    border-radius: 50%;
+    background: #fff3c4;
+    box-shadow:
+      0 0 25px rgba(255,243,196,.72),
+      0 0 65px rgba(255,243,196,.28),
+      0 0 120px rgba(255,243,196,.12);
+  }
+  #screen5::after {
+    content: "✦   ·    ✧      ·  ✦    ·       ✧   ·   ✦       ·    ✧     ·   ✦";
+    position: absolute;
+    top: 6%;
+    left: 4%;
+    right: 4%;
+    color: rgba(255,255,255,.78);
+    font-size: 15px;
+    letter-spacing: 9px;
+    line-height: 3;
+    pointer-events: none;
+    text-shadow: 0 0 9px rgba(255,255,255,.45);
+  }
+  #screen5 .final-card {
+    background: rgba(255,247,251,.91);
+    border-color: rgba(255,255,255,.55);
+  }
+
+  @media (max-width: 420px) {
+    .food-grid { gap: 9px; }
+    .food-option { min-height: 105px; padding: 12px 7px; }
+    .food-emoji { font-size: 30px; }
+    .food-name { font-size: 14px; }
+  }
+
 </style>
 </head>
 
@@ -524,14 +643,15 @@
   </main>
 </div>
 
+
 <div class="screen" id="screen3">
   <div class="hearts" id="hearts3"></div>
   <main class="card final-card">
-    <div class="eyebrow">Officially a date! 💕</div>
-    <div class="final-emoji">🥰❤️</div>
+    <div class="eyebrow">One more little choice 💕</div>
+    <div class="final-emoji">🌙❤️</div>
     <h2 class="final-title">It's a date!</h2>
-    <p class="subtitle">I'm so happy, Komal! 🌷</p>
-    <p class="moon-caption">Maybe we'll look up at the moon and remember this little moment. 🌙✨</p>
+    <p class="subtitle">And now... let's decide what we should eat. 🥰</p>
+    <p class="moon-caption">The date is set. The moon is waiting. One last choice... ✨</p>
 
     <div class="summary">
       <div class="summary-row">
@@ -550,6 +670,85 @@
       </div>
     </div>
 
+    <button class="btn confirm" id="chooseFoodBtn">Choose our food 🍽️</button>
+    <button class="small-btn" id="changeBtn">Change date/time</button>
+  </main>
+</div>
+
+<div class="screen" id="screen4">
+  <div class="hearts" id="hearts4"></div>
+  <main class="card food-card">
+    <div class="food-header">
+      <div class="eyebrow">Mission: Choose our food 🍽️</div>
+      <h2>What are we feeling?</h2>
+      <p>Pick your vibe for our little date, Komal. ❤️<br>And yes... <em>Cold Coffee (Brown Bunch)</em> is compulsory. 😉</p>
+    </div>
+
+    <div class="food-grid" id="foodGrid">
+      <button type="button" class="food-option" data-food="Indian">
+        <span class="food-emoji">🍛</span>
+        <span class="food-name">Indian</span>
+      </button>
+
+      <button type="button" class="food-option" data-food="Chinese">
+        <span class="food-emoji">🥡</span>
+        <span class="food-name">Chinese</span>
+      </button>
+
+      <button type="button" class="food-option" data-food="Pastas">
+        <span class="food-emoji">🍝</span>
+        <span class="food-name">Pastas</span>
+      </button>
+
+      <button type="button" class="food-option" data-food="Pizza">
+        <span class="food-emoji">🍕</span>
+        <span class="food-name">Pizza</span>
+      </button>
+
+      <button type="button" class="food-option" data-food="Cold Coffee (Brown Bunch)">
+        <span class="food-emoji">☕</span>
+        <span class="food-name">Cold Coffee</span>
+      </button>
+    </div>
+
+    <div class="food-note" id="foodNote">Choose one and I'll remember it. 💕</div>
+    <button class="btn confirm" id="confirmFoodBtn" disabled>That's what we'll have ❤️</button>
+  </main>
+</div>
+
+<div class="screen" id="screen5">
+  <div class="hearts" id="hearts5"></div>
+  <main class="card final-card">
+    <div class="eyebrow">Officially a date! 💕</div>
+    <div class="final-emoji">🥰❤️</div>
+    <h2 class="final-title">It's a date!</h2>
+    <p class="subtitle">I'm so happy, Komal! 🌷</p>
+    <p class="moon-caption">Maybe we'll look up at the moon and remember this little moment. 🌙✨</p>
+
+    <div class="summary">
+      <div class="summary-row">
+        <div class="summary-icon">📅</div>
+        <div>
+          <div class="summary-label">DATE</div>
+          <div class="summary-value" id="finalDate2">—</div>
+        </div>
+      </div>
+      <div class="summary-row">
+        <div class="summary-icon">⏰</div>
+        <div>
+          <div class="summary-label">TIME</div>
+          <div class="summary-value" id="finalTime2">—</div>
+        </div>
+      </div>
+      <div class="summary-row">
+        <div class="summary-icon">🍽️</div>
+        <div>
+          <div class="summary-label">FOOD</div>
+          <div class="summary-value" id="finalFood">—</div>
+        </div>
+      </div>
+    </div>
+
     <div class="final-message">
       “I can't wait to see you.<br>
       Thank you for saying YES! ❤️”
@@ -560,8 +759,9 @@
     <p class="footer-note">See you soon, beautiful Komal! 🌸</p>
 
     <button class="btn send-answer" id="sendAnswer">Send my answer 💌</button>
-    <p class="send-note">Tapping this will open WhatsApp with your chosen date and time already written in the message. You can then choose who to send it to. ❤️</p>
+    <p class="send-note">Tapping this will open WhatsApp with your chosen date, time and food already written in the message. ❤️</p>
 
+    <button class="small-btn" id="changeFoodBtn">Change food</button>
     <button class="small-btn" id="changeBtn">Change date/time</button>
   </main>
 </div>
@@ -571,7 +771,7 @@
   "use strict";
 
   /* ---------- PRIVATE LINK ---------- */
-  const PRIVATE_INVITE_HASH = "5747f2330979732d56f0fe586c90cb9c81240449b44a39adb7d35e8e23dec01b";
+  const PRIVATE_INVITE_HASH = "c1d03a7a6a24df784d36e3b7219620f599ddb375e6bb63758f9a9654f9959693";
   const accessDenied = document.getElementById("accessDenied");
 
   async function sha256(text) {
@@ -612,6 +812,8 @@
   const screen1 = document.getElementById("screen1");
   const screen2 = document.getElementById("screen2");
   const screen3 = document.getElementById("screen3");
+  const screen4 = document.getElementById("screen4");
+  const screen5 = document.getElementById("screen5");
 
   const yesBtn = document.getElementById("yesBtn");
   const noBtn = document.getElementById("noBtn");
@@ -626,11 +828,20 @@
 
   const finalDate = document.getElementById("finalDate");
   const finalTime = document.getElementById("finalTime");
+  const chooseFoodBtn = document.getElementById("chooseFoodBtn");
   const changeBtn = document.getElementById("changeBtn");
+
+  const finalDate2 = document.getElementById("finalDate2");
+  const finalTime2 = document.getElementById("finalTime2");
+  const finalFood = document.getElementById("finalFood");
+  const confirmFoodBtn = document.getElementById("confirmFoodBtn");
+  const foodNote = document.getElementById("foodNote");
+  const changeFoodBtn = document.getElementById("changeFoodBtn");
   const sendAnswer = document.getElementById("sendAnswer");
 
   let noAttempts = 0;
   let selectedTime = "";
+  let selectedFood = "";
 
   const teaseMessages = [
     "Are you sure? 🥺",
@@ -672,6 +883,8 @@
   createHearts("hearts1");
   createHearts("hearts2");
   createHearts("hearts3");
+  createHearts("hearts4");
+  createHearts("hearts5");
 
   /* ---------- YES ---------- */
   yesBtn.addEventListener("click", function () {
@@ -816,8 +1029,41 @@
     launchCelebration();
   });
 
+  chooseFoodBtn.addEventListener("click", function () {
+    showScreen(screen4);
+  });
+
   changeBtn.addEventListener("click", function () {
     showScreen(screen2);
+  });
+
+  /* ---------- FOOD ---------- */
+  document.querySelectorAll(".food-option").forEach(function (option) {
+    option.addEventListener("click", function () {
+      document.querySelectorAll(".food-option").forEach(function (item) {
+        item.classList.remove("selected");
+      });
+
+      option.classList.add("selected");
+      selectedFood = option.dataset.food;
+      foodNote.textContent = "Perfect choice: " + selectedFood + " 😋❤️";
+      confirmFoodBtn.disabled = false;
+    });
+  });
+
+  confirmFoodBtn.addEventListener("click", function () {
+    if (!selectedFood) return;
+
+    finalDate2.textContent = finalDate.textContent;
+    finalTime2.textContent = finalTime.textContent;
+    finalFood.textContent = selectedFood;
+
+    showScreen(screen5);
+    launchCelebration("hearts5");
+  });
+
+  changeFoodBtn.addEventListener("click", function () {
+    showScreen(screen4);
   });
 
   /* ---------- WHATSAPP ---------- */
@@ -826,15 +1072,16 @@
       "Hi ❤️ I have an answer for you!\n\n" +
       "YES, I’d love to go on a date with you, Komal! 🥰\n\n" +
       "📅 Date: " + finalDate.textContent + "\n" +
-      "⏰ Time: " + finalTime.textContent + "\n\n" +
+      "⏰ Time: " + finalTime2.textContent + "\n" +
+      "🍽️ Food: " + finalFood.textContent + "\n\n" +
       "See you then! ❤️🌙";
 
     window.location.href =
       "https://wa.me/?text=" + encodeURIComponent(message);
   });
 
-  function launchCelebration() {
-    const container = document.getElementById("hearts3");
+  function launchCelebration(containerId) {
+    const container = document.getElementById(containerId || "hearts3");
     if (!container) return;
 
     for (let i = 0; i < 20; i++) {
