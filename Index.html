@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#ff4f81">
+<meta name="description" content="A little date invitation for Komal ❤️">
+<title>Komal, Will You Go On A Date With Me? ❤️</title>
+
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; min-height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    color: #5b162d;
+    background:
+      radial-gradient(circle at 15% 15%, rgba(255,255,255,.9) 0 2px, transparent 3px),
+      radial-gradient(circle at 80% 25%, rgba(255,255,255,.8) 0 3px, transparent 4px),
+      linear-gradient(135deg, #fff1f5, #ffd9e5 45%, #fff5f8);
+    background-size: 180px 180px, 230px 230px, auto;
+    overflow-x: hidden;
+  }
+
+  button, input { font: inherit; }
+  button { -webkit-tap-highlight-color: transparent; }
+
+  .screen {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 22px 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .screen.active { display: flex; }
+
+  .hearts { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .heart {
+    position: absolute;
+    opacity: .55;
+    animation: floatUp linear infinite;
+    user-select: none;
+  }
+  @keyframes floatUp {
+    from { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+    15% { opacity: .55; }
+    85% { opacity: .55; }
+    to { transform: translateY(-15vh) rotate(25deg); opacity: 0; }
+  }
+
+  .card {
+    width: min(100%, 760px);
+    background: rgba(255,255,255,.76);
+    border: 1px solid rgba(255,255,255,.9);
+    border-radius: 30px;
+    box-shadow: 0 22px 70px rgba(167, 39, 81, .18);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    padding: clamp(25px, 7vw, 55px);
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    background: #ff3f76;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: .5px;
+    margin-bottom: 20px;
+  }
+
+  .name {
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-size: clamp(48px, 13vw, 88px);
+    line-height: .95;
+    margin: 0 0 18px;
+    color: #df2862;
+    text-shadow: 0 6px 18px rgba(223,40,98,.12);
+  }
+
+  h1 {
+    font-size: clamp(29px, 7vw, 54px);
+    line-height: 1.15;
+    margin: 0 auto 18px;
+    max-width: 650px;
+    color: #531126;
+  }
+
+  .subtitle {
+    font-size: clamp(15px, 4vw, 19px);
+    line-height: 1.55;
+    margin: 0 auto 28px;
+    color: #7a3850;
+  }
+
+  .question-buttons {
+    min-height: 155px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    margin-top: 12px;
+  }
+
+  .btn {
+    border: 0;
+    border-radius: 16px;
+    min-height: 58px;
+    padding: 14px 30px;
+    font-weight: 800;
+    font-size: 17px;
+    cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+  }
+
+  .btn-yes {
+    color: white;
+    background: linear-gradient(135deg, #ff2f70, #e51f5c);
+    box-shadow: 0 12px 25px rgba(229,31,92,.28);
+  }
+  .btn-yes:hover, .btn-yes:active { transform: translateY(-2px) scale(1.03); }
+
+  .btn-no {
+    color: #5b162d;
+    background: rgba(255,255,255,.95);
+    box-shadow: 0 10px 24px rgba(91,22,45,.13);
+    position: relative;
+    z-index: 4;
+    touch-action: manipulation;
+  }
+
+  .tease {
+    min-height: 26px;
+    margin-top: 12px;
+    color: #e12a63;
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .love-line {
+    margin-top: 20px;
+    color: #9b4a63;
+    font-size: 13px;
+  }
+
+  /* Planning page */
+  .planner-card { text-align: left; }
+  .planner-header { text-align: center; margin-bottom: 26px; }
+  .planner-header h2, .final-title {
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    color: #df2862;
+    font-size: clamp(36px, 10vw, 60px);
+    margin: 0 0 8px;
+  }
+  .planner-header p { margin: 0; color: #74334b; }
+
+  .section {
+    background: rgba(255,255,255,.72);
+    border: 1px solid #ffd1df;
+    border-radius: 20px;
+    padding: 18px;
+    margin-top: 16px;
+  }
+
+  .section-title {
+    font-size: 18px;
+    font-weight: 850;
+    margin-bottom: 13px;
+  }
+
+  .date-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .date-wrap {
+    position: relative;
+    flex: 1;
+  }
+
+  input[type="date"] {
+    width: 100%;
+    min-height: 54px;
+    border: 1px solid #eab7c8;
+    border-radius: 14px;
+    background: white;
+    padding: 0 15px;
+    color: #57182f;
+    outline: none;
+  }
+  input[type="date"]:focus {
+    border-color: #ef3c73;
+    box-shadow: 0 0 0 3px rgba(239,60,115,.12);
+  }
+
+  .clear-btn {
+    min-height: 54px;
+    width: 54px;
+    border: 1px solid #efbfd0;
+    border-radius: 14px;
+    background: white;
+    cursor: pointer;
+    color: #d9245d;
+    font-size: 21px;
+  }
+
+  .hint {
+    margin: 9px 0 0;
+    color: #bd3d62;
+    font-size: 12px;
+  }
+
+  .slots {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 9px;
+    max-height: 430px;
+    overflow-y: auto;
+    padding-right: 2px;
+  }
+
+  .slot {
+    border: 1px solid #f0bfd0;
+    background: #fffafb;
+    color: #641c36;
+    border-radius: 12px;
+    min-height: 48px;
+    padding: 8px 5px;
+    font-size: 13px;
+    font-weight: 750;
+    cursor: pointer;
+  }
+  .slot.selected {
+    background: #ff3b72;
+    color: white;
+    border-color: #ff3b72;
+    box-shadow: 0 7px 18px rgba(255,59,114,.24);
+  }
+
+  .confirm {
+    width: 100%;
+    margin-top: 20px;
+    color: white;
+    background: linear-gradient(135deg, #ff2f70, #df1d59);
+    box-shadow: 0 12px 25px rgba(223,29,89,.22);
+  }
+  .confirm:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  .error {
+    min-height: 20px;
+    color: #c51f50;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 9px;
+  }
+
+  /* Final page */
+  .final-card { text-align: center; }
+  .final-emoji { font-size: 58px; margin: 4px 0 10px; animation: pulse 1.8s infinite; }
+  @keyframes pulse {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+  }
+
+  .summary {
+    text-align: left;
+    margin: 25px auto;
+    max-width: 530px;
+    background: white;
+    border-radius: 20px;
+    padding: 8px 18px;
+    box-shadow: 0 10px 30px rgba(167,39,81,.11);
+  }
+  .summary-row {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #f4d5df;
+  }
+  .summary-row:last-child { border-bottom: 0; }
+  .summary-icon { font-size: 24px; width: 32px; }
+  .summary-label { color: #8a4a60; font-size: 12px; }
+  .summary-value { color: #dd2861; font-weight: 850; font-size: 16px; margin-top: 2px; }
+
+  .final-message {
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    color: #741e3d;
+    font-size: clamp(20px, 5vw, 27px);
+    line-height: 1.5;
+    margin: 20px auto;
+    max-width: 560px;
+  }
+
+  .small-btn {
+    border: 1px solid #efb6c9;
+    background: white;
+    color: #a4234f;
+    border-radius: 12px;
+    padding: 11px 17px;
+    cursor: pointer;
+    font-weight: 700;
+    margin-top: 6px;
+  }
+
+  .footer-note { margin-top: 22px; color: #9b5269; font-size: 13px; }
+
+  @media (max-width: 420px) {
+    .card { border-radius: 24px; padding: 25px 18px; }
+    .question-buttons { gap: 10px; }
+    .btn { padding: 13px 22px; }
+    .section { padding: 14px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: .01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Moonlit-evening date planner */
+  #screen2 {
+    background:
+      radial-gradient(circle at 76% 16%, rgba(255,248,216,.18) 0 52px, transparent 54px),
+      radial-gradient(circle at 76% 16%, rgba(255,255,255,.06) 0 90px, transparent 92px),
+      linear-gradient(180deg, #101b46 0%, #182b5d 48%, #3f396b 100%);
+  }
+  #screen2::before {
+    content: "";
+    position: absolute;
+    width: 92px;
+    height: 92px;
+    right: 12%;
+    top: 9%;
+    border-radius: 50%;
+    background: #fff4c9;
+    box-shadow: 0 0 28px rgba(255,244,201,.5), 0 0 75px rgba(255,244,201,.22);
+    opacity: .95;
+  }
+  #screen2::after {
+    content: "✦  ·   ✧     ·  ✦    ·      ✧   ·   ✦       ·    ✧  ·";
+    position: absolute;
+    inset: 8% 3% auto;
+    color: rgba(255,255,255,.75);
+    font-size: 17px;
+    letter-spacing: 11px;
+    line-height: 2.7;
+    pointer-events: none;
+    white-space: normal;
+    text-shadow: 0 0 8px rgba(255,255,255,.4);
+  }
+  #screen2 .planner-card {
+    background: rgba(255,248,252,.90);
+    border-color: rgba(255,255,255,.55);
+  }
+  #screen2 .planner-header h2 { color: #d92d65; }
+  #screen2 .section { background: rgba(255,255,255,.84); }
+
+  .send-answer {
+    width: 100%;
+    margin-top: 11px;
+    color: #fff;
+    background: linear-gradient(135deg, #25d366, #18a951);
+    box-shadow: 0 12px 25px rgba(24,169,81,.22);
+  }
+  .send-note {
+    margin: 9px auto 0;
+    max-width: 520px;
+    color: #8b4c61;
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+
+  /* Final reveal: romantic moonlit night */
+  #screen3 {
+    background:
+      radial-gradient(circle at 78% 14%, rgba(255,244,194,.16) 0 58px, transparent 61px),
+      linear-gradient(180deg, #091431 0%, #132754 48%, #302c59 100%);
+  }
+  #screen3::before {
+    content: "";
+    position: absolute;
+    width: 96px;
+    height: 96px;
+    right: 11%;
+    top: 8%;
+    border-radius: 50%;
+    background: #fff3c4;
+    box-shadow:
+      0 0 25px rgba(255,243,196,.72),
+      0 0 65px rgba(255,243,196,.28),
+      0 0 120px rgba(255,243,196,.12);
+  }
+  #screen3::after {
+    content: "✦   ·    ✧      ·  ✦    ·       ✧   ·   ✦       ·    ✧     ·   ✦";
+    position: absolute;
+    top: 6%;
+    left: 4%;
+    right: 4%;
+    color: rgba(255,255,255,.78);
+    font-size: 15px;
+    letter-spacing: 9px;
+    line-height: 3;
+    pointer-events: none;
+    text-shadow: 0 0 9px rgba(255,255,255,.45);
+  }
+  #screen3 .final-card {
+    background: rgba(255,247,251,.91);
+    border-color: rgba(255,255,255,.55);
+  }
+  #screen3 .eyebrow {
+    background: linear-gradient(135deg, #ef3b75, #b92362);
+  }
+  #screen3 .final-title {
+    color: #d82965;
+    text-shadow: 0 4px 18px rgba(216,41,101,.13);
+  }
+  #screen3 .final-message {
+    color: #62203a;
+  }
+  .moon-caption {
+    margin: 4px auto 18px;
+    color: #76516a;
+    font-size: 13px;
+    font-style: italic;
+  }
+  .moon-divider {
+    margin: 18px auto 8px;
+    color: #d82d66;
+    font-size: 18px;
+    letter-spacing: 7px;
+  }
+
+</style>
+</head>
+
+<body>
+
+<div class="screen active" id="screen1">
+  <div class="hearts" id="hearts1"></div>
+  <main class="card">
+    <div class="eyebrow">A little question for you ❤️</div>
+    <div class="name">Komal,</div>
+    <h1>Will you go on a date with me? ❤️</h1>
+    <p class="subtitle">Think carefully... because I have a feeling there's only one answer I'm hoping for. 😉</p>
+
+    <div class="question-buttons" id="questionArea">
+      <button class="btn btn-yes" id="yesBtn">YES ❤️</button>
+      <button class="btn btn-no" id="noBtn">NO 🙈</button>
+    </div>
+
+    <div class="tease" id="tease">Psst... try YES! You won't regret it 😊</div>
+    <div class="love-line">No pressure... except for this suspiciously determined YES button. 😌</div>
+  </main>
+</div>
+
+<div class="screen" id="screen2">
+  <div class="hearts" id="hearts2"></div>
+  <main class="card planner-card">
+    <div class="planner-header">
+      <div class="eyebrow">Mission: Plan Our Date 💕</div>
+      <h2>Yay, Komal! 🥰</h2>
+      <p>Okay... now let's decide when our little adventure happens under the moon. 🌙</p>
+    </div>
+
+    <section class="section">
+      <div class="section-title">📅 1. Pick a date</div>
+      <div class="date-row">
+        <div class="date-wrap">
+          <input id="dateInput" type="date" aria-label="Choose a date">
+        </div>
+        <button class="clear-btn" id="clearDate" title="Clear selected date" aria-label="Clear selected date">🗑️</button>
+      </div>
+      <p class="hint">✨ Past dates are automatically disabled.</p>
+    </section>
+
+    <section class="section">
+      <div class="section-title">⏰ 2. Pick a time</div>
+      <div class="slots" id="slots"></div>
+      <p class="hint">Every option is a 30-minute slot. ⏳</p>
+    </section>
+
+    <div class="error" id="plannerError"></div>
+    <button class="btn confirm" id="confirmBtn" disabled>Confirm our date ❤️</button>
+  </main>
+</div>
+
+<div class="screen" id="screen3">
+  <div class="hearts" id="hearts3"></div>
+  <main class="card final-card">
+    <div class="eyebrow">Officially a date! 💕</div>
+    <div class="final-emoji">🥰❤️</div>
+    <h2 class="final-title">It's a date!</h2>
+    <p class="subtitle">I'm so happy, Komal! 🌷</p>
+    <p class="moon-caption">Maybe we'll look up at the moon and remember this little moment. 🌙✨</p>
+
+    <div class="summary">
+      <div class="summary-row">
+        <div class="summary-icon">📅</div>
+        <div>
+          <div class="summary-label">DATE</div>
+          <div class="summary-value" id="finalDate">—</div>
+        </div>
+      </div>
+      <div class="summary-row">
+        <div class="summary-icon">⏰</div>
+        <div>
+          <div class="summary-label">TIME</div>
+          <div class="summary-value" id="finalTime">—</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="final-message">
+      “I can't wait to see you.<br>
+      Thank you for saying YES! ❤️”
+    </div>
+
+    <div class="moon-divider">✦ 🌙 ✦</div>
+    <div style="font-size:28px; letter-spacing:8px;">💕 💗 💕</div>
+    <p class="footer-note">See you soon, beautiful Komal! 🌸</p>
+
+    <button class="btn send-answer" id="sendAnswer">Send my answer 💌</button>
+    <p class="send-note">Tapping this will open WhatsApp with your chosen date and time already written in the message. You can then choose who to send it to. ❤️</p>
+
+    <button class="small-btn" id="changeBtn">Change date/time</button>
+  </main>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  const screen1 = document.getElementById("screen1");
+  const screen2 = document.getElementById("screen2");
+  const screen3 = document.getElementById("screen3");
+
+  const yesBtn = document.getElementById("yesBtn");
+  const noBtn = document.getElementById("noBtn");
+  const questionArea = document.getElementById("questionArea");
+  const tease = document.getElementById("tease");
+
+  const dateInput = document.getElementById("dateInput");
+  const clearDate = document.getElementById("clearDate");
+  const slotsContainer = document.getElementById("slots");
+  const confirmBtn = document.getElementById("confirmBtn");
+  const plannerError = document.getElementById("plannerError");
+
+  const finalDate = document.getElementById("finalDate");
+  const finalTime = document.getElementById("finalTime");
+  const changeBtn = document.getElementById("changeBtn");
+  const sendAnswer = document.getElementById("sendAnswer");
+
+  let noAttempts = 0;
+  let selectedTime = "";
+
+  const teaseMessages = [
+    "Are you sure? 🥺",
+    "Think again... 👀",
+    "Nice try! 😏",
+    "That button is a little shy today 😂",
+    "Nope. The NO button has other plans. 🙈",
+    "You can't escape this question! 😜",
+    "I think the universe is trying to tell you something... ❤️",
+    "Okay Komal... just press YES already. 😌❤️"
+  ];
+
+  function showScreen(screen) {
+    [screen1, screen2, screen3].forEach(s => s.classList.remove("active"));
+    screen.classList.add("active");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  // Floating hearts
+  function createHearts(containerId) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+    const symbols = ["❤️", "💕", "💗", "💖", "♡"];
+    for (let i = 0; i < 18; i++) {
+      const h = document.createElement("span");
+      h.className = "heart";
+      h.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+      h.style.left = Math.random() * 100 + "%";
+      h.style.fontSize = (13 + Math.random() * 20) + "px";
+      h.style.animationDuration = (7 + Math.random() * 8) + "s";
+      h.style.animationDelay = (-Math.random() * 12) + "s";
+      container.appendChild(h);
+    }
+  }
+
+  createHearts("hearts1");
+  createHearts("hearts2");
+  createHearts("hearts3");
+
+  // YES
+  yesBtn.addEventListener("click", function () {
+    showScreen(screen2);
+  });
+
+  // NO button dodges touch/click attempts.
+  function dodgeNo(event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    noAttempts++;
+    tease.textContent = teaseMessages[Math.min(noAttempts - 1, teaseMessages.length - 1)];
+
+    const areaRect = questionArea.getBoundingClientRect();
+    const btnRect = noBtn.getBoundingClientRect();
+
+    // Keep the button inside the visible question area.
+    const maxX = Math.max(0, areaRect.width - btnRect.width - 8);
+    const maxY = Math.max(0, areaRect.height - btnRect.height - 8);
+
+    let x = Math.random() * maxX - (areaRect.width / 2 - btnRect.width / 2);
+    let y = Math.random() * maxY - (areaRect.height / 2 - btnRect.height / 2);
+
+    // Avoid placing it directly over the YES button.
+    if (Math.abs(x) < 85 && Math.abs(y) < 45) {
+      x = x < 0 ? -Math.max(100, Math.abs(x)) : Math.max(100, Math.abs(x));
+    }
+
+    noBtn.style.transform = "translate(" + x + "px, " + y + "px) rotate(" + (Math.random() * 12 - 6) + "deg)";
+  }
+
+  ["pointerdown", "touchstart", "mouseenter", "focus"].forEach(evt => {
+    noBtn.addEventListener(evt, dodgeNo, { passive: false });
+  });
+
+  noBtn.addEventListener("click", dodgeNo);
+
+  // Date picker: disable all dates before today.
+  function getLocalDateString(date) {
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, "0");
+    const d = String(date.getDate()).padStart(2, "0");
+    return y + "-" + m + "-" + d;
+  }
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const todayString = getLocalDateString(today);
+  dateInput.min = todayString;
+
+  // Generate every 30-minute slot for a full 24-hour day.
+  function formatTime(totalMinutes) {
+    let hour24 = Math.floor(totalMinutes / 60);
+    const minutes = totalMinutes % 60;
+    const ampm = hour24 >= 12 ? "PM" : "AM";
+    const hour12 = hour24 % 12 || 12;
+    return hour12 + ":" + String(minutes).padStart(2, "0") + " " + ampm;
+  }
+
+  function makeSlots() {
+    for (let mins = 0; mins < 1440; mins += 30) {
+      const end = (mins + 30) % 1440;
+      const startText = formatTime(mins);
+      const endText = end === 0 ? "12:00 AM" : formatTime(end);
+
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "slot";
+      button.textContent = startText + " – " + endText;
+      button.dataset.start = mins;
+      button.dataset.label = startText + " – " + endText;
+
+      button.addEventListener("click", function () {
+        document.querySelectorAll(".slot").forEach(s => s.classList.remove("selected"));
+        button.classList.add("selected");
+        selectedTime = button.dataset.label;
+        plannerError.textContent = "";
+        validatePlanner();
+      });
+
+      slotsContainer.appendChild(button);
+    }
+  }
+  makeSlots();
+
+  function validatePlanner() {
+    const dateOkay = !!dateInput.value;
+    const timeOkay = !!selectedTime;
+    confirmBtn.disabled = !(dateOkay && timeOkay);
+  }
+
+  dateInput.addEventListener("change", function () {
+    if (dateInput.value && dateInput.value < todayString) {
+      dateInput.value = "";
+      plannerError.textContent = "Please choose today or a future date. ❤️";
+      return;
+    }
+    plannerError.textContent = "";
+    validatePlanner();
+  });
+
+  clearDate.addEventListener("click", function () {
+    dateInput.value = "";
+    plannerError.textContent = "";
+    validatePlanner();
+  });
+
+  confirmBtn.addEventListener("click", function () {
+    if (!dateInput.value || !selectedTime) {
+      plannerError.textContent = "Please choose both a date and a time. ❤️";
+      return;
+    }
+
+    const chosen = new Date(dateInput.value + "T00:00:00");
+    finalDate.textContent = chosen.toLocaleDateString(undefined, {
+      day: "numeric",
+      month: "long",
+      year: "numeric"
+    });
+    finalTime.textContent = selectedTime;
+
+    showScreen(screen3);
+    launchCelebration();
+  });
+
+  changeBtn.addEventListener("click", function () {
+    showScreen(screen2);
+  });
+
+
+  sendAnswer.addEventListener("click", function () {
+    const message =
+      "Hi ❤️ I have an answer for you!\n\n" +
+      "YES, I’d love to go on a date with you, Komal! 🥰\n\n" +
+      "📅 Date: " + finalDate.textContent + "\n" +
+      "⏰ Time: " + finalTime.textContent + "\n\n" +
+      "See you then! ❤️🌙";
+
+    const whatsappUrl = "https://wa.me/?text=" + encodeURIComponent(message);
+    window.open(whatsappUrl, "_blank");
+  });
+
+  function launchCelebration() {
+    const container = document.getElementById("hearts3");
+    for (let i = 0; i < 20; i++) {
+      const h = document.createElement("span");
+      h.className = "heart";
+      h.textContent = ["❤️","💖","💕","✨"][Math.floor(Math.random()*4)];
+      h.style.left = (10 + Math.random()*80) + "%";
+      h.style.fontSize = (16 + Math.random()*22) + "px";
+      h.style.animationDuration = (4 + Math.random()*5) + "s";
+      h.style.animationDelay = "0s";
+      container.appendChild(h);
+    }
+  }
+})();
+</script>
+
+</body>
+</html>
