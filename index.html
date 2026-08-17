@@ -3,196 +3,271 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Good Morning, Princess Komal 👑</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     margin: 0;
+    padding: 0;
     width: 100%;
     height: 100%;
-    font-family: Georgia, "Times New Roman", serif;
 }
 
 body {
     overflow: hidden;
-    background: #f7dca0;
+    font-family: Georgia, "Times New Roman", serif;
     color: #4b3040;
+    background: #f8dca5;
 }
 
-/* =========================
-   COMMON
-========================= */
+
+/* =========================================
+   SCREENS
+========================================= */
 
 .scene {
+
     position: fixed;
+
     inset: 0;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     text-align: center;
 
     opacity: 0;
+
     pointer-events: none;
 
-    transform: translateY(20px);
+    transform: translateY(25px);
 
     transition:
         opacity 0.9s ease,
         transform 0.9s ease;
 
-    overflow: hidden;
+    overflow-y: auto;
+
+    padding: 20px;
+
 }
+
 
 .scene.active {
+
     opacity: 1;
+
     pointer-events: auto;
+
     transform: translateY(0);
+
 }
 
-/* =========================
-   SUNRISE BACKGROUND
-========================= */
+
+/* =========================================
+   SUNRISE
+========================================= */
 
 .sunrise {
+
     position: absolute;
+
     inset: 0;
 
     background:
         linear-gradient(
             180deg,
-            #b9d9ee 0%,
-            #f8c9a2 52%,
-            #ffe9ae 100%
+            #a9d4ed 0%,
+            #f4c4a2 50%,
+            #ffe6a5 100%
         );
+
 }
 
+
 .sun {
+
     position: absolute;
 
     width: 34vw;
+
     height: 34vw;
 
     max-width: 230px;
+
     max-height: 230px;
+
+    min-width: 130px;
+
+    min-height: 130px;
 
     border-radius: 50%;
 
-    background: #fff0a8;
-
-    box-shadow:
-        0 0 70px rgba(255,210,100,0.75);
+    background: #fff0a5;
 
     bottom: 13%;
+
     left: 50%;
 
     transform: translateX(-50%);
 
-    animation: sunriseGlow 5s ease-in-out infinite alternate;
+    box-shadow:
+        0 0 50px rgba(255,210,90,.65);
+
+    animation:
+        sunGlow 4s ease-in-out infinite alternate;
+
 }
 
-@keyframes sunriseGlow {
+
+@keyframes sunGlow {
+
     from {
         box-shadow:
-            0 0 45px rgba(255,210,100,0.55);
+            0 0 45px rgba(255,210,90,.55);
     }
 
     to {
         box-shadow:
-            0 0 95px rgba(255,210,100,0.9);
+            0 0 95px rgba(255,210,90,.9);
     }
+
 }
+
+
+/* =========================================
+   HILLS
+========================================= */
 
 .hill {
+
     position: absolute;
 
-    bottom: -10%;
+    bottom: -12%;
+
+    left: -10%;
+
     width: 120%;
-    height: 30%;
 
-    background: #9bc49d;
+    height: 32%;
 
-    border-radius: 50% 50% 0 0;
+    background: #91bc96;
+
+    border-radius:
+        50% 50% 0 0;
+
 }
 
-/* =========================
+
+/* =========================================
    CLOUDS
-========================= */
+========================================= */
 
 .cloud {
+
     position: absolute;
 
-    background: rgba(255,255,255,0.72);
+    background:
+        rgba(255,255,255,.75);
 
     border-radius: 50%;
 
     filter: blur(2px);
 
     animation:
-        cloudFloat 12s ease-in-out infinite;
+        cloudMove 12s ease-in-out infinite;
+
 }
+
 
 .c1 {
+
     width: 180px;
+
     height: 55px;
 
-    top: 18%;
-    left: 8%;
+    top: 15%;
+
+    left: 5%;
+
 }
+
 
 .c2 {
+
     width: 230px;
+
     height: 65px;
 
-    top: 29%;
-    right: 5%;
+    top: 28%;
+
+    right: 3%;
 
     animation-delay: 2s;
+
 }
+
 
 .c3 {
+
     width: 150px;
+
     height: 45px;
 
-    top: 52%;
-    left: 20%;
+    top: 53%;
+
+    left: 18%;
 
     animation-delay: 4s;
+
 }
 
-@keyframes cloudFloat {
 
-    0%, 100% {
+@keyframes cloudMove {
+
+    0%,100% {
         transform: translateX(0);
     }
 
     50% {
         transform: translateX(25px);
     }
+
 }
 
-/* =========================
+
+/* =========================================
    CONTENT
-========================= */
+========================================= */
 
 .content {
+
     position: relative;
-    z-index: 5;
 
-    width: min(90%, 700px);
+    z-index: 10;
 
-    padding: 25px;
+    width: min(92%, 700px);
+
+    padding: 20px;
+
 }
 
+
 .eyebrow {
+
     font-family: Arial, sans-serif;
 
-    font-size: 12px;
+    font-size: 11px;
 
     font-weight: bold;
 
@@ -203,90 +278,132 @@ body {
     color: #795567;
 
     margin-bottom: 14px;
+
 }
+
 
 h1 {
-    font-size: clamp(40px, 11vw, 78px);
 
-    margin: 0 0 14px;
+    font-size:
+        clamp(40px, 11vw, 76px);
+
+    line-height: 1.05;
+
+    margin:
+        0 0 18px;
 
     text-shadow:
-        0 3px 15px rgba(255,255,255,0.65);
+        0 3px 15px
+        rgba(255,255,255,.65);
+
 }
+
 
 h2 {
-    font-size: clamp(30px, 8vw, 52px);
 
-    margin: 0 0 20px;
+    font-size:
+        clamp(29px, 8vw, 50px);
+
+    line-height: 1.15;
+
+    margin:
+        0 0 20px;
+
 }
+
 
 p {
-    font-size: clamp(19px, 5vw, 27px);
 
-    line-height: 1.55;
+    font-size:
+        clamp(18px, 5vw, 26px);
 
-    margin: 12px 0;
+    line-height: 1.5;
+
+    margin:
+        13px 0;
+
 }
 
+
 .soft {
+
     font-size: 17px;
 
     color: #765969;
+
 }
 
-/* =========================
+
+/* =========================================
    CROWN
-========================= */
+========================================= */
 
 .crown {
-    font-size: 45px;
 
     display: block;
 
-    margin-bottom: 5px;
+    font-size: 48px;
+
+    margin-bottom: 7px;
 
     animation:
         crownFloat 2.5s ease-in-out infinite;
+
 }
+
 
 @keyframes crownFloat {
 
-    0%, 100% {
-        transform: translateY(0) rotate(0deg);
+    0%,100% {
+        transform:
+            translateY(0)
+            rotate(0deg);
     }
 
     50% {
-        transform: translateY(-6px) rotate(2deg);
+        transform:
+            translateY(-6px)
+            rotate(2deg);
     }
+
 }
 
-/* =========================
+
+/* =========================================
    CARD
-========================= */
+========================================= */
 
 .card {
+
     background:
-        rgba(255,250,247,0.78);
+        rgba(255,250,247,.82);
 
     backdrop-filter:
-        blur(8px);
+        blur(10px);
 
     border:
-        1px solid rgba(255,255,255,0.7);
+        1px solid
+        rgba(255,255,255,.75);
 
-    border-radius: 28px;
+    border-radius:
+        28px;
 
-    padding: 25px 18px;
+    padding:
+        27px 18px;
 
     box-shadow:
-        0 15px 50px rgba(93,51,66,0.14);
+        0 18px 55px
+        rgba(93,51,66,.16);
+
 }
 
-/* =========================
+
+/* =========================================
    BUTTONS
-========================= */
+========================================= */
 
 .options {
+
     display: flex;
 
     flex-wrap: wrap;
@@ -295,298 +412,235 @@ p {
 
     gap: 6px;
 
-    margin-top: 18px;
+    margin-top: 20px;
+
 }
 
+
 .btn {
-    border: 0;
+
+    border: none;
 
     border-radius: 999px;
 
-    padding: 14px 23px;
+    padding:
+        14px 22px;
 
-    margin: 8px;
+    margin: 7px;
 
     background:
-        rgba(255,255,255,0.9);
+        rgba(255,255,255,.92);
 
-    color: #653f52;
+    color:
+        #653f52;
 
     font-weight: bold;
 
     font-size: 16px;
 
-    box-shadow:
-        0 7px 22px rgba(100,55,70,0.14);
-
     cursor: pointer;
 
+    box-shadow:
+        0 7px 22px
+        rgba(100,55,70,.15);
+
     transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
+        transform .25s ease,
+        box-shadow .25s ease;
+
 }
 
+
 .btn:hover {
+
     transform:
-        translateY(-2px)
+        translateY(-3px)
         scale(1.02);
 
     box-shadow:
-        0 10px 28px rgba(100,55,70,0.2);
+        0 11px 30px
+        rgba(100,55,70,.22);
+
 }
+
+
+.btn:active {
+
+    transform:
+        scale(.97);
+
+}
+
 
 .choice {
-    min-width: 130px;
+
+    min-width: 135px;
+
 }
 
-/* =========================
+
+/* =========================================
    RESPONSE
-========================= */
+========================================= */
 
 .response {
-    min-height: 80px;
 
-    margin-top: 12px;
+    min-height: 65px;
+
+    margin-top: 10px;
+
 }
 
-/* =========================
+
+/* =========================================
    CERTIFICATE
-========================= */
+========================================= */
 
 .cert {
+
     background:
         #fffaf0;
 
     border:
-        5px double #c59a55;
+        5px double
+        #c59a55;
 
     border-radius:
-        18px;
+        20px;
 
     padding:
-        24px;
+        25px 18px;
 
     box-shadow:
-        0 15px 50px rgba(70,45,30,0.18);
+        0 18px 55px
+        rgba(70,45,30,.20);
+
 }
+
 
 .cert h2 {
-    color: #a36b35;
+
+    color:
+        #a36b35;
+
 }
+
 
 .crown-big {
-    font-size: 62px;
+
+    font-size: 65px;
+
+    animation:
+        crownFloat 2.5s ease-in-out infinite;
+
 }
 
+
 .tiny {
-    font-family: Arial, sans-serif;
+
+    font-family:
+        Arial, sans-serif;
 
     font-size: 12px;
 
     letter-spacing: 1px;
 
-    color: #80606d;
+    color:
+        #80606d;
+
 }
 
-.heart {
-    font-size: 35px;
 
-    animation:
-        heartbeat 1.8s ease-in-out infinite;
-}
+.final-decoration {
 
-@keyframes heartbeat {
-
-    0%, 100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.12);
-    }
-}
-
-/* =========================
-   FINAL FLOWER
-========================= */
-
-.final-flowers {
     font-size: 38px;
 
     margin-top: 18px;
 
     animation:
-        flowerFloat 3s ease-in-out infinite;
+        gentleFloat 3s ease-in-out infinite;
+
 }
 
-@keyframes flowerFloat {
 
-    0%, 100% {
-        transform: translateY(0);
-    }
+@keyframes gentleFloat {
 
     50% {
-        transform: translateY(-5px);
+        transform:
+            translateY(-6px);
     }
+
 }
 
-/* =========================
+
+/* =========================================
    MOBILE
-========================= */
+========================================= */
 
 @media(max-width:500px) {
 
-    .btn {
-        font-size: 15px;
+    .scene {
 
         padding:
-            13px 18px;
+            12px;
+
+    }
+
+    .content {
+
+        padding:
+            10px;
+
     }
 
     .card {
+
         padding:
-            22px 14px;
+            23px 14px;
+
+    }
+
+    .cert {
+
+        padding:
+            22px 13px;
+
+    }
+
+    .btn {
+
+        font-size:
+            15px;
+
+        padding:
+            13px 18px;
+
     }
 
     p {
+
         line-height:
-            1.45;
+            1.42;
+
     }
+
 }
+
 </style>
 </head>
 
+
 <body>
 
-<!-- =====================================================
+
+<!-- ==================================================
      SCREEN 1
-===================================================== -->
+================================================== -->
 
-<section class="scene active" id="s1">
-
-    <div class="sunrise"></div>
-
-    <div class="sun"></div>
-
-    <div class="hill"></div>
-
-    <div class="cloud c1"></div>
-    <div class="cloud c2"></div>
-    <div class="cloud c3"></div>
-
-    <div class="content">
-
-        <span class="crown">👑</span>
-
-        <div class="eyebrow">
-            A very important morning announcement
-        </div>
-
-        <h1>
-            Good Morning,<br>
-            Princess Komal
-        </h1>
-
-        <p>
-            You are probably still sleeping… 😴
-        </p>
-
-        <p class="soft">
-            And honestly, I don't blame you.
-        </p>
-
-        <button class="btn" onclick="go(2)">
-            I have a question… 👀
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     SCREEN 2
-===================================================== -->
-
-<section class="scene" id="s2">
-
-    <div class="sunrise"></div>
-
-    <div class="sun"></div>
-
-    <div class="hill"></div>
-
-    <div class="cloud c1"></div>
-    <div class="cloud c2"></div>
-
-    <div class="content">
-
-        <div class="card">
-
-            <span class="crown">👑</span>
-
-            <h2>
-                Princesses aren't supposed to wake up early.
-            </h2>
-
-            <p>
-                So… how much more beauty sleep
-                does the Princess require today?
-            </p>
-
-            <div class="options">
-
-                <button
-                    class="btn choice"
-                    onclick="sleep('5 minutes')">
-
-                    5 minutes 😴
-
-                </button>
-
-                <button
-                    class="btn choice"
-                    onclick="sleep('10 minutes')">
-
-                    10 minutes 💤
-
-                </button>
-
-                <button
-                    class="btn choice"
-                    onclick="sleep('30 minutes')">
-
-                    30 minutes 👑
-
-                </button>
-
-                <button
-                    class="btn choice"
-                    onclick="sleep('forever')">
-
-                    Don't wake me 😂
-
-                </button>
-
-            </div>
-
-            <div
-                class="response"
-                id="sleepResult">
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     SCREEN 3
-===================================================== -->
-
-<section class="scene" id="s3">
+<section
+    class="scene active"
+    id="s1"
+>
 
     <div class="sunrise"></div>
 
@@ -598,218 +652,6 @@ p {
     <div class="cloud c2"></div>
     <div class="cloud c3"></div>
 
-    <div class="content">
-
-        <div class="card">
-
-            <span class="crown">👑</span>
-
-            <div class="eyebrow">
-                The Royal Morning Questionnaire
-            </div>
-
-            <h2>
-                What kind of morning
-                is it, Princess?
-            </h2>
-
-            <div class="options">
-
-                <button
-                    class="btn choice"
-                    onclick="mood(0)">
-
-                    ☕ Coffee & silence
-
-                </button>
-
-                <button
-                    class="btn choice"
-                    onclick="mood(1)">
-
-                    😴 Five more minutes
-
-                </button>
-
-                <button
-                    class="btn choice"
-                    onclick="mood(2)">
-
-                    🥱 Don't talk to me
-
-                </button>
-
-                <button
-                    class="btn choice"
-                    onclick="mood(3)">
-
-                    ❤️ Talk to me
-
-                </button>
-
-            </div>
-
-            <div
-                class="response"
-                id="moodResult">
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     SCREEN 4
-===================================================== -->
-
-<section class="scene" id="s4">
-
-    <div class="sunrise"></div>
-
-    <div class="sun"></div>
-
-    <div class="hill"></div>
-
-    <div class="cloud c1"></div>
-    <div class="cloud c2"></div>
-    <div class="cloud c3"></div>
-
-    <div class="content">
-
-        <div class="card">
-
-            <span class="crown">👑</span>
-
-            <h2>
-                Before you go back to sleep…
-            </h2>
-
-            <p>
-                There is one tiny thing
-                I wanted you to know.
-            </p>
-
-            <p>
-                <b>
-                    Someone somewhere is smiling
-                    because you exist. ❤️
-                </b>
-            </p>
-
-            <p class="soft">
-                And yes… that someone is me.
-            </p>
-
-            <button
-                class="btn"
-                onclick="go(5)">
-
-                Continue, Your Highness ✨
-
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     SCREEN 5
-===================================================== -->
-
-<section class="scene" id="s5">
-
-    <div class="sunrise"></div>
-
-    <div class="sun"></div>
-
-    <div class="hill"></div>
-
-    <div class="content">
-
-        <div class="cert">
-
-            <div class="crown-big">
-                👑
-            </div>
-
-            <div class="eyebrow">
-                Official Royal Document
-            </div>
-
-            <h2>
-                Sleep Extension Certificate
-            </h2>
-
-            <p>
-                <b>
-                    This certifies that
-                    Princess Komal
-                </b>
-            </p>
-
-            <p>
-                has been granted additional
-                sleep because:
-            </p>
-
-            <p>
-
-                ✨ Princesses need their beauty sleep.<br>
-
-                ✨ Mornings are overrated.<br>
-
-                ✨ And apparently, waking up early
-                is simply not her thing. 😌
-
-            </p>
-
-            <p>
-                <b>
-                    Sleep extension granted:
-                    30 minutes.
-                </b>
-            </p>
-
-            <p class="tiny">
-
-                Approved by:
-                Someone who clearly
-                doesn't want to wake you either ❤️
-
-            </p>
-
-            <button
-                class="btn"
-                onclick="go(6)">
-
-                One last thing… 🌻
-
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     SCREEN 6
-===================================================== -->
-
-<section class="scene" id="s6">
-
-    <div class="sunrise"></div>
-
-    <div class="sun"></div>
-
-    <div class="hill"></div>
 
     <div class="content">
 
@@ -817,32 +659,576 @@ p {
             👑
         </span>
 
+
+        <div class="eyebrow">
+
+            A Very Important
+            Morning Announcement
+
+        </div>
+
+
         <h1>
-            Good morning,<br>
-            sleepy Princess.
+
+            Good Morning,<br>
+            Princess Komal
+
         </h1>
 
+
         <p>
-            May your day be
-            as lovely as you are.
+
+            You are probably
+            still sleeping… 😴
+
         </p>
 
+
         <p class="soft">
-            And if today isn't kind to you…
+
+            And honestly,
+            I don't blame you.
+
         </p>
+
+
+        <button
+            class="btn"
+            onclick="go(2)"
+        >
+
+            I have a question… 👀
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     SCREEN 2
+================================================== -->
+
+<section
+    class="scene"
+    id="s2"
+>
+
+    <div class="sunrise"></div>
+
+    <div class="sun"></div>
+
+    <div class="hill"></div>
+
+    <div class="cloud c1"></div>
+
+    <div class="cloud c2"></div>
+
+
+    <div class="content">
+
+        <div class="card">
+
+            <span class="crown">
+                👑
+            </span>
+
+
+            <h2>
+
+                Princesses aren't
+                supposed to wake up early.
+
+            </h2>
+
+
+            <p>
+
+                So… how much more
+                beauty sleep does the
+                Princess require today?
+
+            </p>
+
+
+            <div class="options">
+
+
+                <button
+                    class="btn choice"
+                    onclick="sleep('5 minutes')"
+                >
+
+                    5 minutes 😴
+
+                </button>
+
+
+                <button
+                    class="btn choice"
+                    onclick="sleep('10 minutes')"
+                >
+
+                    10 minutes 💤
+
+                </button>
+
+
+                <button
+                    class="btn choice"
+                    onclick="sleep('30 minutes')"
+                >
+
+                    30 minutes 👑
+
+                </button>
+
+
+                <button
+                    class="btn choice"
+                    onclick="sleep('forever')"
+                >
+
+                    Don't wake me 😂
+
+                </button>
+
+
+            </div>
+
+
+            <div
+                class="response"
+                id="sleepResult"
+            ></div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     SCREEN 3
+================================================== -->
+
+<section
+    class="scene"
+    id="s3"
+>
+
+    <div class="sunrise"></div>
+
+    <div class="sun"></div>
+
+    <div class="hill"></div>
+
+    <div class="cloud c1"></div>
+
+    <div class="cloud c2"></div>
+
+    <div class="cloud c3"></div>
+
+
+    <div class="content">
+
+        <div class="card">
+
+
+            <span class="crown">
+                👑
+            </span>
+
+
+            <div class="eyebrow">
+
+                The Royal Morning
+                Questionnaire
+
+            </div>
+
+
+            <h2>
+
+                What kind of morning
+                is it, Princess?
+
+            </h2>
+
+
+            <div class="options">
+
+
+                <button
+                    class="btn choice"
+                    onclick="mood(0)"
+                >
+
+                    ☕ Coffee & silence
+
+                </button>
+
+
+                <button
+                    class="btn choice"
+                    onclick="mood(1)"
+                >
+
+                    😴 Five more minutes
+
+                </button>
+
+
+                <button
+                    class="btn choice"
+                    onclick="mood(2)"
+                >
+
+                    🥱 Don't talk to me
+
+                </button>
+
+
+                <button
+                    class="btn choice"
+                    onclick="mood(3)"
+                >
+
+                    ❤️ Talk to me
+
+                </button>
+
+
+            </div>
+
+
+            <div
+                class="response"
+                id="moodResult"
+            ></div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     SCREEN 4
+================================================== -->
+
+<section
+    class="scene"
+    id="s4"
+>
+
+    <div class="sunrise"></div>
+
+    <div class="sun"></div>
+
+    <div class="hill"></div>
+
+    <div class="cloud c1"></div>
+
+    <div class="cloud c2"></div>
+
+    <div class="cloud c3"></div>
+
+
+    <div class="content">
+
+        <div class="card">
+
+
+            <span class="crown">
+                👑
+            </span>
+
+
+            <h2>
+
+                Before you go
+                back to sleep…
+
+            </h2>
+
+
+            <p>
+
+                There is one tiny thing
+                I wanted you to know.
+
+            </p>
+
+
+            <p>
+
+                <b>
+
+                    Someone somewhere
+                    is smiling because
+                    you exist. ❤️
+
+                </b>
+
+            </p>
+
+
+            <p class="soft">
+
+                And yes…
+                that someone is me.
+
+            </p>
+
+
+            <button
+                class="btn"
+                onclick="openCertificate()"
+            >
+
+                Issue My Royal Certificate 👑
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     SCREEN 5
+================================================== -->
+
+<section
+    class="scene"
+    id="s5"
+>
+
+    <div class="sunrise"></div>
+
+    <div class="sun"></div>
+
+    <div class="hill"></div>
+
+    <div class="cloud c1"></div>
+
+    <div class="cloud c2"></div>
+
+
+    <div class="content">
+
+
+        <div class="cert">
+
+
+            <div class="crown-big">
+                👑
+            </div>
+
+
+            <div class="eyebrow">
+
+                OFFICIAL ROYAL DOCUMENT
+
+            </div>
+
+
+            <h2>
+
+                Sleep Extension
+                Certificate
+
+            </h2>
+
+
+            <p>
+
+                This certifies that
+
+            </p>
+
+
+            <p>
+
+                <b>
+                    Princess Komal 👑
+                </b>
+
+            </p>
+
+
+            <p>
+
+                has officially been granted
+                additional beauty sleep.
+
+            </p>
+
+
+            <p>
+
+                <b>
+
+                    Approved Sleep Extension:<br>
+
+                    <span
+                        id="certificateSleep"
+                    >
+
+                        30 minutes 👑
+
+                    </span>
+
+                </b>
+
+            </p>
+
+
+            <p>
+
+                Reason for approval:
+
+            </p>
+
+
+            <p>
+
+                ✨ Princesses need
+                their beauty sleep.<br>
+
+                ✨ Mornings are overrated.<br>
+
+                ✨ Waking up early is clearly
+                not her superpower. 😌
+
+            </p>
+
+
+            <p>
+
+                <b>
+
+                    Officially approved
+                    for today.
+
+                </b>
+
+            </p>
+
+
+            <p class="tiny">
+
+                Approved by someone who clearly
+                doesn't want to wake the Princess either. ❤️
+
+            </p>
+
+
+            <button
+                class="btn"
+                onclick="go(6)"
+            >
+
+                Certificate Accepted 👑
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     SCREEN 6
+================================================== -->
+
+<section
+    class="scene"
+    id="s6"
+>
+
+    <div class="sunrise"></div>
+
+    <div class="sun"></div>
+
+    <div class="hill"></div>
+
+    <div class="cloud c1"></div>
+
+    <div class="cloud c2"></div>
+
+    <div class="cloud c3"></div>
+
+
+    <div class="content">
+
+
+        <span class="crown">
+            👑
+        </span>
+
+
+        <h1>
+
+            Good morning,<br>
+            sleepy Princess.
+
+        </h1>
+
+
+        <p>
+
+            May your day be
+            as lovely as you are.
+
+        </p>
+
+
+        <p class="soft">
+
+            And if today isn't
+            kind to you…
+
+        </p>
+
 
         <p>
 
             <b>
-                you know where to find someone
-                who'll try to make you smile. ❤️
+
+                you know where
+                to find someone
+                who'll try to make
+                you smile. ❤️
+
             </b>
 
         </p>
 
-        <div class="final-flowers">
+
+        <div class="final-decoration">
+
             🌷☀️🌷
+
         </div>
+
 
         <p class="tiny">
 
@@ -856,11 +1242,13 @@ p {
 </section>
 
 
+
 <script>
 
-/* =====================================================
+
+/* =========================================
    SCREEN NAVIGATION
-===================================================== */
+========================================= */
 
 const scenes =
     [...document.querySelectorAll(".scene")];
@@ -882,9 +1270,18 @@ function go(number) {
 }
 
 
-/* =====================================================
-   SLEEP OPTIONS
-===================================================== */
+
+/* =========================================
+   STORE SELECTED SLEEP TIME
+========================================= */
+
+let selectedSleep = "";
+
+
+
+/* =========================================
+   SLEEP MESSAGES
+========================================= */
 
 const sleepMessages = {
 
@@ -907,69 +1304,161 @@ const sleepMessages = {
 };
 
 
+
+/* =========================================
+   SLEEP SELECTION
+========================================= */
+
 function sleep(choice) {
 
-    document.getElementById(
-        "sleepResult"
-    ).innerHTML = `
+
+    selectedSleep =
+        choice;
+
+
+    const result =
+        document.getElementById(
+            "sleepResult"
+        );
+
+
+    result.innerHTML = `
 
         <p>
+
             ${sleepMessages[choice]}
+
         </p>
 
-        <button
-            class="btn"
-            onclick="go(3)">
-
-            Alright, next question 👀
-
-        </button>
-
     `;
+
+
+    /*
+       Give her enough time
+       to read the funny response.
+    */
+
+    setTimeout(
+        () => {
+
+            go(3);
+
+        },
+
+        1600
+    );
 
 }
 
 
-/* =====================================================
-   MORNING MOOD OPTIONS
-===================================================== */
+
+/* =========================================
+   MORNING MOODS
+========================================= */
 
 const moods = [
 
     "Coffee first. Conversations can wait. ☕😂",
 
-    "Five more minutes has been officially upgraded to ten. 😴",
+    "Five more minutes has officially become ten. 😴",
 
     "Understood. I shall respectfully disappear until further notice. 😂",
 
-    "Ah. The Royal Court is now accepting messages. ❤️"
+    "Ah… the Royal Court is now accepting messages. ❤️"
 
 ];
 
 
+
+/* =========================================
+   MOOD SELECTION
+========================================= */
+
 function mood(index) {
 
-    document.getElementById(
-        "moodResult"
-    ).innerHTML = `
+
+    const result =
+        document.getElementById(
+            "moodResult"
+        );
+
+
+    result.innerHTML = `
 
         <p>
+
             ${moods[index]}
+
         </p>
-
-        <button
-            class="btn"
-            onclick="go(4)">
-
-            Proceed, Princess ✨
-
-        </button>
 
     `;
 
+
+    setTimeout(
+        () => {
+
+            go(4);
+
+        },
+
+        1600
+    );
+
 }
 
+
+
+/* =========================================
+   PREPARE CERTIFICATE
+========================================= */
+
+function prepareCertificate() {
+
+
+    const certificate =
+        document.getElementById(
+            "certificateSleep"
+        );
+
+
+    if (
+        selectedSleep ===
+        "forever"
+    ) {
+
+        certificate.innerHTML =
+            "30 minutes 👑";
+
+    }
+
+    else {
+
+        certificate.innerHTML =
+            selectedSleep;
+
+    }
+
+}
+
+
+
+/* =========================================
+   OPEN CERTIFICATE
+========================================= */
+
+function openCertificate() {
+
+
+    prepareCertificate();
+
+
+    go(5);
+
+}
+
+
 </script>
+
 
 </body>
 </html>
