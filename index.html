@@ -2,306 +2,220 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>How Well Do You Know Satyam? 🌙</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Komal — No Pressure</title>
 <style>
+:root{
+  --bg:#080b18;--bg2:#11162b;--card:rgba(255,255,255,.075);
+  --text:#f7f4f8;--muted:#b9b6c8;--accent:#d8b5d0;--line:rgba(255,255,255,.12);
+}
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden}
+html{scroll-behavior:smooth}
 body{
-  font-family:"Segoe Print","Bradley Hand","Comic Sans MS",cursive;
-  color:#f7f0f8;background:#050816;
+  margin:0;color:var(--text);font-family:system-ui,-apple-system,Segoe UI,sans-serif;
+  background:
+    radial-gradient(circle at 20% 10%,rgba(130,110,180,.20),transparent 28%),
+    radial-gradient(circle at 85% 25%,rgba(210,160,195,.12),transparent 25%),
+    linear-gradient(180deg,var(--bg),var(--bg2),#090b15);
+  min-height:100vh;
 }
-.screen{
-  position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
-  padding:18px;text-align:center;opacity:0;pointer-events:none;
-  transform:scale(.98) translateY(14px);transition:opacity .7s,transform .7s;
-  overflow:auto;
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.45;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%,#fff,transparent),
+    radial-gradient(1px 1px at 25% 70%,#fff,transparent),
+    radial-gradient(1px 1px at 44% 30%,#fff,transparent),
+    radial-gradient(1px 1px at 65% 15%,#fff,transparent),
+    radial-gradient(1px 1px at 78% 68%,#fff,transparent),
+    radial-gradient(1px 1px at 90% 35%,#fff,transparent),
+    radial-gradient(1px 1px at 55% 85%,#fff,transparent);
 }
-.screen.active{opacity:1;pointer-events:auto;transform:none}
-.sky{position:absolute;inset:0;background:
-radial-gradient(circle at 74% 16%,rgba(167,181,255,.2),transparent 25%),
-linear-gradient(180deg,#040713,#090e22 55%,#14172d)}
-.moon{position:absolute;width:110px;height:110px;border-radius:50%;right:9%;top:8%;
-background:#fff7d8;box-shadow:0 0 35px rgba(255,247,216,.5),0 0 90px rgba(170,180,255,.12)}
-.moon:after{content:"";position:absolute;width:110px;height:110px;border-radius:50%;left:-15px;top:5px;background:#070b1c}
-.stars{position:absolute;inset:0}
-.star{position:absolute;width:3px;height:3px;background:white;border-radius:50%;box-shadow:0 0 8px white;animation:tw 3s infinite}
-@keyframes tw{50%{opacity:.15;transform:scale(.5)}}
-.cloud{position:absolute;border-radius:50%;background:rgba(170,180,220,.055);filter:blur(5px);animation:drift 22s linear infinite}
-.c1{width:280px;height:65px;left:-12%;top:34%}.c2{width:330px;height:75px;right:-18%;top:67%;animation-delay:8s}
-@keyframes drift{to{transform:translateX(38vw)}}
+.wrap{max-width:720px;margin:auto;padding:26px 17px 60px}
+.hero{text-align:center;padding:48px 10px 36px}
+.moon{font-size:68px;filter:drop-shadow(0 0 18px rgba(235,220,255,.3))}
+.eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-top:12px}
+h1,h2{font-family:Georgia,serif;font-weight:500}
+h1{font-size:42px;line-height:1.08;margin:10px 0 14px}
+.hero p{color:var(--muted);line-height:1.7;max-width:560px;margin:auto;font-size:15px}
 .card{
- position:relative;z-index:5;width:min(94%,650px);padding:27px 19px;
- border-radius:30px;background:rgba(9,14,33,.73);border:1px solid rgba(230,225,255,.13);
- backdrop-filter:blur(12px);box-shadow:0 25px 80px rgba(0,0,0,.45)
+  background:var(--card);border:1px solid var(--line);border-radius:24px;
+  padding:23px;margin:15px 0;backdrop-filter:blur(10px);
+  box-shadow:0 15px 40px rgba(0,0,0,.18)
 }
-.icon{font-size:38px;animation:float 3s ease-in-out infinite}
-@keyframes float{50%{transform:translateY(-7px)}}
-h1{font-size:clamp(35px,9vw,60px);font-weight:normal;line-height:1.08;color:#fff9e9;margin:12px 0 15px}
-h2{font-size:clamp(26px,7vw,43px);font-weight:normal;line-height:1.15;color:#fff9e9;margin:8px 0 22px}
-p{font-size:clamp(17px,4.5vw,22px);line-height:1.55;margin:12px 0}
-.soft{font-size:15px;color:#abb6d0}
-.progress{font:12px Arial,sans-serif;letter-spacing:2px;color:#8792b5;margin-bottom:15px}
-.answers{display:grid;gap:10px}
-.answer{
- width:100%;border:1px solid rgba(255,255,255,.13);border-radius:18px;
- padding:14px 13px;background:rgba(255,255,255,.065);color:#fff;
- font:17px "Segoe Print","Bradley Hand","Comic Sans MS",cursive;
- cursor:pointer;transition:.25s
+h2{font-size:25px;margin:0 0 12px}
+p{line-height:1.75;color:#dedbe5}
+.note{
+  border-left:3px solid var(--accent);padding:12px 15px;margin-top:16px;
+  background:rgba(216,181,208,.07);border-radius:0 14px 14px 0
 }
-.answer:hover{transform:translateY(-3px);background:rgba(255,255,255,.13)}
-.answer.pop{animation:pop .55s ease}
-@keyframes pop{40%{transform:scale(1.04)}70%{transform:scale(.97)}}
-.reaction{
- min-height:38px;margin:14px 0 3px;color:#f2dce9;
- font-size:18px;opacity:0;transform:translateY(8px);transition:.4s
+.center{text-align:center}
+.soft{color:var(--muted);font-size:14px}
+.list{display:grid;gap:10px;margin-top:14px}
+.item{
+  padding:14px 15px;border:1px solid var(--line);border-radius:16px;
+  background:rgba(255,255,255,.035)
 }
-.reaction.show{opacity:1;transform:none}
-.next{display:none}.next.show{display:inline-block}
-.btn{
- border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:12px 21px;
- background:rgba(255,255,255,.08);color:#fff;font:700 15px "Segoe Print",cursive;
- cursor:pointer;margin-top:8px;transition:.25s
+.item b{display:block;margin-bottom:4px}.item span{color:var(--muted);font-size:14px;line-height:1.55}
+details{border-top:1px solid var(--line);padding:14px 0}
+details:first-of-type{border-top:0}
+summary{cursor:pointer;font-weight:650}
+button{
+  border:1px solid var(--line);border-radius:15px;padding:13px 18px;
+  background:rgba(255,255,255,.08);color:var(--text);font:inherit;font-weight:650;
+  cursor:pointer;width:100%;margin-top:10px
 }
-.btn:hover{transform:translateY(-3px);background:rgba(255,255,255,.14)}
-.score{font-size:25px;color:#f7e8ca}
-.bigheart{font-size:44px;animation:heart 1.8s infinite}
-@keyframes heart{50%{transform:scale(1.13)}}
-.celebrate{font-size:40px;animation:float 2.5s infinite}
-#shareStatus{font-size:14px;color:#aeb8d2;min-height:22px;margin-top:10px}
-@media(max-width:500px){.moon{width:88px;height:88px}.moon:after{width:88px;height:88px}.card{padding:24px 14px}.answer{font-size:16px}}
+#secret{display:none;margin-top:16px}
+footer{text-align:center;color:#888596;font-size:12px;margin-top:28px;line-height:1.6}
 </style>
 </head>
 <body>
+<div class="wrap">
 
-<!-- INTRO -->
-<section class="screen active" id="intro">
-<div class="sky"></div><div class="moon"></div><div class="stars" id="starsIntro"></div>
-<div class="cloud c1"></div><div class="cloud c2"></div>
-<div class="card">
-<div class="icon">🎯</div>
-<h1>Komal…</h1>
-<p>Let's see how well you know Satyam. 😌</p>
-<p class="soft">There are no serious wrong answers.<br>Probably. 👀</p>
-<button class="btn" onclick="startQuiz()">I'm ready 😏</button>
-</div>
+<header class="hero">
+  <div class="moon">🌙</div>
+  <div class="eyebrow">For Komal · Version 1.0</div>
+  <h1>No pressure.<br>Just this.</h1>
+  <p>
+    You asked me not to message unless there is a reason or some work.
+    I heard you. So this isn't a message asking you to reply.
+  </p>
+</header>
+
+<section class="card">
+  <h2>🤍 First, this</h2>
+  <p>
+    I know things have been heavy lately — work, an unhelpful boss,
+    bigger dreams that deserve more space, and everything happening with your family.
+  </p>
+  <p>
+    I don't want to add another thing to that list.
+  </p>
+  <div class="note">
+    <strong>You don't owe me a reply.</strong><br>
+    You don't owe me an explanation either.
+  </div>
 </section>
 
-<!-- QUIZ -->
-<section class="screen" id="quiz">
-<div class="sky"></div><div class="moon"></div><div class="stars" id="starsQuiz"></div>
-<div class="cloud c1"></div><div class="cloud c2"></div>
-<div class="card">
-<div class="progress" id="progress">QUESTION 1 OF 8</div>
-<h2 id="question"></h2>
-<div class="answers" id="answers"></div>
-<div class="reaction" id="reaction"></div>
-<button class="btn next" id="next" onclick="nextQuestion()">Next 🌙</button>
-</div>
+<section class="card">
+  <h2>🌙 I remember the little things</h2>
+  <div class="list">
+    <div class="item"><b>🌙 The moon</b><span>Because apparently the moon has had a permanent place in your heart.</span></div>
+    <div class="item"><b>🍜 Food</b><span>Because good food can make a day a little better.</span></div>
+    <div class="item"><b>🏋️ Working out</b><span>Something you enjoy, even though work has been making it difficult lately.</span></div>
+    <div class="item"><b>🚀 Your ambitions</b><span>You have bigger dreams than the situation you're currently stuck in.</span></div>
+    <div class="item"><b>👑 Being cared for</b><span>You're independent. That doesn't mean you don't deserve softness.</span></div>
+  </div>
 </section>
 
-<!-- FINAL -->
-<section class="screen" id="final">
-<div class="sky"></div><div class="moon"></div><div class="stars" id="starsFinal"></div>
-<div class="cloud c1"></div><div class="cloud c2"></div>
-<div class="card">
-<div class="celebrate">🎉</div>
-<h1>Quiz complete!</h1>
-<p class="score" id="score"></p>
-<p id="finalMessage"></p>
-<p class="soft">Now I'm curious what you actually picked. 👀</p>
-<button class="btn" onclick="shareWhatsApp()">💌 Send My Answers</button>
-<div id="shareStatus"></div>
-<p class="soft" style="margin-top:22px">And one more thing…<br><b>Thursday is getting closer. 🌙❤️</b></p>
-</div>
+<section class="card">
+  <h2>🚀 About your dreams</h2>
+  <p>
+    I hope you don't let one difficult boss, one difficult phase, or one difficult
+    year make you question how capable you are.
+  </p>
+  <p>
+    You're allowed to want more. You're allowed to be ambitious.
+    And I hope you eventually get somewhere that makes you feel supported rather
+    than constantly having to prove yourself.
+  </p>
 </section>
 
+<section class="card">
+  <h2>👩‍👧 About your family</h2>
+  <p>
+    I know your mother's surgery has been another thing on your mind.
+    I genuinely hope her recovery goes smoothly and that things become a little
+    easier for you and your family.
+  </p>
+  <p class="soft">
+    I don't need an update. I just wanted you to know that I care.
+  </p>
+</section>
+
+<section class="card">
+  <h2>🫶 What I understand</h2>
+  <details>
+    <summary>You don't need someone who makes life heavier.</summary>
+    <p class="soft">
+      If I've made you feel that way through arguments, taunts or yelling,
+      I understand why that hurt you.
+    </p>
+  </details>
+  <details>
+    <summary>Being independent doesn't mean needing nothing.</summary>
+    <p class="soft">
+      You can be completely capable and still want someone to treat you gently,
+      make you feel special, and give you the occasional princess treatment.
+    </p>
+  </details>
+  <details>
+    <summary>Sometimes listening matters more than fixing.</summary>
+    <p class="soft">
+      Not every difficult day needs advice. Sometimes someone just needs a safe
+      place to put the day's weight down.
+    </p>
+  </details>
+</section>
+
+<section class="card">
+  <h2>🌱 What I'm taking responsibility for</h2>
+  <p>
+    I'm not going to make promises about suddenly becoming perfect.
+    But I can recognize where I've hurt you and work on those things without
+    expecting you to reward me for doing it.
+  </p>
+  <div class="note">
+    <strong>Less yelling. Less taunting. Less trying to win.</strong><br>
+    More patience. More listening. More respect.
+  </div>
+</section>
+
+<section class="card center">
+  <h2>🌙 One last thing</h2>
+  <p>
+    You asked for space, and I'm going to respect that.
+  </p>
+  <p>
+    So there is no hidden question here.<br>
+    No “please talk to me.”<br>
+    No expectation.
+  </p>
+  <p>
+    Just a quiet little corner of the internet saying:
+  </p>
+  <div class="note" style="text-align:left">
+    <strong>Take care of yourself, Komal.</strong><br>
+    Keep chasing the bigger dreams.<br>
+    Eat something you love.<br>
+    Look at the moon when you need a little quiet.<br>
+    And I hope tomorrow is kinder to you than today.
+  </div>
+</section>
+
+<section class="card">
+  <h2>🔒 A small private note</h2>
+  <p class="soft">
+    This section is intentionally hidden. It isn't a request for anything from you.
+  </p>
+  <button onclick="toggleSecret()">Open / close</button>
+  <div id="secret">
+    <div class="note">
+      I still care about you. That's all. No pressure attached to it.
+    </div>
+  </div>
+</section>
+
+<footer>
+  Made with respect, not expectation.<br>
+  For Komal · Version 1.0
+</footer>
+
+</div>
 <script>
-const questions=[
-{
- q:"If I suddenly say “Let's go somewhere,” what am I most likely to suggest?",
- a:["🚗 A long drive","☕ Coffee","🍕 Food","🌙 Somewhere quiet with a nice view"],
- r:["🚗 A long drive","☕ Coffee","🍕 Food","🌙 Somewhere quiet with a nice view"],
- reacts:[
-  "🚗 Hmm… you might know me better than you think. 👀",
-  "☕ Safe choice. I approve. 😌",
-  "🍕 I mean… you know me. 😂",
-  "🌙 Okay, that's a very good guess. 🌙"
- ]
-},
-{
- q:"What do you think I notice first about you? 👀",
- a:["😊 Your smile","👀 Your eyes","🗣️ The way you talk","🤭 Your expressions"],
- reacts:[
-  "😊 That's a very reasonable answer… I'm not confirming anything. 😌",
-  "👀 Okay… you know me. 😏",
-  "🗣️ Interesting. I'll remember that one.",
-  "🤭 Wait… how did you know that? 👀"
- ]
-},
-{
- q:"What would make a perfect evening?",
- a:["🌆 An evening walk","☕ Coffee & conversation","🍕 Food & lots of talking","🌙 Somewhere under the moon"],
- reacts:[
-  "🌆 That actually sounds pretty nice.",
-  "☕ Now we're talking. 😌",
-  "🍕 Food + conversation? Hard to argue with that.",
-  "🌙 Someone has been paying attention. 👀"
- ]
-},
-{
- q:"If you suddenly say “I'm hungry” 😂, what do I probably do?",
- a:["🍕 Immediately find food","🍫 Find something sweet","☕ Take you for coffee","😌 Ask “What do you want?” 17 times"],
- reacts:[
-  "🍕 Correct. Priorities. 😂",
-  "🍫 Sweet answer. Literally. 😄",
-  "☕ Coffee can solve many problems. 😌",
-  "😂 17 times is an exaggeration… probably."
- ]
-},
-{
- q:"Who is more likely to be late? 😏",
- a:["👑 Komal","😎 Satyam","🤝 Both","⏰ Neither — we're responsible adults 😂"],
- reacts:[
-  "👑 Bold answer. Very bold. 😂",
-  "😎 You really think so? Interesting… 👀",
-  "🤝 Honestly, this may be the safest answer.",
-  "😂 Responsible adults? Let's not get carried away."
- ]
-},
-{
- q:"If we suddenly had a completely free evening, what would I choose?",
- a:["🎬 A movie","🍕 Dinner","🚗 A drive","🌙 Sit somewhere and just talk"],
- reacts:[
-  "🎬 Movie night isn't a bad idea. 👀",
-  "🍕 You know my priorities.",
-  "🚗 A drive sounds tempting.",
-  "🌙 Hmm… that answer has potential. 🤍"
- ]
-},
-{
- q:"What do you think I enjoy most about talking to you? ❤️",
- a:["😂 Your humour","🗣️ Our conversations","👀 Your reactions","🤍 Just… talking to you"],
- reacts:[
-  "😂 Definitely makes things interesting.",
-  "🗣️ I do enjoy our conversations.",
-  "👀 Your reactions are sometimes priceless. 😂",
-  "🤍 Okay… that was a dangerously good answer."
- ]
-},
-{
- q:"Thursday evening is coming. 👀❤️ What do you think I'm most excited about?",
- a:["🍕 The food","☕ The coffee","🌙 The evening","🤍 Spending time with you"],
- reacts:[
-  "🍕 You really think food comes first? 😂",
-  "☕ Coffee is important… but not THAT important. 😏",
-  "🌙 The evening should be nice. Very nice.",
-  "🤍 Okay. I'm not going to argue with that one."
- ]
+function toggleSecret(){
+  const s=document.getElementById("secret");
+  s.style.display=s.style.display==="block"?"none":"block";
 }
-];
-
-let current=0;
-let selected=[];
-let points=0;
-
-function makeStars(id){
- const box=document.getElementById(id); if(!box||box.dataset.done)return;
- box.dataset.done="1";
- for(let i=0;i<34;i++){
-  const s=document.createElement("span");s.className="star";
-  s.style.left=Math.random()*100+"%";s.style.top=Math.random()*100+"%";
-  s.style.animationDelay=Math.random()*3.5+"s";
-  s.style.opacity=.3+Math.random()*.7;box.appendChild(s);
- }
-}
-
-function show(id){
- document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));
- document.getElementById(id).classList.add("active");
- makeStars("stars"+id.charAt(0).toUpperCase()+id.slice(1));
-}
-
-function startQuiz(){
- current=0;selected=[];points=0;show("quiz");renderQuestion();
-}
-
-function renderQuestion(){
- const q=questions[current];
- document.getElementById("progress").textContent=`QUESTION ${current+1} OF ${questions.length}`;
- document.getElementById("question").textContent=q.q;
- const box=document.getElementById("answers");box.innerHTML="";
- const reaction=document.getElementById("reaction");
- reaction.textContent="";reaction.classList.remove("show");
- const next=document.getElementById("next");next.classList.remove("show");
-
- q.a.forEach((answer,i)=>{
-  const b=document.createElement("button");
-  b.className="answer";b.textContent=answer;
-  b.onclick=()=>choose(i,b);
-  box.appendChild(b);
- });
-}
-
-function choose(i,button){
- const q=questions[current];
- selected[current]=q.a[i];
- points += i===q.a.length-1 ? 2 : 1;
- document.querySelectorAll(".answer").forEach(b=>b.disabled=true);
- button.classList.add("pop");
-
- const reaction=document.getElementById("reaction");
- reaction.textContent=q.reacts[i];
- reaction.classList.add("show");
-
- const next=document.getElementById("next");
- next.textContent=current===questions.length-1?"See My Result 🎉":"Next 🌙";
- next.classList.add("show");
-
- burst();
-}
-
-function nextQuestion(){
- if(current<questions.length-1){current++;renderQuestion();}
- else finish();
-}
-
-function finish(){
- show("final");
- const percent=Math.round((points/(questions.length*2))*100);
- let msg;
- if(percent>=90) msg="Okay… you know Satyam suspiciously well. 👀❤️";
- else if(percent>=75) msg="Not bad at all… you definitely know me. 😌";
- else if(percent>=55) msg="Hmm… there's clearly some homework left. 😂";
- else msg="Looks like we need a few more conversations. 😏";
- document.getElementById("score").textContent=`Your totally unofficial score: ${percent}%`;
- document.getElementById("finalMessage").textContent=msg;
-}
-
-function shareWhatsApp(){
- let text="Komal's How Well Do You Know Satyam? 🎯❤️\\n\\n";
- selected.forEach((x,i)=>text+=`${i+1}. ${questions[i].q}\\n→ ${x}\\n\\n`);
- text+="Quiz complete! 🎉\\n\\nAnd yes… Thursday is getting closer. 🌙❤️";
- const url="https://wa.me/?text="+encodeURIComponent(text);
- window.open(url,"_blank");
- document.getElementById("shareStatus").textContent="WhatsApp opened with your answers ready to send. 💌";
-}
-
-function burst(){
- for(let i=0;i<10;i++){
-  const e=document.createElement("div");
-  e.textContent=["✨","❤️","🌙","⭐","💫"][Math.floor(Math.random()*5)];
-  e.style.position="fixed";e.style.left=(35+Math.random()*30)+"%";
-  e.style.top=(42+Math.random()*15)+"%";e.style.zIndex=20;
-  e.style.fontSize=(16+Math.random()*16)+"px";e.style.pointerEvents="none";
-  e.style.transition="all 1s ease";
-  document.body.appendChild(e);
-  setTimeout(()=>{e.style.transform=`translate(${(Math.random()-.5)*180}px,-${60+Math.random()*120}px) scale(.5)`;e.style.opacity=0},30);
-  setTimeout(()=>e.remove(),1100);
- }
-}
-
-makeStars("starsIntro");
 </script>
 </body>
 </html>
