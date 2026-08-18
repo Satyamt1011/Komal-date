@@ -2,163 +2,306 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Little Note for Komal 🌙</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>How Well Do You Know Satyam? 🌙</title>
 <style>
 *{box-sizing:border-box}
 html,body{margin:0;width:100%;height:100%;overflow:hidden}
 body{
   font-family:"Segoe Print","Bradley Hand","Comic Sans MS",cursive;
-  color:#f6eff7;background:#050816;
+  color:#f7f0f8;background:#050816;
 }
-.scene{
+.screen{
   position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
-  text-align:center;opacity:0;pointer-events:none;transform:translateY(14px);
-  transition:opacity 1s ease,transform 1s ease;padding:20px;overflow:auto;
+  padding:18px;text-align:center;opacity:0;pointer-events:none;
+  transform:scale(.98) translateY(14px);transition:opacity .7s,transform .7s;
+  overflow:auto;
 }
-.scene.active{opacity:1;pointer-events:auto;transform:none}
+.screen.active{opacity:1;pointer-events:auto;transform:none}
 .sky{position:absolute;inset:0;background:
-radial-gradient(circle at 74% 17%,rgba(171,183,255,.19),transparent 24%),
-linear-gradient(180deg,#040713 0%,#080d20 54%,#11152b 100%)}
-.moon{position:absolute;width:118px;height:118px;border-radius:50%;right:10%;top:9%;
-background:#fff7d7;box-shadow:0 0 38px rgba(255,247,215,.5),0 0 95px rgba(151,165,255,.13)}
-.moon:after{content:"";position:absolute;width:118px;height:118px;border-radius:50%;background:#070b1b;left:-16px;top:5px}
+radial-gradient(circle at 74% 16%,rgba(167,181,255,.2),transparent 25%),
+linear-gradient(180deg,#040713,#090e22 55%,#14172d)}
+.moon{position:absolute;width:110px;height:110px;border-radius:50%;right:9%;top:8%;
+background:#fff7d8;box-shadow:0 0 35px rgba(255,247,216,.5),0 0 90px rgba(170,180,255,.12)}
+.moon:after{content:"";position:absolute;width:110px;height:110px;border-radius:50%;left:-15px;top:5px;background:#070b1c}
 .stars{position:absolute;inset:0}
-.star{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;box-shadow:0 0 8px #fff;animation:twinkle 3.2s ease-in-out infinite}
-@keyframes twinkle{50%{opacity:.16;transform:scale(.55)}}
-.cloud{position:absolute;border-radius:50%;background:rgba(156,167,211,.06);filter:blur(4px);animation:drift 22s linear infinite}
-.c1{width:280px;height:65px;top:34%;left:-12%}
-.c2{width:330px;height:75px;top:68%;right:-18%;animation-delay:8s}
+.star{position:absolute;width:3px;height:3px;background:white;border-radius:50%;box-shadow:0 0 8px white;animation:tw 3s infinite}
+@keyframes tw{50%{opacity:.15;transform:scale(.5)}}
+.cloud{position:absolute;border-radius:50%;background:rgba(170,180,220,.055);filter:blur(5px);animation:drift 22s linear infinite}
+.c1{width:280px;height:65px;left:-12%;top:34%}.c2{width:330px;height:75px;right:-18%;top:67%;animation-delay:8s}
 @keyframes drift{to{transform:translateX(38vw)}}
-.content{position:relative;z-index:5;width:min(92%,650px)}
 .card{
-background:rgba(9,14,32,.67);border:1px solid rgba(230,225,255,.12);
-backdrop-filter:blur(11px);border-radius:30px;padding:31px 23px;
-box-shadow:0 22px 80px rgba(0,0,0,.42)}
-.moon-icon{font-size:34px;margin-bottom:12px;animation:float 3s ease-in-out infinite}
-h1{font-size:clamp(38px,10vw,64px);line-height:1.08;margin:0 0 20px;color:#fff9e9;font-weight:normal}
-h2{font-size:clamp(29px,7.5vw,45px);line-height:1.15;margin:0 0 20px;color:#fff9e9;font-weight:normal}
-p{font-size:clamp(18px,4.8vw,24px);line-height:1.65;margin:14px 0}
-.soft{font-size:16px;color:#aeb8d2}
-.fade-line{opacity:0;transform:translateY(10px);transition:opacity 1.1s ease,transform 1.1s ease}
-.fade-line.show{opacity:1;transform:none}
-.btn{
-font-family:inherit;border:1px solid rgba(255,255,255,.16);border-radius:999px;
-padding:13px 23px;margin:10px 6px 0;background:rgba(255,255,255,.08);
-color:#fff;font-weight:bold;font-size:16px;cursor:pointer;transition:.25s}
-.btn:hover{transform:translateY(-3px);background:rgba(255,255,255,.14)}
-.heart{font-size:38px;animation:heartbeat 1.8s ease-in-out infinite}
-@keyframes heartbeat{50%{transform:scale(1.12)}}
-.flower{font-size:35px;animation:float 3s ease-in-out infinite}
-@keyframes float{50%{transform:translateY(-7px)}}
-.final{color:#f6e9c9}
-.signature{margin-top:24px;font-size:22px;color:#e8dcc7}
-.small{font-size:14px;color:#929dbd}
-@media(max-width:500px){
-.moon{width:92px;height:92px;top:7%;right:7%}.moon:after{width:92px;height:92px}
-.card{padding:26px 16px}
+ position:relative;z-index:5;width:min(94%,650px);padding:27px 19px;
+ border-radius:30px;background:rgba(9,14,33,.73);border:1px solid rgba(230,225,255,.13);
+ backdrop-filter:blur(12px);box-shadow:0 25px 80px rgba(0,0,0,.45)
 }
+.icon{font-size:38px;animation:float 3s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-7px)}}
+h1{font-size:clamp(35px,9vw,60px);font-weight:normal;line-height:1.08;color:#fff9e9;margin:12px 0 15px}
+h2{font-size:clamp(26px,7vw,43px);font-weight:normal;line-height:1.15;color:#fff9e9;margin:8px 0 22px}
+p{font-size:clamp(17px,4.5vw,22px);line-height:1.55;margin:12px 0}
+.soft{font-size:15px;color:#abb6d0}
+.progress{font:12px Arial,sans-serif;letter-spacing:2px;color:#8792b5;margin-bottom:15px}
+.answers{display:grid;gap:10px}
+.answer{
+ width:100%;border:1px solid rgba(255,255,255,.13);border-radius:18px;
+ padding:14px 13px;background:rgba(255,255,255,.065);color:#fff;
+ font:17px "Segoe Print","Bradley Hand","Comic Sans MS",cursive;
+ cursor:pointer;transition:.25s
+}
+.answer:hover{transform:translateY(-3px);background:rgba(255,255,255,.13)}
+.answer.pop{animation:pop .55s ease}
+@keyframes pop{40%{transform:scale(1.04)}70%{transform:scale(.97)}}
+.reaction{
+ min-height:38px;margin:14px 0 3px;color:#f2dce9;
+ font-size:18px;opacity:0;transform:translateY(8px);transition:.4s
+}
+.reaction.show{opacity:1;transform:none}
+.next{display:none}.next.show{display:inline-block}
+.btn{
+ border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:12px 21px;
+ background:rgba(255,255,255,.08);color:#fff;font:700 15px "Segoe Print",cursive;
+ cursor:pointer;margin-top:8px;transition:.25s
+}
+.btn:hover{transform:translateY(-3px);background:rgba(255,255,255,.14)}
+.score{font-size:25px;color:#f7e8ca}
+.bigheart{font-size:44px;animation:heart 1.8s infinite}
+@keyframes heart{50%{transform:scale(1.13)}}
+.celebrate{font-size:40px;animation:float 2.5s infinite}
+#shareStatus{font-size:14px;color:#aeb8d2;min-height:22px;margin-top:10px}
+@media(max-width:500px){.moon{width:88px;height:88px}.moon:after{width:88px;height:88px}.card{padding:24px 14px}.answer{font-size:16px}}
 </style>
 </head>
 <body>
 
-<section class="scene active" id="s1">
-<div class="sky"></div><div class="moon"></div><div class="stars" id="stars1"></div><div class="cloud c1"></div><div class="cloud c2"></div>
-<div class="content"><div class="card">
-<div class="moon-icon">🌙</div>
+<!-- INTRO -->
+<section class="screen active" id="intro">
+<div class="sky"></div><div class="moon"></div><div class="stars" id="starsIntro"></div>
+<div class="cloud c1"></div><div class="cloud c2"></div>
+<div class="card">
+<div class="icon">🎯</div>
 <h1>Komal…</h1>
-<p>i wanted to leave you a little note.</p>
-<p class="soft">nothing complicated. just something i genuinely wanted to say.</p>
-<button class="btn" onclick="go(2)">read it 🌙</button>
-</div></div>
+<p>Let's see how well you know Satyam. 😌</p>
+<p class="soft">There are no serious wrong answers.<br>Probably. 👀</p>
+<button class="btn" onclick="startQuiz()">I'm ready 😏</button>
+</div>
 </section>
 
-<section class="scene" id="s2">
-<div class="sky"></div><div class="moon"></div><div class="stars" id="stars2"></div><div class="cloud c1"></div><div class="cloud c2"></div>
-<div class="content"><div class="card">
-<div class="heart">🤍</div>
-<h2>i'm sorry.</h2>
-<p class="fade-line">i'm sorry for how i made you feel.</p>
-<p class="fade-line">i know it may have seemed like i was trying to distance myself from you.</p>
-<p class="fade-line"><b>you didn't deserve to feel that way.</b></p>
-<button class="btn" onclick="reveal(2)">continue…</button><div id="r2"></div>
-</div></div>
+<!-- QUIZ -->
+<section class="screen" id="quiz">
+<div class="sky"></div><div class="moon"></div><div class="stars" id="starsQuiz"></div>
+<div class="cloud c1"></div><div class="cloud c2"></div>
+<div class="card">
+<div class="progress" id="progress">QUESTION 1 OF 8</div>
+<h2 id="question"></h2>
+<div class="answers" id="answers"></div>
+<div class="reaction" id="reaction"></div>
+<button class="btn next" id="next" onclick="nextQuestion()">Next 🌙</button>
+</div>
 </section>
 
-<section class="scene" id="s3">
-<div class="sky"></div><div class="moon"></div><div class="stars" id="stars3"></div>
-<div class="content"><div class="card">
-<div class="moon-icon">🌙</div>
-<h2>i don't want to explain it away.</h2>
-<p class="fade-line">i don't want to justify it.</p>
-<p class="fade-line">i should have handled that moment better.</p>
-<p class="fade-line"><b>and i'm genuinely sorry, komal.</b></p>
-<button class="btn" onclick="reveal(3)">one more thing… ❤️</button><div id="r3"></div>
-</div></div>
-</section>
-
-<section class="scene" id="s4">
-<div class="sky"></div><div class="moon"></div><div class="stars" id="stars4"></div><div class="cloud c2"></div>
-<div class="content"><div class="card">
-<div class="heart">🌷</div>
-<h2>you have enough on your mind right now.</h2>
-<p class="fade-line">so i don't want this message to become another thing you have to deal with.</p>
-<p class="fade-line">you don't need to explain anything to me.</p>
-<p class="fade-line">and you don't need to reply right now.</p>
-<button class="btn" onclick="reveal(4)">just this… 🌙</button><div id="r4"></div>
-</div></div>
-</section>
-
-<section class="scene" id="s5">
-<div class="sky"></div><div class="moon"></div><div class="stars" id="stars5"></div><div class="cloud c1"></div>
-<div class="content"><div class="card">
-<div class="flower">🌷</div>
-<h2>for tomorrow…</h2>
-<p class="fade-line"><b>please take care of yourself and your mother.</b></p>
-<p class="fade-line">i'll genuinely be wishing for everything to go smoothly tomorrow.</p>
-<p class="fade-line">i hope the surgery goes well and that aunty has a safe and smooth recovery.</p>
-<p class="fade-line final"><b>you'll both be in my thoughts. 🤍</b></p>
-<button class="btn" onclick="reveal(5)">one last thing… 🌙</button><div id="r5"></div>
-</div></div>
-</section>
-
-<section class="scene" id="s6">
-<div class="sky"></div><div class="moon"></div><div class="stars" id="stars6"></div><div class="cloud c2"></div>
-<div class="content"><div class="card">
-<div class="moon-icon">🌙</div>
-<h1>that's all i wanted to say.</h1>
-<p><b>i'm sorry, komal.</b></p>
-<p class="soft">no explanations. no expectations.</p>
-<p class="soft">just a sincere apology from me to you.</p>
-<div class="signature">— satyam</div>
-<div class="flower">🌷 ❤️ 🌙</div>
-<p class="small">take care. goodnight.</p>
-</div></div>
+<!-- FINAL -->
+<section class="screen" id="final">
+<div class="sky"></div><div class="moon"></div><div class="stars" id="starsFinal"></div>
+<div class="cloud c1"></div><div class="cloud c2"></div>
+<div class="card">
+<div class="celebrate">🎉</div>
+<h1>Quiz complete!</h1>
+<p class="score" id="score"></p>
+<p id="finalMessage"></p>
+<p class="soft">Now I'm curious what you actually picked. 👀</p>
+<button class="btn" onclick="shareWhatsApp()">💌 Send My Answers</button>
+<div id="shareStatus"></div>
+<p class="soft" style="margin-top:22px">And one more thing…<br><b>Thursday is getting closer. 🌙❤️</b></p>
+</div>
 </section>
 
 <script>
-const scenes=[...document.querySelectorAll(".scene")];
+const questions=[
+{
+ q:"If I suddenly say “Let's go somewhere,” what am I most likely to suggest?",
+ a:["🚗 A long drive","☕ Coffee","🍕 Food","🌙 Somewhere quiet with a nice view"],
+ r:["🚗 A long drive","☕ Coffee","🍕 Food","🌙 Somewhere quiet with a nice view"],
+ reacts:[
+  "🚗 Hmm… you might know me better than you think. 👀",
+  "☕ Safe choice. I approve. 😌",
+  "🍕 I mean… you know me. 😂",
+  "🌙 Okay, that's a very good guess. 🌙"
+ ]
+},
+{
+ q:"What do you think I notice first about you? 👀",
+ a:["😊 Your smile","👀 Your eyes","🗣️ The way you talk","🤭 Your expressions"],
+ reacts:[
+  "😊 That's a very reasonable answer… I'm not confirming anything. 😌",
+  "👀 Okay… you know me. 😏",
+  "🗣️ Interesting. I'll remember that one.",
+  "🤭 Wait… how did you know that? 👀"
+ ]
+},
+{
+ q:"What would make a perfect evening?",
+ a:["🌆 An evening walk","☕ Coffee & conversation","🍕 Food & lots of talking","🌙 Somewhere under the moon"],
+ reacts:[
+  "🌆 That actually sounds pretty nice.",
+  "☕ Now we're talking. 😌",
+  "🍕 Food + conversation? Hard to argue with that.",
+  "🌙 Someone has been paying attention. 👀"
+ ]
+},
+{
+ q:"If you suddenly say “I'm hungry” 😂, what do I probably do?",
+ a:["🍕 Immediately find food","🍫 Find something sweet","☕ Take you for coffee","😌 Ask “What do you want?” 17 times"],
+ reacts:[
+  "🍕 Correct. Priorities. 😂",
+  "🍫 Sweet answer. Literally. 😄",
+  "☕ Coffee can solve many problems. 😌",
+  "😂 17 times is an exaggeration… probably."
+ ]
+},
+{
+ q:"Who is more likely to be late? 😏",
+ a:["👑 Komal","😎 Satyam","🤝 Both","⏰ Neither — we're responsible adults 😂"],
+ reacts:[
+  "👑 Bold answer. Very bold. 😂",
+  "😎 You really think so? Interesting… 👀",
+  "🤝 Honestly, this may be the safest answer.",
+  "😂 Responsible adults? Let's not get carried away."
+ ]
+},
+{
+ q:"If we suddenly had a completely free evening, what would I choose?",
+ a:["🎬 A movie","🍕 Dinner","🚗 A drive","🌙 Sit somewhere and just talk"],
+ reacts:[
+  "🎬 Movie night isn't a bad idea. 👀",
+  "🍕 You know my priorities.",
+  "🚗 A drive sounds tempting.",
+  "🌙 Hmm… that answer has potential. 🤍"
+ ]
+},
+{
+ q:"What do you think I enjoy most about talking to you? ❤️",
+ a:["😂 Your humour","🗣️ Our conversations","👀 Your reactions","🤍 Just… talking to you"],
+ reacts:[
+  "😂 Definitely makes things interesting.",
+  "🗣️ I do enjoy our conversations.",
+  "👀 Your reactions are sometimes priceless. 😂",
+  "🤍 Okay… that was a dangerously good answer."
+ ]
+},
+{
+ q:"Thursday evening is coming. 👀❤️ What do you think I'm most excited about?",
+ a:["🍕 The food","☕ The coffee","🌙 The evening","🤍 Spending time with you"],
+ reacts:[
+  "🍕 You really think food comes first? 😂",
+  "☕ Coffee is important… but not THAT important. 😏",
+  "🌙 The evening should be nice. Very nice.",
+  "🤍 Okay. I'm not going to argue with that one."
+ ]
+}
+];
+
+let current=0;
+let selected=[];
+let points=0;
+
 function makeStars(id){
  const box=document.getElementById(id); if(!box||box.dataset.done)return;
  box.dataset.done="1";
- for(let i=0;i<32;i++){
+ for(let i=0;i<34;i++){
   const s=document.createElement("span");s.className="star";
   s.style.left=Math.random()*100+"%";s.style.top=Math.random()*100+"%";
-  s.style.animationDelay=Math.random()*3.5+"s";s.style.opacity=.3+Math.random()*.7;
-  box.appendChild(s);
+  s.style.animationDelay=Math.random()*3.5+"s";
+  s.style.opacity=.3+Math.random()*.7;box.appendChild(s);
  }
 }
-function go(n){scenes.forEach((s,i)=>s.classList.toggle("active",i===n-1));makeStars("stars"+n)}
-function reveal(n){
- const scene=document.getElementById("s"+n);
- const lines=[...scene.querySelectorAll(".fade-line")];
- lines.forEach((line,i)=>setTimeout(()=>line.classList.add("show"),i*1000));
- setTimeout(()=>{
-  const r=document.getElementById("r"+n);
-  if(r)r.innerHTML='<button class="btn" onclick="go('+(n+1)+')">continue 🌙</button>';
- },lines.length*1000+800);
+
+function show(id){
+ document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+ makeStars("stars"+id.charAt(0).toUpperCase()+id.slice(1));
 }
-makeStars("stars1");
+
+function startQuiz(){
+ current=0;selected=[];points=0;show("quiz");renderQuestion();
+}
+
+function renderQuestion(){
+ const q=questions[current];
+ document.getElementById("progress").textContent=`QUESTION ${current+1} OF ${questions.length}`;
+ document.getElementById("question").textContent=q.q;
+ const box=document.getElementById("answers");box.innerHTML="";
+ const reaction=document.getElementById("reaction");
+ reaction.textContent="";reaction.classList.remove("show");
+ const next=document.getElementById("next");next.classList.remove("show");
+
+ q.a.forEach((answer,i)=>{
+  const b=document.createElement("button");
+  b.className="answer";b.textContent=answer;
+  b.onclick=()=>choose(i,b);
+  box.appendChild(b);
+ });
+}
+
+function choose(i,button){
+ const q=questions[current];
+ selected[current]=q.a[i];
+ points += i===q.a.length-1 ? 2 : 1;
+ document.querySelectorAll(".answer").forEach(b=>b.disabled=true);
+ button.classList.add("pop");
+
+ const reaction=document.getElementById("reaction");
+ reaction.textContent=q.reacts[i];
+ reaction.classList.add("show");
+
+ const next=document.getElementById("next");
+ next.textContent=current===questions.length-1?"See My Result 🎉":"Next 🌙";
+ next.classList.add("show");
+
+ burst();
+}
+
+function nextQuestion(){
+ if(current<questions.length-1){current++;renderQuestion();}
+ else finish();
+}
+
+function finish(){
+ show("final");
+ const percent=Math.round((points/(questions.length*2))*100);
+ let msg;
+ if(percent>=90) msg="Okay… you know Satyam suspiciously well. 👀❤️";
+ else if(percent>=75) msg="Not bad at all… you definitely know me. 😌";
+ else if(percent>=55) msg="Hmm… there's clearly some homework left. 😂";
+ else msg="Looks like we need a few more conversations. 😏";
+ document.getElementById("score").textContent=`Your totally unofficial score: ${percent}%`;
+ document.getElementById("finalMessage").textContent=msg;
+}
+
+function shareWhatsApp(){
+ let text="Komal's How Well Do You Know Satyam? 🎯❤️\\n\\n";
+ selected.forEach((x,i)=>text+=`${i+1}. ${questions[i].q}\\n→ ${x}\\n\\n`);
+ text+="Quiz complete! 🎉\\n\\nAnd yes… Thursday is getting closer. 🌙❤️";
+ const url="https://wa.me/?text="+encodeURIComponent(text);
+ window.open(url,"_blank");
+ document.getElementById("shareStatus").textContent="WhatsApp opened with your answers ready to send. 💌";
+}
+
+function burst(){
+ for(let i=0;i<10;i++){
+  const e=document.createElement("div");
+  e.textContent=["✨","❤️","🌙","⭐","💫"][Math.floor(Math.random()*5)];
+  e.style.position="fixed";e.style.left=(35+Math.random()*30)+"%";
+  e.style.top=(42+Math.random()*15)+"%";e.style.zIndex=20;
+  e.style.fontSize=(16+Math.random()*16)+"px";e.style.pointerEvents="none";
+  e.style.transition="all 1s ease";
+  document.body.appendChild(e);
+  setTimeout(()=>{e.style.transform=`translate(${(Math.random()-.5)*180}px,-${60+Math.random()*120}px) scale(.5)`;e.style.opacity=0},30);
+  setTimeout(()=>e.remove(),1100);
+ }
+}
+
+makeStars("starsIntro");
 </script>
 </body>
 </html>
