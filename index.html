@@ -3,219 +3,763 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Komal — No Pressure</title>
+
+<title>Midnight Magic — For Komal</title>
+
 <style>
-:root{
-  --bg:#080b18;--bg2:#11162b;--card:rgba(255,255,255,.075);
-  --text:#f7f4f8;--muted:#b9b6c8;--accent:#d8b5d0;--line:rgba(255,255,255,.12);
+* {
+    box-sizing: border-box;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;color:var(--text);font-family:system-ui,-apple-system,Segoe UI,sans-serif;
-  background:
-    radial-gradient(circle at 20% 10%,rgba(130,110,180,.20),transparent 28%),
-    radial-gradient(circle at 85% 25%,rgba(210,160,195,.12),transparent 25%),
-    linear-gradient(180deg,var(--bg),var(--bg2),#090b15);
-  min-height:100vh;
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
 }
-body:before{
-  content:"";position:fixed;inset:0;pointer-events:none;opacity:.45;
-  background-image:
-    radial-gradient(1px 1px at 10% 20%,#fff,transparent),
-    radial-gradient(1px 1px at 25% 70%,#fff,transparent),
-    radial-gradient(1px 1px at 44% 30%,#fff,transparent),
-    radial-gradient(1px 1px at 65% 15%,#fff,transparent),
-    radial-gradient(1px 1px at 78% 68%,#fff,transparent),
-    radial-gradient(1px 1px at 90% 35%,#fff,transparent),
-    radial-gradient(1px 1px at 55% 85%,#fff,transparent);
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background:
+        radial-gradient(circle at 50% 20%, #25204b 0%, #100e22 42%, #05050d 100%);
+    color: #fff;
+    overflow-x: hidden;
 }
-.wrap{max-width:720px;margin:auto;padding:26px 17px 60px}
-.hero{text-align:center;padding:48px 10px 36px}
-.moon{font-size:68px;filter:drop-shadow(0 0 18px rgba(235,220,255,.3))}
-.eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-top:12px}
-h1,h2{font-family:Georgia,serif;font-weight:500}
-h1{font-size:42px;line-height:1.08;margin:10px 0 14px}
-.hero p{color:var(--muted);line-height:1.7;max-width:560px;margin:auto;font-size:15px}
-.card{
-  background:var(--card);border:1px solid var(--line);border-radius:24px;
-  padding:23px;margin:15px 0;backdrop-filter:blur(10px);
-  box-shadow:0 15px 40px rgba(0,0,0,.18)
+
+/* Stars */
+
+.stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
 }
-h2{font-size:25px;margin:0 0 12px}
-p{line-height:1.75;color:#dedbe5}
-.note{
-  border-left:3px solid var(--accent);padding:12px 15px;margin-top:16px;
-  background:rgba(216,181,208,.07);border-radius:0 14px 14px 0
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    opacity: .65;
+    animation: twinkle 3s infinite alternate;
 }
-.center{text-align:center}
-.soft{color:var(--muted);font-size:14px}
-.list{display:grid;gap:10px;margin-top:14px}
-.item{
-  padding:14px 15px;border:1px solid var(--line);border-radius:16px;
-  background:rgba(255,255,255,.035)
+
+@keyframes twinkle {
+    from { opacity: .25; }
+    to { opacity: .9; }
 }
-.item b{display:block;margin-bottom:4px}.item span{color:var(--muted);font-size:14px;line-height:1.55}
-details{border-top:1px solid var(--line);padding:14px 0}
-details:first-of-type{border-top:0}
-summary{cursor:pointer;font-weight:650}
-button{
-  border:1px solid var(--line);border-radius:15px;padding:13px 18px;
-  background:rgba(255,255,255,.08);color:var(--text);font:inherit;font-weight:650;
-  cursor:pointer;width:100%;margin-top:10px
+
+/* Main */
+
+.stage {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
 }
-#secret{display:none;margin-top:16px}
-footer{text-align:center;color:#888596;font-size:12px;margin-top:28px;line-height:1.6}
+
+.screen {
+    display: none;
+    width: 100%;
+    max-width: 520px;
+    min-height: 100vh;
+    padding: 35px 22px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.screen.active {
+    display: flex;
+    animation: fadeIn .7s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.moon {
+    font-size: 70px;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 20px rgba(255,255,255,.25));
+}
+
+.kicker {
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: .6;
+    margin-bottom: 12px;
+}
+
+h1 {
+    font-size: 38px;
+    margin: 5px 0 18px;
+    font-weight: normal;
+}
+
+h2 {
+    font-size: 29px;
+    font-weight: normal;
+    margin: 5px 0 15px;
+}
+
+p {
+    font-size: 17px;
+    line-height: 1.65;
+    opacity: .82;
+    max-width: 430px;
+    margin: 8px auto;
+}
+
+button {
+    font-family: Georgia, "Times New Roman", serif;
+    border: 1px solid rgba(255,255,255,.25);
+    background: rgba(255,255,255,.08);
+    color: white;
+    border-radius: 999px;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 22px;
+    transition: .25s;
+}
+
+button:hover {
+    background: rgba(255,255,255,.18);
+    transform: translateY(-2px);
+}
+
+.primary {
+    background: linear-gradient(135deg, #8e6abf, #c18bb4);
+    border: none;
+}
+
+/* Act labels */
+
+.act {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #d6b9df;
+    margin-bottom: 10px;
+}
+
+/* Cards */
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 25px 0 5px;
+}
+
+.card {
+    width: 62px;
+    height: 88px;
+    border-radius: 9px;
+    background:
+        linear-gradient(135deg, #33234b, #171328);
+    border: 1px solid rgba(255,255,255,.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0,0,0,.35);
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+}
+
+.card.selected {
+    transform: translateY(-12px) scale(1.05);
+    box-shadow: 0 0 25px rgba(211,180,229,.55);
+}
+
+/* Prediction */
+
+.envelope {
+    width: 170px;
+    height: 110px;
+    margin: 25px auto;
+    position: relative;
+    cursor: pointer;
+}
+
+.envelope-body {
+    width: 100%;
+    height: 100%;
+    background: #e8d7e5;
+    border-radius: 8px;
+    position: absolute;
+}
+
+.envelope-flap {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    border-left: 85px solid transparent;
+    border-right: 85px solid transparent;
+    border-top: 65px solid #b994b1;
+    transform-origin: top;
+    transition: transform .7s;
+    z-index: 2;
+}
+
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+.prediction {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: .7s;
+    margin-top: 18px;
+}
+
+.prediction.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Moon choices */
+
+.moonChoices {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 13px;
+    width: 100%;
+    max-width: 340px;
+    margin: 25px auto;
+}
+
+.moonChoice {
+    padding: 20px 10px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,.15);
+    background: rgba(255,255,255,.06);
+    cursor: pointer;
+    transition: .3s;
+}
+
+.moonChoice:hover {
+    background: rgba(255,255,255,.13);
+    transform: scale(1.03);
+}
+
+.moonIcon {
+    font-size: 42px;
+    display: block;
+    margin-bottom: 7px;
+}
+
+.final {
+    font-size: 20px;
+    line-height: 1.6;
+    color: #f4dff2;
+}
+
+.small {
+    font-size: 13px;
+    opacity: .5;
+    margin-top: 25px;
+}
+
+/* Progress */
+
+.progress {
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 3px;
+    background: rgba(255,255,255,.12);
+    border-radius: 20px;
+    z-index: 10;
+}
+
+.progressBar {
+    width: 0%;
+    height: 100%;
+    background: #d7b5d7;
+    border-radius: 20px;
+    transition: width .5s;
+}
 </style>
 </head>
+
 <body>
-<div class="wrap">
 
-<header class="hero">
-  <div class="moon">🌙</div>
-  <div class="eyebrow">For Komal · Version 1.0</div>
-  <h1>No pressure.<br>Just this.</h1>
-  <p>
-    You asked me not to message unless there is a reason or some work.
-    I heard you. So this isn't a message asking you to reply.
-  </p>
-</header>
+<div class="stars"></div>
 
-<section class="card">
-  <h2>🤍 First, this</h2>
-  <p>
-    I know things have been heavy lately — work, an unhelpful boss,
-    bigger dreams that deserve more space, and everything happening with your family.
-  </p>
-  <p>
-    I don't want to add another thing to that list.
-  </p>
-  <div class="note">
-    <strong>You don't owe me a reply.</strong><br>
-    You don't owe me an explanation either.
-  </div>
-</section>
+<div class="progress">
+    <div class="progressBar" id="progressBar"></div>
+</div>
 
-<section class="card">
-  <h2>🌙 I remember the little things</h2>
-  <div class="list">
-    <div class="item"><b>🌙 The moon</b><span>Because apparently the moon has had a permanent place in your heart.</span></div>
-    <div class="item"><b>🍜 Food</b><span>Because good food can make a day a little better.</span></div>
-    <div class="item"><b>🏋️ Working out</b><span>Something you enjoy, even though work has been making it difficult lately.</span></div>
-    <div class="item"><b>🚀 Your ambitions</b><span>You have bigger dreams than the situation you're currently stuck in.</span></div>
-    <div class="item"><b>👑 Being cared for</b><span>You're independent. That doesn't mean you don't deserve softness.</span></div>
-  </div>
-</section>
+<div class="stage">
 
-<section class="card">
-  <h2>🚀 About your dreams</h2>
-  <p>
-    I hope you don't let one difficult boss, one difficult phase, or one difficult
-    year make you question how capable you are.
-  </p>
-  <p>
-    You're allowed to want more. You're allowed to be ambitious.
-    And I hope you eventually get somewhere that makes you feel supported rather
-    than constantly having to prove yourself.
-  </p>
-</section>
+<!-- ======================================================
+     INTRO
+====================================================== -->
 
-<section class="card">
-  <h2>👩‍👧 About your family</h2>
-  <p>
-    I know your mother's surgery has been another thing on your mind.
-    I genuinely hope her recovery goes smoothly and that things become a little
-    easier for you and your family.
-  </p>
-  <p class="soft">
-    I don't need an update. I just wanted you to know that I care.
-  </p>
-</section>
+<section class="screen active" id="intro">
 
-<section class="card">
-  <h2>🫶 What I understand</h2>
-  <details>
-    <summary>You don't need someone who makes life heavier.</summary>
-    <p class="soft">
-      If I've made you feel that way through arguments, taunts or yelling,
-      I understand why that hurt you.
-    </p>
-  </details>
-  <details>
-    <summary>Being independent doesn't mean needing nothing.</summary>
-    <p class="soft">
-      You can be completely capable and still want someone to treat you gently,
-      make you feel special, and give you the occasional princess treatment.
-    </p>
-  </details>
-  <details>
-    <summary>Sometimes listening matters more than fixing.</summary>
-    <p class="soft">
-      Not every difficult day needs advice. Sometimes someone just needs a safe
-      place to put the day's weight down.
-    </p>
-  </details>
-</section>
+    <div class="moon">🌙</div>
 
-<section class="card">
-  <h2>🌱 What I'm taking responsibility for</h2>
-  <p>
-    I'm not going to make promises about suddenly becoming perfect.
-    But I can recognize where I've hurt you and work on those things without
-    expecting you to reward me for doing it.
-  </p>
-  <div class="note">
-    <strong>Less yelling. Less taunting. Less trying to win.</strong><br>
-    More patience. More listening. More respect.
-  </div>
-</section>
-
-<section class="card center">
-  <h2>🌙 One last thing</h2>
-  <p>
-    You asked for space, and I'm going to respect that.
-  </p>
-  <p>
-    So there is no hidden question here.<br>
-    No “please talk to me.”<br>
-    No expectation.
-  </p>
-  <p>
-    Just a quiet little corner of the internet saying:
-  </p>
-  <div class="note" style="text-align:left">
-    <strong>Take care of yourself, Komal.</strong><br>
-    Keep chasing the bigger dreams.<br>
-    Eat something you love.<br>
-    Look at the moon when you need a little quiet.<br>
-    And I hope tomorrow is kinder to you than today.
-  </div>
-</section>
-
-<section class="card">
-  <h2>🔒 A small private note</h2>
-  <p class="soft">
-    This section is intentionally hidden. It isn't a request for anything from you.
-  </p>
-  <button onclick="toggleSecret()">Open / close</button>
-  <div id="secret">
-    <div class="note">
-      I still care about you. That's all. No pressure attached to it.
+    <div class="kicker">
+        A tiny experiment
     </div>
-  </div>
+
+    <h1>Midnight Magic</h1>
+
+    <p>
+        Komal, this will take about 90 seconds.
+    </p>
+
+    <p>
+        Don't overthink anything.<br>
+        Just follow the instructions.
+    </p>
+
+    <button class="primary" onclick="show('act1')">
+        🎩 Begin the show
+    </button>
+
 </section>
 
-<footer>
-  Made with respect, not expectation.<br>
-  For Komal · Version 1.0
-</footer>
+
+<!-- ======================================================
+     ACT 1 — INTRO
+====================================================== -->
+
+<section class="screen" id="act1">
+
+    <div class="act">
+        Act I
+    </div>
+
+    <h2>The Impossible Choice</h2>
+
+    <p>
+        Five cards.
+    </p>
+
+    <p>
+        Pick <strong>one</strong> card.
+        Don't tell me which one.
+    </p>
+
+    <div class="cards">
+
+        <div class="card" onclick="selectCard(this,1)">★</div>
+        <div class="card" onclick="selectCard(this,2)">✦</div>
+        <div class="card" onclick="selectCard(this,3)">♢</div>
+        <div class="card" onclick="selectCard(this,4)">☾</div>
+        <div class="card" onclick="selectCard(this,5)">✧</div>
+
+    </div>
+
+    <p class="small">
+        Trust your first choice.
+    </p>
+
+</section>
+
+
+<!-- ======================================================
+     ACT 1 — FOLLOW UP
+====================================================== -->
+
+<section class="screen" id="act1follow">
+
+    <div class="act">
+        Act I
+    </div>
+
+    <h2>Don't change your mind.</h2>
+
+    <p>
+        Now forget the other cards.
+    </p>
+
+    <p>
+        Think only about the card you chose.
+    </p>
+
+    <button class="primary" onclick="showPrediction()">
+        I'm thinking of it
+    </button>
+
+</section>
+
+
+<!-- ======================================================
+     ACT 1 — PREDICTION
+====================================================== -->
+
+<section class="screen" id="predictionScreen">
+
+    <div class="act">
+        Act I — Reveal
+    </div>
+
+    <h2>One last thing...</h2>
+
+    <p>
+        I made a prediction before you started.
+    </p>
+
+    <div class="envelope" id="envelope" onclick="openEnvelope()">
+
+        <div class="envelope-body"></div>
+
+        <div class="envelope-flap"></div>
+
+    </div>
+
+    <div class="prediction" id="predictionText">
+
+        <p class="final">
+            Your choice was meant to be
+            <span id="cardReveal"></span>.
+        </p>
+
+        <p>
+            Or at least...
+            that's what I'm going to claim. 🎩
+        </p>
+
+        <button class="primary" onclick="show('act2intro')">
+            Wait... there's more
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     ACT 2 — INTRO
+====================================================== -->
+
+<section class="screen" id="act2intro">
+
+    <div class="act">
+        Act II
+    </div>
+
+    <div class="moon">🌙</div>
+
+    <h2>The Moon Knows</h2>
+
+    <p>
+        This one is different.
+    </p>
+
+    <p>
+        I'm going to give you four choices.
+        Pick the one you naturally like most.
+    </p>
+
+    <button class="primary" onclick="show('moonChoiceScreen')">
+        Let's do it
+    </button>
+
+</section>
+
+
+<!-- ======================================================
+     ACT 2 — CHOICE
+====================================================== -->
+
+<section class="screen" id="moonChoiceScreen">
+
+    <div class="act">
+        Act II
+    </div>
+
+    <h2>Choose one.</h2>
+
+    <p>
+        Don't analyse it.
+    </p>
+
+    <p>
+        Just pick what feels right.
+    </p>
+
+    <div class="moonChoices">
+
+        <div class="moonChoice" onclick="moonPick('crescent')">
+            <span class="moonIcon">🌙</span>
+            Crescent
+        </div>
+
+        <div class="moonChoice" onclick="moonPick('full')">
+            <span class="moonIcon">🌕</span>
+            Full Moon
+        </div>
+
+        <div class="moonChoice" onclick="moonPick('new')">
+            <span class="moonIcon">🌑</span>
+            New Moon
+        </div>
+
+        <div class="moonChoice" onclick="moonPick('star')">
+            <span class="moonIcon">⭐</span>
+            Star
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     ACT 2 — FINAL REVEAL
+====================================================== -->
+
+<section class="screen" id="finalScreen">
+
+    <div class="moon">🌙</div>
+
+    <div class="act">
+        Final Reveal
+    </div>
+
+    <h2>I knew it.</h2>
+
+    <p id="moonResult">
+        You chose the moon.
+    </p>
+
+    <div class="note">
+
+        <p class="final">
+            Okay...
+            maybe I didn't actually read your mind.
+        </p>
+
+        <p>
+            But I did know one thing.
+        </p>
+
+        <p>
+            <strong>
+                You were always going to notice the moon. 🌙
+            </strong>
+        </p>
+
+    </div>
+
+    <p class="small">
+        Thank you for playing.
+    </p>
+
+    <button onclick="location.reload()">
+        🔄 Play again
+    </button>
+
+</section>
 
 </div>
+
+
 <script>
-function toggleSecret(){
-  const s=document.getElementById("secret");
-  s.style.display=s.style.display==="block"?"none":"block";
+
+/* ======================================================
+   STAR FIELD
+====================================================== */
+
+const starContainer = document.querySelector(".stars");
+
+for(let i = 0; i < 70; i++){
+
+    const star = document.createElement("div");
+
+    star.className = "star";
+
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+
+    star.style.animationDelay =
+        Math.random() * 3 + "s";
+
+    starContainer.appendChild(star);
 }
+
+
+/* ======================================================
+   SCREEN NAVIGATION
+====================================================== */
+
+const screens = document.querySelectorAll(".screen");
+
+function show(id){
+
+    screens.forEach(screen =>
+        screen.classList.remove("active")
+    );
+
+    document.getElementById(id)
+        .classList.add("active");
+
+    updateProgress(id);
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+
+/* ======================================================
+   PROGRESS
+====================================================== */
+
+function updateProgress(id){
+
+    const steps = [
+        "intro",
+        "act1",
+        "act1follow",
+        "predictionScreen",
+        "act2intro",
+        "moonChoiceScreen",
+        "finalScreen"
+    ];
+
+    const index = steps.indexOf(id);
+
+    const percentage =
+        Math.max(0, index) /
+        (steps.length - 1) * 100;
+
+    document.getElementById("progressBar")
+        .style.width = percentage + "%";
+}
+
+
+/* ======================================================
+   ACT 1
+====================================================== */
+
+let selectedCard = null;
+
+const cardSymbols = {
+    1:"★",
+    2:"✦",
+    3:"♢",
+    4:"☾",
+    5:"✧"
+};
+
+function selectCard(element, number){
+
+    document.querySelectorAll(".card")
+        .forEach(card =>
+            card.classList.remove("selected")
+        );
+
+    element.classList.add("selected");
+
+    selectedCard = number;
+
+    setTimeout(() => {
+
+        show("act1follow");
+
+    }, 700);
+}
+
+
+function showPrediction(){
+
+    document.getElementById("cardReveal")
+        .textContent =
+        cardSymbols[selectedCard || 4];
+
+    show("predictionScreen");
+}
+
+
+function openEnvelope(){
+
+    const envelope =
+        document.getElementById("envelope");
+
+    envelope.classList.add("open");
+
+    setTimeout(() => {
+
+        document.getElementById("predictionText")
+            .classList.add("show");
+
+    }, 650);
+}
+
+
+/* ======================================================
+   ACT 2
+====================================================== */
+
+function moonPick(choice){
+
+    let message = "";
+
+    if(choice === "crescent"){
+
+        message =
+        "You chose the crescent. Of course you did — even your moon needed a little mystery.";
+
+    }
+
+    else if(choice === "full"){
+
+        message =
+        "You chose the full moon. Bold choice. But I had a feeling you'd pick something you can stare at for a while.";
+
+    }
+
+    else if(choice === "new"){
+
+        message =
+        "You chose the new moon. Quiet, hidden and a little mysterious. Interesting choice.";
+
+    }
+
+    else {
+
+        message =
+        "You chose the star. Technically not the moon... but I'll allow it. ✨";
+
+    }
+
+    document.getElementById("moonResult")
+        .textContent = message;
+
+    show("finalScreen");
+}
+
 </script>
+
 </body>
 </html>
