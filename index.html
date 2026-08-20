@@ -1,74 +1,99 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Midnight Magic — For Komal</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One Evening Worth Remembering</title>
 <style>
-:root{--bg:#070914;--bg2:#151832;--fg:#faf7fb;--muted:#c2bdcc;--accent:#d8b8da;--line:#ffffff22}
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg)}body{color:var(--fg);font-family:Georgia,serif;background:radial-gradient(circle at 50% 18%,#292450,#111328 38%,#070914 80%);overflow-x:hidden}
-#stars{position:fixed;inset:0;pointer-events:none}.star{position:absolute;width:2px;height:2px;background:white;border-radius:50%;opacity:.5;animation:t 3s infinite alternate}@keyframes t{to{opacity:.9}}
-.stage{min-height:100vh;display:flex;justify-content:center;position:relative;z-index:1}.screen{display:none;width:100%;max-width:560px;min-height:100vh;padding:42px 20px;align-items:center;justify-content:center;flex-direction:column;text-align:center}.active{display:flex;animation:in .55s ease}@keyframes in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-.moon{font-size:68px;filter:drop-shadow(0 0 20px #fff4)}.act,.kicker{font:700 11px system-ui;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
-h1{font-size:42px;font-weight:400;margin:12px 0 18px}h2{font-size:29px;font-weight:400;margin:8px 0 15px}p{font-size:16px;line-height:1.7;color:#e0dce5;max-width:455px}
-button{border:1px solid var(--line);border-radius:999px;padding:13px 25px;margin-top:18px;color:white;background:#ffffff10;font:600 15px system-ui;cursor:pointer;transition:.25s}button:hover{background:#ffffff20;transform:translateY(-2px)}.primary{border:0;background:linear-gradient(135deg,#9d83c4,#bd8fb4)}
-.cards,.grid{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:24px 0}.magic{width:62px;height:90px;border-radius:9px;border:1px solid #fff3;background:linear-gradient(145deg,#382650,#171327);display:flex;align-items:center;justify-content:center;font-size:27px;cursor:pointer;transition:.3s}.magic:hover,.selected{transform:translateY(-9px);box-shadow:0 0 25px #d8b8da66}
-.choice{width:155px;border:1px solid var(--line);border-radius:18px;background:#ffffff0d;padding:18px 8px;cursor:pointer;transition:.25s;font:16px system-ui}.choice:hover{background:#ffffff18;transform:scale(1.03)}.icon{display:block;font-size:38px;margin-bottom:6px}
-.envelope{width:190px;height:125px;margin:24px auto;position:relative;cursor:pointer;perspective:500px}.body{position:absolute;inset:0;background:#ead9e7;border-radius:9px}.flap{position:absolute;top:0;left:0;width:0;height:0;border-left:95px solid transparent;border-right:95px solid transparent;border-top:70px solid #b992b1;transform-origin:top;transition:.7s;z-index:2}.open .flap{transform:rotateX(180deg)}.seal{position:absolute;z-index:3;left:50%;top:54%;transform:translate(-50%,-50%);font-size:24px}.reveal{opacity:0;transform:translateY(12px);transition:.7s}.reveal.show{opacity:1;transform:none}.final{font-size:21px;color:#f2dff2}.box{width:100%;max-width:370px;border:1px solid var(--line);border-radius:22px;background:#ffffff0d;padding:20px;margin:20px 0}.step{display:none}.step.on{display:block}.stepno{font:11px system-ui;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}.number{font-size:58px;color:#ead2e8}.note{border-left:3px solid var(--accent);background:#d8b8da12;border-radius:0 14px 14px 0;padding:12px 15px;text-align:left;max-width:450px}.small{font:13px/1.6 system-ui;color:var(--muted)}#barwrap{position:fixed;z-index:10;top:14px;left:50%;transform:translateX(-50%);width:155px;height:3px;background:#fff2;border-radius:9px}#bar{height:100%;width:0;background:var(--accent);transition:.4s}
-</style></head><body>
-<div id="stars"></div><div id="barwrap"><div id="bar"></div></div><main class="stage">
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#070b18}
+body{color:#faf7fb;font-family:Georgia,"Times New Roman",serif;overflow-x:hidden;background:radial-gradient(circle at 50% 13%,#26345c 0%,#111a35 30%,#080c19 72%,#05070e 100%)}
+#sky{position:fixed;inset:0;pointer-events:none;z-index:0}.star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;opacity:.35;animation:twinkle 3s infinite alternate}@keyframes twinkle{from{opacity:.15}to{opacity:.85}}
+.moon{position:fixed;right:10%;top:8%;font-size:58px;filter:drop-shadow(0 0 25px #fff5);opacity:.9;z-index:1}
+.stage{position:relative;z-index:2;min-height:100vh;display:flex;justify-content:center}.screen{display:none;width:100%;max-width:560px;min-height:100vh;padding:48px 22px 38px;align-items:center;justify-content:center;flex-direction:column;text-align:center}.screen.active{display:flex;animation:enter .75s ease}@keyframes enter{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.kicker{font:600 10px system-ui,sans-serif;letter-spacing:.25em;text-transform:uppercase;color:#e7b8c7}h1{font-size:41px;line-height:1.08;font-weight:400;margin:13px 0 20px}h2{font-size:29px;line-height:1.2;font-weight:400;margin:8px 0 16px}p{font-size:16px;line-height:1.75;color:#d8d1df;max-width:450px;margin:8px auto}.small{font:13px/1.6 system-ui,sans-serif;color:#9d98a8}
+button{border:1px solid #fff2;border-radius:999px;padding:13px 24px;margin-top:21px;color:white;background:#ffffff12;font:600 14px system-ui,sans-serif;cursor:pointer;transition:.25s}button:hover{background:#ffffff24;transform:translateY(-2px)}.primary{border:0;background:linear-gradient(135deg,#a77b98,#b69bc5)}
+.icon{font-size:55px;margin-bottom:6px}.card{width:100%;max-width:390px;padding:25px 20px;border:1px solid #fff2;border-radius:24px;background:#ffffff0c;box-shadow:0 15px 45px #0003;margin:18px 0}.food{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:370px;width:100%;margin:20px 0}.foodItem{padding:19px 8px;border:1px solid #fff2;border-radius:18px;background:#ffffff0d;font:15px system-ui,sans-serif}.foodItem span{display:block;font-size:38px;margin-bottom:7px}
+.spoon{font-size:75px;margin:10px 0;animation:float 3s ease-in-out infinite}@keyframes float{50%{transform:translateY(-7px) rotate(-3deg)}}
+.flowers{min-height:105px;max-width:360px;padding:10px}.flower{display:inline-block;font-size:42px;margin:4px;animation:bloom .8s both}@keyframes bloom{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.divider{width:70px;height:1px;background:#fff2;margin:22px auto}.final{font-size:21px;line-height:1.7;color:#f4dce5}.date{font-size:27px;letter-spacing:.12em;color:#ead5a2;margin:15px 0 5px}.subtitle{font:13px system-ui,sans-serif;color:#9d98a8}.signature{margin-top:25px;font-style:italic;font-size:17px;color:#d8d1df}
+#progress{position:fixed;top:15px;left:50%;transform:translateX(-50%);width:135px;height:2px;background:#fff2;border-radius:10px;z-index:20}#bar{width:0;height:100%;background:#e7b8c7;transition:.6s}
+</style>
+</head>
+<body>
+<div id="sky"></div><div class="moon">🌙</div><div id="progress"><div id="bar"></div></div>
+<main class="stage">
 
-<section class="screen active" id="intro"><div class="moon">🌙</div><div class="kicker">A tiny private show</div><h1>Midnight Magic</h1><p>Komal, this takes about two minutes.</p><p>Don't overthink anything. Just play along.</p><button class="primary" onclick="go('a1')">🎩 Begin the show</button></section>
+<section class="screen active" id="s0">
+<div class="kicker">A little something after our date</div>
+<h1>One Evening<br>Worth Remembering</h1>
+<p>Some evenings don't need a big story.</p><p>They just need to be remembered.</p>
+<button class="primary" onclick="go('s1')">Open this evening 🌙</button>
+</section>
 
-<section class="screen" id="a1"><div class="act">Act I · The Impossible Choice</div><h2>Pick one card.</h2><p>Don't tell me which one. Trust your first choice.</p><div class="cards">
-<div class="magic" onclick="card(this,1)">★</div><div class="magic" onclick="card(this,2)">✦</div><div class="magic" onclick="card(this,3)">♢</div><div class="magic" onclick="card(this,4)">☾</div><div class="magic" onclick="card(this,5)">✧</div></div><p class="small">No changing it.</p></section>
+<section class="screen" id="s1">
+<div class="kicker">The beginning</div><div class="icon">🌙</div>
+<h2>20 · 08 · 2026</h2><p>This was the evening.</p><p>The evening we finally went on our date.</p>
+<div class="card"><p class="small">I wanted to make sure you had a little reminder of it.</p></div>
+<button class="primary" onclick="go('s2')">Keep going →</button>
+</section>
 
-<section class="screen" id="a1b"><div class="act">Act I</div><h2>Keep it in your head.</h2><p>Forget the other cards. Look at your choice in your imagination.</p><button class="primary" onclick="prediction()">I'm ready</button></section>
+<section class="screen" id="s2">
+<div class="kicker">Memory No. 01</div><div class="icon">🍫</div><h2>One KitKat</h2>
+<p>It wasn't the biggest gift.</p><p>But I remember giving it to you.</p><p class="final">Because apparently… that's us. ❤️</p>
+<button onclick="go('s3')">Next memory →</button>
+</section>
 
-<section class="screen" id="a1r"><div class="act">Act I · Reveal</div><h2>I made a prediction.</h2><p>Before the show started, something was already waiting for you.</p><div class="envelope" id="env" onclick="openEnv()"><div class="body"></div><div class="flap"></div><div class="seal">✦</div></div><div class="reveal" id="r1"><p class="final">You chose <span id="cardReveal">☾</span>.</p><p>Okay… technically, I knew what you clicked. 🎩</p><button class="primary" onclick="go('a2')">One trick isn't enough →</button></div></section>
+<section class="screen" id="s3">
+<div class="kicker">Memory No. 02</div><div class="icon">🍕</div><h2>The pizza</h2>
+<p>We ordered pizza.</p><p>And you loved it.</p>
+<div class="food"><div class="foodItem"><span>🍕</span>Pizza</div><div class="foodItem"><span>😊</span>Your happy face</div></div>
+<p class="small">I think the pizza deserves an honorary mention.</p>
+<button onclick="go('s4')">Next memory →</button>
+</section>
 
-<section class="screen" id="a2"><div class="act">Act II · The Moon Knows</div><div class="moon">🌙</div><h2>This one is different.</h2><p>Pick the thing that naturally catches your attention. Don't analyse it.</p><button class="primary" onclick="go('a2c')">I'm ready</button></section>
+<section class="screen" id="s4">
+<div class="kicker">Memory No. 03</div><div class="icon">🍰</div><h2>And then… dessert.</h2>
+<p>Choco truffle pastry.</p><p>One plate. Two people.</p>
+<div class="card"><p class="final">Shared.</p><p>Which somehow made it better.</p></div>
+<button onclick="go('s5')">There's one more memory →</button>
+</section>
 
-<section class="screen" id="a2c"><div class="act">Act II</div><h2>Choose one.</h2><div class="grid">
-<div class="choice" onclick="moon('crescent')"><span class="icon">🌙</span>Crescent</div><div class="choice" onclick="moon('full')"><span class="icon">🌕</span>Full Moon</div><div class="choice" onclick="moon('new')"><span class="icon">🌑</span>New Moon</div><div class="choice" onclick="moon('star')"><span class="icon">⭐</span>Star</div></div></section>
+<section class="screen" id="s5">
+<div class="kicker">Memory No. 04</div><div class="spoon">🥄</div><h2>The two bites.</h2>
+<p>One bite from my spoon to you.</p><p>And later…</p><p>one bite from your spoon to me.</p>
+<div class="divider"></div><p class="final">That second one?</p><p class="final">I loved it. ❤️</p>
+<button class="primary" onclick="go('s6')">One last thing…</button>
+</section>
 
-<section class="screen" id="a2r"><div class="act">Act II · Reveal</div><div class="moon">🌙</div><h2>The Moon Knows.</h2><p id="moonText"></p><div class="note"><p>Maybe that's not mind-reading.</p><p><strong>Maybe I just remembered what you like.</strong></p></div><button class="primary" onclick="go('a3')">Two tricks are coincidence. →</button></section>
+<section class="screen" id="s6">
+<div class="kicker">A little late</div><div class="icon">🌷</div><h2>I owe you these.</h2>
+<p>I wanted to bring you flowers that evening.</p><p>I couldn't.</p><p>So I'm sending them a little late.</p>
+<div class="flowers" id="flowers"></div>
+<button class="primary" onclick="bloom()">Send flowers 🌷</button>
+<button id="afterFlowers" style="display:none" onclick="go('s7')">And one last thing →</button>
+</section>
 
-<section class="screen" id="a3"><div class="act">Act III · The Number That Wasn't Random</div><h2>Think of any number.</h2><p>Any whole number. Keep it secret.</p><div class="box">
-<div class="step on" id="n1"><div class="stepno">Step 1</div><p>Think of a number.</p><button onclick="ns(2)">I've got one</button></div>
-<div class="step" id="n2"><div class="stepno">Step 2</div><p>Double your number.</p><button onclick="ns(3)">Done</button></div>
-<div class="step" id="n3"><div class="stepno">Step 3</div><p>Now add <strong>50</strong>.</p><button onclick="ns(4)">Done</button></div>
-<div class="step" id="n4"><div class="stepno">Step 4</div><p>Divide the result by 2.</p><button onclick="ns(5)">Done</button></div>
-<div class="step" id="n5"><div class="stepno">Step 5</div><p>Subtract the original number you first thought of.</p><button onclick="ns(6)">I have the answer</button></div>
-<div class="step" id="n6"><div class="stepno">Don't tell me.</div><p>Keep the final number in your head.</p><button class="primary" onclick="go('a3r')">Reveal</button></div>
-</div></section>
+<section class="screen" id="s7">
+<div class="kicker">Thank you</div><div class="icon">❤️</div><h2>Thank you for that evening.</h2>
+<p class="final">Thank you for the pizza,<br>the pastry,<br>the KitKat,<br>and those two little bites.</p>
+<div class="divider"></div><p>But mostly, thank you for spending that evening with me.</p><p>I had a really good time.</p>
+<button class="primary" onclick="go('s8')">Keep the memory →</button>
+</section>
 
-<section class="screen" id="a3r"><div class="act">Act III · Reveal</div><h2>I'm getting something very specific…</h2><div class="number">25</div><p class="final">Your final number is 25.</p><p>Check it if you don't believe me. 😏</p><button class="primary" onclick="go('a4')">Let's try something harder →</button></section>
-
-<section class="screen" id="a4"><div class="act">Act IV · The Thought Experiment</div><h2>Answer quickly.</h2><p>There are no right answers. Pick your first instinct.</p><div class="box">
-<div class="step on" id="t1"><div class="stepno">Choice 1</div><p>Coffee ☕ or Tea 🍵?</p><button onclick="tc(1,'Coffee')">Coffee</button><button onclick="tc(1,'Tea')">Tea</button></div>
-<div class="step" id="t2"><div class="stepno">Choice 2</div><p>Sunrise 🌅 or Night 🌙?</p><button onclick="tc(2,'Sunrise')">Sunrise</button><button onclick="tc(2,'Night')">Night</button></div>
-<div class="step" id="t3"><div class="stepno">Choice 3</div><p>Beach 🏖️ or Mountains ⛰️?</p><button onclick="tc(3,'Beach')">Beach</button><button onclick="tc(3,'Mountains')">Mountains</button></div>
-<div class="step" id="t4"><div class="stepno">Choice 4</div><p>Sweet 🍰 or Savoury 🍜?</p><button onclick="tc(4,'Sweet')">Sweet</button><button onclick="tc(4,'Savoury')">Savoury</button></div>
-</div></section>
-
-<section class="screen" id="a4r"><div class="act">Act IV · Reveal</div><h2>I think I know something.</h2><p id="thoughtText"></p><div class="note"><p>Four choices. Completely yours.</p><p><strong>And somehow… they tell a tiny story.</strong></p></div><button class="primary" onclick="go('a5')">Last one. This is personal. →</button></section>
-
-<section class="screen" id="a5"><div class="act">Act V · The Final Prediction</div><div class="moon">🌙</div><h2>One final choice.</h2><p>Pick the symbol you think belongs in the final prediction.</p><div class="grid">
-<div class="choice" onclick="finalPick()">⭐<br>Star</div><div class="choice" onclick="finalPick()">🌙<br>Moon</div><div class="choice" onclick="finalPick()">❤️<br>Heart</div><div class="choice" onclick="finalPick()">✨<br>Magic</div></div></section>
-
-<section class="screen" id="a5r"><div class="act">Act V · Final Reveal</div><div class="moon">🌙</div><h2>The prediction.</h2><div class="envelope" id="fenv" onclick="openFinal()"><div class="body"></div><div class="flap"></div><div class="seal">🌙</div></div><div class="reveal" id="r5"><p class="final">“You were always going to notice the moon.” 🌙</p><p>Not because I can read your mind.</p><p><strong>Because I remembered.</strong></p><div class="note"><p class="small">And that concludes the show.</p><p class="small">Thank you for playing along. 🎩</p></div><button onclick="location.reload()">🔄 Watch it again</button></div></section>
-
+<section class="screen" id="s8">
+<div class="moon" style="position:static;font-size:70px">🌙</div><div class="kicker">Our little memory</div>
+<div class="date">20 · 08 · 2026</div><div class="subtitle">The evening we finally went on our date.</div>
+<div class="divider"></div><p class="final">Some dates are just dates.</p><p class="final">This one, I want to remember.</p>
+<div class="signature">— Satyam ❤️</div><div style="font-size:27px;margin-top:8px">🌷 🌙 🍕 🍰 🍫</div>
+<button onclick="location.reload()">↺ Relive the evening</button>
+</section>
 </main>
+
 <script>
-const ids=["intro","a1","a1b","a1r","a2","a2c","a2r","a3","a3r","a4","a4r","a5","a5r"];
-function go(id){document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active");let i=ids.indexOf(id);document.getElementById("bar").style.width=(i/(ids.length-1)*100)+"%";scrollTo({top:0,behavior:"smooth"})}
-let chosen=4;const sym={1:"★",2:"✦",3:"♢",4:"☾",5:"✧"};
-function card(el,n){document.querySelectorAll(".magic").forEach(x=>x.classList.remove("selected"));el.classList.add("selected");chosen=n;setTimeout(()=>go("a1b"),600)}
-function prediction(){document.getElementById("cardReveal").textContent=sym[chosen];go("a1r")}
-function openEnv(){document.getElementById("env").classList.add("open");setTimeout(()=>document.getElementById("r1").classList.add("show"),650)}
-function moon(c){let m={crescent:"You chose the crescent. A little mystery. A little moonlight. Very you.",full:"You chose the full moon. Bold choice — the kind you can stare at for a while.",new:"You chose the new moon. Quiet, hidden and a little mysterious. Interesting.",star:"You chose the star. Technically not the moon… but I'll allow it. ✨"};document.getElementById("moonText").textContent=m[c];go("a2r")}
-function ns(n){document.querySelectorAll("#a3 .step").forEach(x=>x.classList.remove("on"));document.getElementById("n"+n).classList.add("on")}
-let thoughts=[];
-function tc(n,v){thoughts[n-1]=v;if(n<4){document.querySelectorAll("#a4 .step").forEach(x=>x.classList.remove("on"));document.getElementById("t"+(n+1)).classList.add("on")}else{let night=thoughts[1]==="Night",food=thoughts[3]==="Savoury";let s=night&&food?"You chose Night and Savoury. Honestly… moon + food feels very on-brand.":night?"You chose Night. I had a feeling the moon would make another appearance.":food?"You chose Savoury. Food has officially earned its place in this show.":"Sunrise and Sweet. A surprisingly cheerful combination.";document.getElementById("thoughtText").textContent=s;go("a4r")}}
-function finalPick(){go("a5r")}
-function openFinal(){document.getElementById("fenv").classList.add("open");setTimeout(()=>document.getElementById("r5").classList.add("show"),650)}
-for(let i=0;i<75;i++){let s=document.createElement("div");s.className="star";s.style.left=Math.random()*100+"%";s.style.top=Math.random()*100+"%";s.style.animationDelay=Math.random()*3+"s";document.getElementById("stars").appendChild(s)}
-</script></body></html>
+const ids=["s0","s1","s2","s3","s4","s5","s6","s7","s8"];
+function go(id){document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active");const i=ids.indexOf(id);document.getElementById("bar").style.width=(i/(ids.length-1)*100)+"%";window.scrollTo({top:0,behavior:"smooth"})}
+function bloom(){const box=document.getElementById("flowers");["🌷","🌹","🌸","🌷","🌹","🌸","🌷"].forEach((f,i)=>{const el=document.createElement("span");el.className="flower";el.textContent=f;el.style.animationDelay=(i*.12)+"s";box.appendChild(el)});document.getElementById("afterFlowers").style.display="inline-block"}
+for(let i=0;i<70;i++){const s=document.createElement("div");s.className="star";s.style.left=Math.random()*100+"%";s.style.top=Math.random()*100+"%";s.style.animationDelay=Math.random()*3+"s";document.getElementById("sky").appendChild(s)}
+</script>
+</body>
+</html>
