@@ -1,99 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>One Evening Worth Remembering</title>
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Little Things</title>
 <style>
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#070b18}
-body{color:#faf7fb;font-family:Georgia,"Times New Roman",serif;overflow-x:hidden;background:radial-gradient(circle at 50% 13%,#26345c 0%,#111a35 30%,#080c19 72%,#05070e 100%)}
-#sky{position:fixed;inset:0;pointer-events:none;z-index:0}.star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;opacity:.35;animation:twinkle 3s infinite alternate}@keyframes twinkle{from{opacity:.15}to{opacity:.85}}
-.moon{position:fixed;right:10%;top:8%;font-size:58px;filter:drop-shadow(0 0 25px #fff5);opacity:.9;z-index:1}
-.stage{position:relative;z-index:2;min-height:100vh;display:flex;justify-content:center}.screen{display:none;width:100%;max-width:560px;min-height:100vh;padding:48px 22px 38px;align-items:center;justify-content:center;flex-direction:column;text-align:center}.screen.active{display:flex;animation:enter .75s ease}@keyframes enter{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-.kicker{font:600 10px system-ui,sans-serif;letter-spacing:.25em;text-transform:uppercase;color:#e7b8c7}h1{font-size:41px;line-height:1.08;font-weight:400;margin:13px 0 20px}h2{font-size:29px;line-height:1.2;font-weight:400;margin:8px 0 16px}p{font-size:16px;line-height:1.75;color:#d8d1df;max-width:450px;margin:8px auto}.small{font:13px/1.6 system-ui,sans-serif;color:#9d98a8}
-button{border:1px solid #fff2;border-radius:999px;padding:13px 24px;margin-top:21px;color:white;background:#ffffff12;font:600 14px system-ui,sans-serif;cursor:pointer;transition:.25s}button:hover{background:#ffffff24;transform:translateY(-2px)}.primary{border:0;background:linear-gradient(135deg,#a77b98,#b69bc5)}
-.icon{font-size:55px;margin-bottom:6px}.card{width:100%;max-width:390px;padding:25px 20px;border:1px solid #fff2;border-radius:24px;background:#ffffff0c;box-shadow:0 15px 45px #0003;margin:18px 0}.food{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:370px;width:100%;margin:20px 0}.foodItem{padding:19px 8px;border:1px solid #fff2;border-radius:18px;background:#ffffff0d;font:15px system-ui,sans-serif}.foodItem span{display:block;font-size:38px;margin-bottom:7px}
-.spoon{font-size:75px;margin:10px 0;animation:float 3s ease-in-out infinite}@keyframes float{50%{transform:translateY(-7px) rotate(-3deg)}}
-.flowers{min-height:105px;max-width:360px;padding:10px}.flower{display:inline-block;font-size:42px;margin:4px;animation:bloom .8s both}@keyframes bloom{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
-.divider{width:70px;height:1px;background:#fff2;margin:22px auto}.final{font-size:21px;line-height:1.7;color:#f4dce5}.date{font-size:27px;letter-spacing:.12em;color:#ead5a2;margin:15px 0 5px}.subtitle{font:13px system-ui,sans-serif;color:#9d98a8}.signature{margin-top:25px;font-style:italic;font-size:17px;color:#d8d1df}
-#progress{position:fixed;top:15px;left:50%;transform:translateX(-50%);width:135px;height:2px;background:#fff2;border-radius:10px;z-index:20}#bar{width:0;height:100%;background:#e7b8c7;transition:.6s}
-</style>
-</head>
-<body>
-<div id="sky"></div><div class="moon">🌙</div><div id="progress"><div id="bar"></div></div>
-<main class="stage">
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#070a15}
+body{color:#faf7fb;font-family:Georgia,"Times New Roman",serif;overflow-x:hidden}
+.screen{display:none;min-height:100vh;width:100%;padding:42px 22px;align-items:center;justify-content:center;flex-direction:column;text-align:center;position:relative;overflow:hidden}
+.screen.active{display:flex;animation:in .7s ease}@keyframes in{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
+.sky{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 16%,#273459,#11172b 34%,#070a15 78%);z-index:0}
+.stars{position:absolute;inset:0}.star{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.4;animation:twinkle 3s infinite alternate}@keyframes twinkle{to{opacity:.9}}
+.moon{font-size:72px;filter:drop-shadow(0 0 28px #fff5);margin-bottom:10px}
+.content{position:relative;z-index:2;width:100%;max-width:540px}
+.kicker{font:600 10px system-ui;letter-spacing:.25em;text-transform:uppercase;color:#e4bdcf}
+h1{font-size:43px;line-height:1.08;font-weight:400;margin:12px 0 20px}h2{font-size:30px;font-weight:400;margin:10px 0 15px}
+p{font-size:16px;line-height:1.75;color:#ded9e4;margin:8px auto;max-width:450px}.small{font:13px/1.6 system-ui;color:#aaa4b2}
+button{border:1px solid #fff2;border-radius:999px;background:#ffffff0c;color:#fff;padding:13px 24px;margin-top:22px;font:600 14px system-ui;cursor:pointer;transition:.25s}
+button:hover{background:#ffffff18;transform:translateY(-2px)}.primary{border:0;background:linear-gradient(135deg,#a47b9b,#b69cc6)}
+.card{margin:22px auto;padding:24px 18px;max-width:390px;border:1px solid #fff2;border-radius:24px;background:#ffffff0b}
+.food-scene{height:190px;position:relative;margin:4px auto 10px;max-width:330px}
+.bowl{position:absolute;left:50%;top:45px;transform:translateX(-50%);width:180px;height:85px;border-radius:0 0 90px 90px;background:linear-gradient(#f0c76d,#c98632);box-shadow:0 18px 25px #0007}
+.noodle{position:absolute;width:90px;height:35px;border-bottom:4px solid #e9b447;border-radius:50%;top:48px;left:50%;transform:translateX(-50%);box-shadow:0 7px 0 #e7a53c,0 14px 0 #f0bf4e}
+.steam{position:absolute;font-size:27px;top:5px;left:50%;animation:steam 2.3s infinite ease-in-out}@keyframes steam{50%{transform:translate(-50%,-12px);opacity:.45}}
+.vegplate{position:absolute;left:50%;top:40px;transform:translateX(-50%);width:230px;height:92px;border-radius:50%;background:#eee8df;box-shadow:0 18px 28px #0007}
+.roti{position:absolute;width:76px;height:76px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#e7bd75,#b87936);top:48px;left:68px;transform:rotate(-8deg)}
+.roti.r2{left:126px;top:50px;transform:rotate(9deg)}.bhindi{position:absolute;font-size:42px;top:49px;left:92px;z-index:2;animation:floatfood 2.4s ease-in-out infinite}
+@keyframes floatfood{50%{transform:translateY(-5px) rotate(3deg)}}
+.quote{font-size:21px;color:#f0dbe3;line-height:1.6}.divider{height:1px;width:65px;background:#fff2;margin:22px auto}
+.cheeks{font-size:75px;letter-spacing:-15px;margin:10px 0}.moonScene{background:radial-gradient(circle at 50% 13%,#34446e 0%,#151d38 35%,#080b17 72%,#05070e 100%)}
+.bigMoon{position:absolute;right:11%;top:8%;font-size:88px;filter:drop-shadow(0 0 35px #fff7);z-index:1}
+.car{position:absolute;bottom:18%;left:50%;transform:translateX(-50%);width:310px;height:75px;border-radius:55px 55px 18px 18px;background:linear-gradient(#293246,#101521);box-shadow:0 22px 30px #0008}
+.car:before{content:"";position:absolute;left:55px;top:-35px;width:200px;height:55px;border-radius:70px 70px 5px 5px;background:#1b2435;border:1px solid #ffffff18}
+.light{position:absolute;bottom:28%;width:10px;height:7px;border-radius:50%;background:#e6b56b;box-shadow:0 0 18px #e6b56b}.l1{left:calc(50% - 120px)}.l2{left:calc(50% + 110px)}
+.sceneNote{position:absolute;bottom:8%;font:12px system-ui;color:#aaa5b4;z-index:2}.finalText{font-size:22px;line-height:1.75;color:#f2dce4}.signature{font-style:italic;color:#c9c1ce;margin-top:25px}
+</style></head><body>
 
-<section class="screen active" id="s0">
-<div class="kicker">A little something after our date</div>
-<h1>One Evening<br>Worth Remembering</h1>
-<p>Some evenings don't need a big story.</p><p>They just need to be remembered.</p>
-<button class="primary" onclick="go('s1')">Open this evening 🌙</button>
-</section>
+<section class="screen active" id="s0"><div class="sky"><div class="stars"></div></div><div class="content">
+<div class="moon">🌙</div><div class="kicker">A little note about today</div><h1>The Little Things</h1>
+<p>Nothing dramatic.</p><p>Just a few little moments I noticed.</p><button class="primary" onclick="go('s1')">Come see 🌙</button></div></section>
 
-<section class="screen" id="s1">
-<div class="kicker">The beginning</div><div class="icon">🌙</div>
-<h2>20 · 08 · 2026</h2><p>This was the evening.</p><p>The evening we finally went on our date.</p>
-<div class="card"><p class="small">I wanted to make sure you had a little reminder of it.</p></div>
-<button class="primary" onclick="go('s2')">Keep going →</button>
-</section>
+<section class="screen" id="s1"><div class="sky"><div class="stars"></div></div><div class="content">
+<div class="kicker">Lunch · Memory 01</div><div class="food-scene"><div class="steam">♨️</div><div class="bowl"></div><div class="noodle"></div></div>
+<h2>My Maggi.</h2><p>You ate it.</p><p>Then gave it the very scientific rating of…</p><div class="card"><div class="quote">“Okayish.” 😂</div></div>
+<p class="small">I'll accept the review.</p><button onclick="go('s2')">But then… →</button></div></section>
 
-<section class="screen" id="s2">
-<div class="kicker">Memory No. 01</div><div class="icon">🍫</div><h2>One KitKat</h2>
-<p>It wasn't the biggest gift.</p><p>But I remember giving it to you.</p><p class="final">Because apparently… that's us. ❤️</p>
-<button onclick="go('s3')">Next memory →</button>
-</section>
+<section class="screen" id="s2"><div class="sky"><div class="stars"></div></div><div class="content">
+<div class="kicker">Lunch · Memory 02</div><div class="food-scene"><div class="vegplate"></div><div class="roti"></div><div class="roti r2"></div><div class="bhindi">🥬</div></div>
+<h2>Your bhindi & roti.</h2><p>I ate it.</p><p>And unlike my Maggi…</p><div class="card"><div class="quote">Yours was actually yummy. 😌</div></div>
+<p class="small">So yes, you win lunch today.</p><button class="primary" onclick="go('s3')">There's something else I remember…</button></div></section>
 
-<section class="screen" id="s3">
-<div class="kicker">Memory No. 02</div><div class="icon">🍕</div><h2>The pizza</h2>
-<p>We ordered pizza.</p><p>And you loved it.</p>
-<div class="food"><div class="foodItem"><span>🍕</span>Pizza</div><div class="foodItem"><span>😊</span>Your happy face</div></div>
-<p class="small">I think the pizza deserves an honorary mention.</p>
-<button onclick="go('s4')">Next memory →</button>
-</section>
+<section class="screen moonScene" id="s3"><div class="bigMoon">🌙</div><div class="car"></div><div class="light l1"></div><div class="light l2"></div>
+<div class="content"><div class="kicker">Before going home · Memory 03</div><div class="cheeks">😊</div><h2>That little parking-lot moment.</h2>
+<p>First one side.</p><p>Then both sides.</p><p>I won't pretend the slaps weren't unexpected. 😂</p><button onclick="go('s4')">There's one part I liked…</button></div>
+<div class="sceneNote">under the moon · just before going home</div></section>
 
-<section class="screen" id="s4">
-<div class="kicker">Memory No. 03</div><div class="icon">🍰</div><h2>And then… dessert.</h2>
-<p>Choco truffle pastry.</p><p>One plate. Two people.</p>
-<div class="card"><p class="final">Shared.</p><p>Which somehow made it better.</p></div>
-<button onclick="go('s5')">There's one more memory →</button>
-</section>
+<section class="screen moonScene" id="s4"><div class="bigMoon">🌙</div><div class="car"></div><div class="light l1"></div><div class="light l2"></div>
+<div class="content"><div class="kicker">The part I kept thinking about</div><div class="cheeks">🤏😊🤏</div><h2>Those cheek pulls.</h2>
+<p>First one side.</p><p>Then both cheeks together.</p><div class="divider"></div><p class="finalText">That tiny thing?</p><p class="finalText">I genuinely loved it.</p>
+<p class="small">Maybe because it was just you being you.</p><button class="primary" onclick="go('s5')">One last thought…</button></div></section>
 
-<section class="screen" id="s5">
-<div class="kicker">Memory No. 04</div><div class="spoon">🥄</div><h2>The two bites.</h2>
-<p>One bite from my spoon to you.</p><p>And later…</p><p>one bite from your spoon to me.</p>
-<div class="divider"></div><p class="final">That second one?</p><p class="final">I loved it. ❤️</p>
-<button class="primary" onclick="go('s6')">One last thing…</button>
-</section>
+<section class="screen" id="s5"><div class="sky"><div class="stars"></div></div><div class="content">
+<div class="moon">🌙</div><div class="kicker">Something I wanted you to know</div><h2>You once said you don't have a love language.</h2>
+<p>Maybe you don't.</p><p>Maybe you don't need to name it.</p><div class="divider"></div><p class="finalText">Maybe sometimes it's just...</p>
+<p>sharing lunch,<br>eating someone's food,<br>meeting for five minutes before going home,<br>pulling someone's cheeks,<br>and making them smile without even trying.</p>
+<button class="primary" onclick="go('s6')">And for me… ❤️</button></div></section>
 
-<section class="screen" id="s6">
-<div class="kicker">A little late</div><div class="icon">🌷</div><h2>I owe you these.</h2>
-<p>I wanted to bring you flowers that evening.</p><p>I couldn't.</p><p>So I'm sending them a little late.</p>
-<div class="flowers" id="flowers"></div>
-<button class="primary" onclick="bloom()">Send flowers 🌷</button>
-<button id="afterFlowers" style="display:none" onclick="go('s7')">And one last thing →</button>
-</section>
+<section class="screen" id="s6"><div class="sky"><div class="stars"></div></div><div class="content">
+<div class="moon">🌙</div><div class="kicker">No expectations. Just a little truth.</div><h1>Small things matter.</h1>
+<p class="finalText">They matter to me.</p><p>Not because every little thing has to mean something.</p>
+<p>But because sometimes a tiny moment can make an ordinary day feel really good.</p>
+<div class="card"><p class="finalText">And today had a few of those. ❤️</p></div><div class="signature">— Satyam</div>
+<button onclick="go('s7')">Keep this little memory 🌙</button></div></section>
 
-<section class="screen" id="s7">
-<div class="kicker">Thank you</div><div class="icon">❤️</div><h2>Thank you for that evening.</h2>
-<p class="final">Thank you for the pizza,<br>the pastry,<br>the KitKat,<br>and those two little bites.</p>
-<div class="divider"></div><p>But mostly, thank you for spending that evening with me.</p><p>I had a really good time.</p>
-<button class="primary" onclick="go('s8')">Keep the memory →</button>
-</section>
-
-<section class="screen" id="s8">
-<div class="moon" style="position:static;font-size:70px">🌙</div><div class="kicker">Our little memory</div>
-<div class="date">20 · 08 · 2026</div><div class="subtitle">The evening we finally went on our date.</div>
-<div class="divider"></div><p class="final">Some dates are just dates.</p><p class="final">This one, I want to remember.</p>
-<div class="signature">— Satyam ❤️</div><div style="font-size:27px;margin-top:8px">🌷 🌙 🍕 🍰 🍫</div>
-<button onclick="location.reload()">↺ Relive the evening</button>
-</section>
-</main>
+<section class="screen" id="s7"><div class="sky"><div class="stars"></div></div><div class="content">
+<div class="moon">🌙</div><div class="kicker">Today's little memory</div><h2>Maggi. Bhindi & roti. Parking. Cheeks.</h2>
+<div class="divider"></div><p class="finalText">Nothing huge.</p><p class="finalText">Just enough to make me smile.</p>
+<div style="font-size:34px;margin-top:18px">🍜 🥘 🌙 😊</div><p class="small" style="margin-top:25px">Thank you for the little things.</p></div></section>
 
 <script>
-const ids=["s0","s1","s2","s3","s4","s5","s6","s7","s8"];
-function go(id){document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active");const i=ids.indexOf(id);document.getElementById("bar").style.width=(i/(ids.length-1)*100)+"%";window.scrollTo({top:0,behavior:"smooth"})}
-function bloom(){const box=document.getElementById("flowers");["🌷","🌹","🌸","🌷","🌹","🌸","🌷"].forEach((f,i)=>{const el=document.createElement("span");el.className="flower";el.textContent=f;el.style.animationDelay=(i*.12)+"s";box.appendChild(el)});document.getElementById("afterFlowers").style.display="inline-block"}
-for(let i=0;i<70;i++){const s=document.createElement("div");s.className="star";s.style.left=Math.random()*100+"%";s.style.top=Math.random()*100+"%";s.style.animationDelay=Math.random()*3+"s";document.getElementById("sky").appendChild(s)}
-</script>
-</body>
-</html>
+function stars(){document.querySelectorAll(".stars").forEach(box=>{for(let i=0;i<55;i++){const s=document.createElement("span");s.className="star";s.style.left=Math.random()*100+"%";s.style.top=Math.random()*100+"%";s.style.animationDelay=Math.random()*3+"s";box.appendChild(s)}})}
+function go(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById(id).classList.add("active");window.scrollTo({top:0,behavior:"smooth"})}
+stars();
+</script></body></html>
