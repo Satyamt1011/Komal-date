@@ -1,104 +1,216 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>You Asked Me Why I Love You</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Komal Needs a Break 🌙</title>
 <style>
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#050812}
-body{color:#fbf8fb;font-family:Georgia,"Times New Roman",serif;overflow-x:hidden;background:radial-gradient(circle at 50% 12%,#29385f 0%,#121a32 32%,#070a14 72%,#03050b 100%)}
-.screen{display:none;min-height:100vh;width:100%;padding:48px 22px;align-items:center;justify-content:center;flex-direction:column;text-align:center;position:relative;overflow:hidden}
-.screen.active{display:flex;animation:appear .8s ease}@keyframes appear{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-.stars{position:absolute;inset:0;pointer-events:none}.star{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.35;animation:twinkle 3s infinite alternate}@keyframes twinkle{to{opacity:.9}}
-.content{position:relative;z-index:2;width:100%;max-width:570px}.moon{font-size:72px;filter:drop-shadow(0 0 30px #fff8);margin-bottom:12px}
-.kicker{font:600 10px system-ui;letter-spacing:.28em;text-transform:uppercase;color:#e7bdcf}
-h1{font-size:42px;line-height:1.08;font-weight:400;margin:14px 0 20px}h2{font-size:30px;line-height:1.2;font-weight:400;margin:12px 0 18px}
-p{font-size:16px;line-height:1.8;color:#ded8e3;max-width:470px;margin:9px auto}.soft{color:#aaa5b2;font:13px/1.7 system-ui}
-.quote{font-size:21px;line-height:1.65;color:#f2dce5}.card{margin:24px auto;padding:25px 21px;max-width:420px;width:100%;border:1px solid #fff2;border-radius:25px;background:#ffffff10;backdrop-filter:blur(9px)}
-button{border:1px solid #fff2;border-radius:999px;background:#ffffff12;color:#fff;padding:13px 24px;margin-top:24px;font:600 14px system-ui;cursor:pointer;transition:.25s}
-button:hover{transform:translateY(-2px);background:#ffffff24}.primary{border:0;background:linear-gradient(135deg,#a97f9e,#b9a0c8)}
-.divider{width:65px;height:1px;background:#fff3;margin:25px auto}.icon{font-size:68px;margin:5px 0 10px}
-.reasonNo{font:600 11px system-ui;letter-spacing:.22em;color:#bdb5c2;text-transform:uppercase}
-.emphasis{font-size:22px;line-height:1.65;color:#f2dce5}.memoryRow{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin:18px 0}
-.memory{padding:11px 13px;border:1px solid #fff2;border-radius:16px;background:#ffffff0d;font:14px system-ui}
-.final{background:radial-gradient(circle at 50% 18%,#35466f 0%,#141d39 35%,#070a14 78%)}
-.flower{font-size:38px;display:inline-block;margin:3px;animation:bloom .8s both}@keyframes bloom{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
-.signature{margin-top:28px;font-style:italic;color:#cfc6d1;font-size:17px}.heart{font-size:30px;margin-top:12px}
-.eyeWrap{height:170px;position:relative;max-width:310px;margin:5px auto}
-.eye{position:absolute;top:30px;width:128px;height:82px;background:#f1e9e4;border:2px solid #c9b9bb;border-radius:80% 10% 80% 10%;box-shadow:0 0 28px #d7becd2e}
-.eye.left{left:18px;transform:rotate(18deg)}.eye.right{right:18px;transform:rotate(-18deg)}
-.pupil{position:absolute;left:50%;top:50%;width:35px;height:35px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 42% 38%,#8c6a75 0 15%,#382735 17% 52%,#090b12 55%);box-shadow:0 0 15px #ffdae630}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;min-height:100%;background:#050812;color:#fff}
+body{font-family:Georgia,"Times New Roman",serif;overflow:hidden}
+.slide{display:none;position:relative;width:100vw;height:100vh;min-height:620px;padding:35px 20px;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.slide.active{display:flex;animation:fade .55s ease}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.sky{position:absolute;inset:0;background:radial-gradient(circle at 50% 12%,#33466f 0,#151e39 35%,#070a14 78%)}
+.stars{position:absolute;inset:0;pointer-events:none}
+.star{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.45}
+.content{position:relative;z-index:3;width:100%;max-width:560px;padding-bottom:80px}
+.moon{font-size:70px;filter:drop-shadow(0 0 30px #fff8);margin-bottom:8px}
+.moon-corner{position:absolute;right:8%;top:8%;font-size:85px;filter:drop-shadow(0 0 35px #fff8);z-index:2}
+.kicker{font:600 10px Arial,sans-serif;letter-spacing:.25em;text-transform:uppercase;color:#e8bfd0}
+h1{font-size:40px;line-height:1.1;font-weight:400;margin:14px 0 20px}
+h2{font-size:29px;line-height:1.2;font-weight:400;margin:14px 0 18px}
+p{font-size:16px;line-height:1.75;color:#ded9e3;margin:9px auto}
+.small{font:13px/1.6 Arial,sans-serif;color:#aaa6b2}
+.alert{display:inline-block;padding:9px 14px;border-radius:12px;border:1px solid #e49aad33;background:#6d39491c;color:#f2bccb;font:700 11px Arial,sans-serif}
+.card{max-width:430px;margin:22px auto;padding:22px;border:1px solid #fff2;border-radius:24px;background:#ffffff0b;backdrop-filter:blur(8px)}
+ul{list-style:none;padding:0;margin:0;text-align:left}
+li{padding:7px 0;font:14px Arial,sans-serif;color:#d8d3dc}
+.quote{font-size:21px;line-height:1.6;color:#f0dce5}
+button.next{
+position:absolute;z-index:20;bottom:24px;left:50%;transform:translateX(-50%);
+min-width:210px;padding:14px 22px;border:1px solid #ffffff35;border-radius:999px;
+background:linear-gradient(135deg,#a77b9d,#b89fc8);color:#fff;
+font:700 14px Arial,sans-serif;cursor:pointer;box-shadow:0 8px 30px #0006
+}
+button.next:hover{filter:brightness(1.12);transform:translateX(-50%) translateY(-2px)}
+.choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;max-width:430px;margin:20px auto}
+.choice{position:relative!important;left:auto!important;bottom:auto!important;transform:none!important;min-width:0!important;padding:16px 8px!important;background:#ffffff10!important;border:1px solid #fff2!important;box-shadow:none!important}
+.choice span{display:block;font-size:29px;margin-bottom:6px}
+.toast{min-height:48px;margin:10px auto;color:#f0dce4;opacity:0;transition:.3s}
+.toast.show{opacity:1}
+.monster{font-size:90px}
+.food{font-size:54px;display:inline-block;margin:5px}
+.breathe{font-size:27px;line-height:1.7;color:#eedee7;margin:25px 0}
+.crown{font-size:58px}
+@media(max-height:700px){
+.slide{padding-top:20px}.content{transform:scale(.9);padding-bottom:75px}
+h1{margin:8px 0 12px}h2{margin:8px 0 12px}.card{margin:12px auto}
+}
+@media(max-width:420px){
+h1{font-size:34px}h2{font-size:26px}.moon{font-size:60px}.choice-grid{gap:8px}
+}
 </style>
 </head>
 <body>
 
-<section class="screen active" id="s0"><div class="stars"></div><div class="content">
-<div class="moon">🌙</div><div class="kicker">You asked me something</div>
-<h1>“Give me a reason<br>you love me.”</h1><p>I thought about it.</p><p>And then I realised something…</p>
-<div class="card"><div class="quote">I don't think I can give you just one. ❤️</div></div>
-<button class="primary" onclick="go('s1')">So… let me try 🌙</button></div></section>
+<!-- SLIDE 1 -->
+<section class="slide active" id="slide1">
+<div class="sky"><div class="stars"></div></div>
+<div class="content">
+<div class="moon">🌙</div>
+<div class="alert">⚠️ KOMAL ALERT</div>
+<h1>Excessive workload detected.</h1>
+<div class="card">
+<ul>
+<li>📧 Too many emails</li>
+<li>💻 Too much work</li>
+<li>🧠 Brain running at 147%</li>
+<li>😴 Sleep levels critically low</li>
+<li>😑 Patience for Satyam: <b>system unavailable</b></li>
+</ul>
+</div>
+<p class="small">Emergency relaxation protocol required.</p>
+</div>
+<button type="button" class="next" onclick="showSlide(2)">ACTIVATE BREAK 🌙</button>
+</section>
 
-<section class="screen" id="s1"><div class="stars"></div><div class="content">
-<div class="reasonNo">Reason 01</div><div class="icon">👀</div><h2>Your eyes.</h2>
-<p>If I'm being completely honest…</p><p class="emphasis">They were the first thing I fell in love with.</p>
-<div class="eyeWrap"><div class="eye left"><div class="pupil"></div></div><div class="eye right"><div class="pupil"></div></div></div>
-<p>I don't know exactly what it was.</p><p>Maybe the way they look at me.<br>Maybe the way they change when you're happy.</p>
-<div class="divider"></div><p class="soft">But the eyes came first.</p>
-<button onclick="go('s2')">Then I got to know you →</button></div></section>
+<!-- SLIDE 2 -->
+<section class="slide" id="slide2">
+<div class="sky"><div class="stars"></div></div>
+<div class="moon-corner">🌙</div>
+<div class="content">
+<div class="kicker">Emergency break activated</div>
+<h2>For a little while…</h2>
+<p class="quote">You are officially<br><b>NOT ALLOWED</b><br>to think about work.</p>
+<div class="card">
+<p class="small">No timer. No pressure.<br>Take your break at your own pace. 🌙</p>
+</div>
+<div class="choice-grid">
+<button type="button" class="next choice" onclick="showMessage(0)"><span>🌙</span>Look at the moon</button>
+<button type="button" class="next choice" onclick="showMessage(1)"><span>🍕</span>Think about food</button>
+<button type="button" class="next choice" onclick="showMessage(2)"><span>😴</span>Do nothing</button>
+<button type="button" class="next choice" onclick="showMessage(3)"><span>😂</span>Press something stupid</button>
+</div>
+<div class="toast" id="toast"></div>
+</div>
+<button type="button" class="next" onclick="showSlide(3)">Meet the Work Monster 👹</button>
+</section>
 
-<section class="screen" id="s2"><div class="stars"></div><div class="content">
-<div class="reasonNo">Reason 02</div><div class="icon">🌙</div><h2>Your dreams.</h2>
-<p>The more I got to know you, the more I saw the person behind those eyes.</p>
-<p>You have bigger dreams.</p><p>You want more from life.</p><p>You're ambitious, you have your own goals, and even when life gets exhausting, there's still that part of you that wants to keep moving forward.</p>
-<div class="card"><div class="quote">I love that you don't dream small just because life sometimes makes things difficult.</div></div>
-<button class="primary" onclick="go('s3')">There's more…</button></div></section>
+<!-- SLIDE 3 -->
+<section class="slide" id="slide3">
+<div class="sky"><div class="stars"></div></div>
+<div class="content">
+<div class="kicker">Meanwhile…</div>
+<div class="monster">👹</div>
+<h2>The Work Monster has arrived.</h2>
+<div class="card"><p class="quote">“You still have work to do.”</p></div>
+<p>Very rude.</p>
+<div class="toast" id="workToast"></div>
+</div>
+<button type="button" class="next" onclick="ignoreWork()">IGNORE WORK 👀</button>
+</section>
 
-<section class="screen" id="s3"><div class="stars"></div><div class="content">
-<div class="reasonNo">Reason 03</div><div class="icon">🦋</div><h2>Your independence.</h2>
-<p>You are your own person.</p><p>You have your own opinions, your own choices, your own way of doing things.</p>
-<div class="divider"></div><p class="emphasis">I don't love you because you need someone.</p><p class="emphasis">I love you because you're you.</p>
-<p>You don't have to become different to be loved.</p><p class="soft">I love that there's a strong, independent woman behind all those little moments I adore.</p>
-<button onclick="go('s4')">One of my favourite reasons →</button></div></section>
+<!-- SLIDE 4 -->
+<section class="slide" id="slide4">
+<div class="sky"><div class="stars"></div></div>
+<div class="content">
+<div class="kicker">Emergency food therapy</div>
+<h2>Food has been detected.</h2>
+<div>
+<span class="food">🍜</span><span class="food">🍕</span><span class="food">🥘</span><span class="food">🍰</span><span class="food">☕</span>
+</div>
+<div class="card">
+<p>Today's medically approved treatment:</p>
+<p class="quote"><b>Something delicious.</b></p>
+</div>
+<p class="small">Possible side effects:</p>
+<p>😊 happiness · 😋 wanting more · 🧠 temporary escape from work · 🙄 ignoring Satyam</p>
+</div>
+<button type="button" class="next" onclick="showSlide(5)">ENTER MOON MODE 🌙</button>
+</section>
 
-<section class="screen" id="s4"><div class="stars"></div><div class="content">
-<div class="reasonNo">Reason 04</div><div class="icon">🍜</div><h2>Your little things.</h2>
-<p>Maybe you don't realise how much I notice them.</p>
-<div class="memoryRow"><div class="memory">🍜 “Okayish” Maggi</div><div class="memory">🥘 Yummy bhindi-roti</div><div class="memory">🌙 Parking under the moon</div><div class="memory">🤏 Those cheek pulls</div></div>
-<div class="card"><p class="quote">You might call them small.</p><p class="quote">I don't.</p></div>
-<p>A five-minute meeting before going home can stay in my head longer than some big plans.</p>
-<p>A tiny gesture from you can make an ordinary day feel special.</p>
-<button class="primary" onclick="go('s5')">And there's one more…</button></div></section>
+<!-- SLIDE 5 -->
+<section class="slide" id="slide5">
+<div class="sky"><div class="stars"></div></div>
+<div class="moon-corner">🌙</div>
+<div class="content">
+<div class="kicker">Moon mode</div>
+<div class="moon">🌙</div>
+<h2>Okay. Just for a moment.</h2>
+<p class="quote">No work.<br>No deadlines.<br>No overthinking.</p>
+<div class="breathe">Breathe in…<br>Breathe out…</div>
+<p>You don't have to solve everything tonight.</p>
+<p class="small">Just take the tiny break you probably didn't give yourself.</p>
+</div>
+<button type="button" class="next" onclick="showSlide(6)">BREAK COMPLETE ✨</button>
+</section>
 
-<section class="screen" id="s5"><div class="stars"></div><div class="content">
-<div class="reasonNo">Reason 05</div><div class="icon">❤️</div><h2>Your personality.</h2>
-<p>This is the part that came later.</p><p>I fell for your eyes first.</p><p class="emphasis">But I stayed for everything I discovered after that.</p>
-<p>Your ambition.<br>Your independence.<br>Your stubborn little ways.<br>Your love for food.<br>Your love for the moon.<br>Your silly moments.<br>Your softness that sometimes appears when you least expect it.</p>
-<div class="divider"></div><p class="quote">The more I knew you, the more there was to love.</p>
-<button class="primary" onclick="go('s6')">So what's the actual answer? →</button></div></section>
-
-<section class="screen final" id="s6"><div class="stars"></div><div class="content">
-<div class="moon">🌙</div><div class="kicker">The answer</div><h1>Why do I love you?</h1>
-<div class="card"><p class="quote">Because it wasn't one moment.</p><p class="quote">It wasn't one quality.</p><p class="quote">It wasn't even just your eyes.</p></div>
-<p>I fell in love with your eyes first.</p><p>Then I met your personality.</p><p>Then I started noticing the little things.</p>
-<div class="divider"></div><p class="emphasis">And somewhere along the way…</p>
-<p class="emphasis">you became someone whose happiness, dreams, little gestures and ordinary moments started mattering to me.</p>
-<p class="quote">That's probably my real reason.</p>
-<button class="primary" onclick="go('s7')">One last thing ❤️</button></div></section>
-
-<section class="screen final" id="s7"><div class="stars"></div><div class="content">
-<div class="kicker">For you</div><div class="moon">🌙</div><h2>You asked for a reason.</h2>
-<p class="emphasis">So here's the simplest answer I could give you.</p>
-<div class="card"><p class="quote">I don't love some perfect version of you.</p><p class="quote">I love getting to know <strong>you</strong>.</p></div>
-<p>Your eyes were where it started.</p><p>Your personality is what made me stay.</p><p>And the little pieces of you are what keep making me fall a little more.</p>
-<div class="divider"></div><div id="flowers">🌷 🌸 🌹 🌷 🌸</div>
-<p class="quote">You are special to me.</p><p>Not because I decided you should be.</p><p>But because, somehow, you became that person.</p>
-<div class="signature">— Satyam ❤️</div><div class="heart">🌙 ✨ ❤️ ✨ 🌙</div>
-<button onclick="location.reload()">↺ Read it again</button></div></section>
+<!-- SLIDE 6 -->
+<section class="slide" id="slide6">
+<div class="sky"><div class="stars"></div></div>
+<div class="content">
+<div class="crown">👑</div>
+<div class="kicker">Official report</div>
+<h1>Break complete. ✨</h1>
+<div class="card">
+<p>Unfortunately…</p>
+<p class="quote"><b>the work is still waiting.</b> 😭</p>
+</div>
+<p>But hopefully you're feeling at least 1% better.</p>
+<p class="quote">Now go conquer the world, Madam. 👑</p>
+<p>But maybe have something tasty first. 😌</p>
+<div style="font-size:35px;margin-top:15px">🌙 🍕 🍜 ❤️</div>
+<p class="small">— Your completely unofficial relaxation department</p>
+</div>
+<button type="button" class="next" onclick="showSlide(1)">↺ TAKE ANOTHER BREAK</button>
+</section>
 
 <script>
-function makeStars(){document.querySelectorAll(".stars").forEach(box=>{for(let i=0;i<65;i++){const s=document.createElement("span");s.className="star";s.style.left=Math.random()*100+"%";s.style.top=Math.random()*100+"%";s.style.animationDelay=Math.random()*3+"s";box.appendChild(s)}})}
-function go(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById(id).classList.add("active");window.scrollTo({top:0,behavior:"smooth"})}
-makeStars();
+function createStars(){
+document.querySelectorAll(".stars").forEach(function(box){
+for(var i=0;i<55;i++){
+var s=document.createElement("span");
+s.className="star";
+s.style.left=(Math.random()*100)+"%";
+s.style.top=(Math.random()*100)+"%";
+box.appendChild(s);
+}
+});
+}
+
+function showSlide(number){
+document.querySelectorAll(".slide").forEach(function(slide){
+slide.classList.remove("active");
+});
+var target=document.getElementById("slide"+number);
+if(target){
+target.classList.add("active");
+window.scrollTo(0,0);
+}
+}
+
+function showMessage(number){
+var messages=[
+"Okay. Breathe. The moon isn't asking for a presentation. 🌙",
+"Important question: what are we eating? This is clearly more important. 🍕",
+"Excellent. You are finally doing something productive: absolutely nothing. 😌",
+"Congratulations. You pressed something stupid. 😂"
+];
+var toast=document.getElementById("toast");
+toast.textContent=messages[number];
+toast.classList.add("show");
+setTimeout(function(){toast.classList.remove("show");},3000);
+}
+
+function ignoreWork(){
+var toast=document.getElementById("workToast");
+toast.innerHTML="<b>WORK HAS BEEN IGNORED SUCCESSFULLY.</b><br><span class='small'>(Unfortunately, it will still be there later.) 😂</span>";
+toast.classList.add("show");
+setTimeout(function(){showSlide(4);},1700);
+}
+
+document.addEventListener("DOMContentLoaded",createStars);
 </script>
 </body>
 </html>
