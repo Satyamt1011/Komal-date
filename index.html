@@ -1,27 +1,346 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Komal Needs a Break 🌙</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One Word For You ✨</title>
 <style>
-*{box-sizing:border-box}html,body{margin:0;background:#050812;color:#faf8fb;font-family:Georgia,serif;overflow:hidden}.s{display:none;min-height:100vh;padding:35px 20px;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}.s.on{display:flex;animation:f .7s ease}@keyframes f{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}.sky{position:absolute;inset:0;background:radial-gradient(circle at 50% 12%,#304269,#131b35 35%,#070a14 78%)}.stars{position:absolute;inset:0}.star{position:absolute;width:2px;height:2px;background:white;border-radius:50%;opacity:.4}.c{position:relative;z-index:3;width:100%;max-width:550px}.moon{font-size:72px;filter:drop-shadow(0 0 30px #fff8)}.k{font:600 10px system-ui;letter-spacing:.25em;text-transform:uppercase;color:#e7bfd0}h1{font-size:40px;line-height:1.1;font-weight:400}h2{font-size:29px;font-weight:400}p{font-size:16px;line-height:1.75;color:#ddd8e3}.small{font:13px/1.6 system-ui;color:#aaa6b2}.card{max-width:430px;margin:22px auto;padding:23px;border:1px solid #fff2;border-radius:24px;background:#ffffff0b}.alert{display:inline-block;padding:8px 13px;border-radius:12px;background:#6d39491c;border:1px solid #e49aad33;font:700 11px system-ui;color:#f1b9c8}ul{list-style:none;text-align:left;max-width:350px;margin:auto;padding:0}li{padding:7px;font:14px system-ui}button{border:1px solid #fff2;border-radius:999px;background:#ffffff10;color:white;padding:13px 22px;margin:18px 5px 0;font:600 14px system-ui;cursor:pointer}.primary{border:0;background:linear-gradient(135deg,#a77b9d,#b89fc8)}.pause{background:radial-gradient(circle at 50% 15%,#354870,#141d38 38%,#070a14 80%)}.bigmoon{position:absolute;right:8%;top:8%;font-size:88px;filter:drop-shadow(0 0 38px #fff8)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:430px;margin:20px auto}.choice{min-height:78px;border-radius:18px;margin:0}.choice span{display:block;font-size:28px}.toast{min-height:50px;margin:10px auto;color:#f0dce4;opacity:0;transition:.3s}.show{opacity:1}.count{font:700 55px system-ui;color:#f0dce4}.meter{height:6px;max-width:330px;margin:10px auto;background:#fff2;border-radius:8px}.meter i{display:block;height:100%;background:#d6b3c7;width:100%;transition:1s}.monster{font-size:90px}.food{font-size:55px;display:inline-block;margin:6px}.breathe{font-size:27px;line-height:1.7;color:#eddee7}.crown{font-size:58px}
-</style></head><body>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&display=swap');
 
-<section class="s on" id="s0"><div class="sky"><div class="stars"></div></div><div class="c"><div class="moon">🌙</div><div class="alert">⚠️ KOMAL ALERT</div><h1>Excessive workload detected.</h1><div class="card"><ul><li>📧 Too many emails</li><li>💻 Too much work</li><li>🧠 Brain running at 147%</li><li>😴 Sleep levels critically low</li><li>😑 Patience for Satyam: <b>system unavailable</b></li></ul></div><p class="small">Emergency relaxation protocol required.</p><button class="primary" onclick="go('s1')">ACTIVATE 30-SECOND BREAK 🌙</button></div></section>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; }
 
-<section class="s pause" id="s1"><div class="stars"></div><div class="bigmoon">🌙</div><div class="c"><div class="k">Emergency break activated</div><h2>For the next 30 seconds…</h2><p>You are officially <b>NOT ALLOWED</b><br>to think about work.</p><div class="count" id="count">30</div><div class="meter"><i id="meter"></i></div><div class="grid"><button class="choice" onclick="pick(0)"><span>🌙</span>Look at the moon</button><button class="choice" onclick="pick(1)"><span>🍕</span>Think about food</button><button class="choice" onclick="pick(2)"><span>😴</span>Do nothing</button><button class="choice" onclick="pick(3)"><span>😂</span>Press something stupid</button></div><div class="toast" id="toast"></div></div></section>
+  body {
+    background:
+      radial-gradient(circle at 50% 25%, rgba(255,255,255,.08), transparent 20%),
+      linear-gradient(180deg, #071326 0%, #0b1930 48%, #030812 100%);
+    color: #f8f1df;
+    font-family: "Cormorant Garamond", serif;
+  }
 
-<section class="s" id="s2"><div class="sky"><div class="stars"></div></div><div class="c"><div class="k">Meanwhile…</div><div class="monster">👹</div><h2>The Work Monster has arrived.</h2><div class="card"><p>“You still have work to do.”</p></div><p>Very rude.</p><button class="primary" onclick="ignoreWork()">IGNORE WORK 👀</button><div class="toast" id="wt"></div></div></section>
+  .sky {
+    position: fixed; inset: 0; overflow: hidden; pointer-events: none;
+  }
 
-<section class="s" id="s3"><div class="sky"><div class="stars"></div></div><div class="c"><div class="k">Emergency food therapy</div><h2>Food has been detected.</h2><div><span class="food">🍜</span><span class="food">🍕</span><span class="food">🥘</span><span class="food">🍰</span><span class="food">☕</span></div><div class="card"><p>Today's medically approved treatment:</p><p><b>Something delicious.</b></p></div><p class="small">Possible side effects:</p><p>😊 happiness · 😋 wanting more · 🧠 temporary escape from work · 🙄 ignoring Satyam</p><button onclick="go('s4')">Continue treatment →</button></div></section>
+  .moon {
+    position: absolute;
+    width: 105px; height: 105px;
+    border-radius: 50%;
+    right: 11%; top: 8%;
+    background: #fff8dc;
+    box-shadow: 0 0 35px rgba(255,248,220,.35), 0 0 90px rgba(255,248,220,.12);
+    opacity: .95;
+  }
 
-<section class="s pause" id="s4"><div class="stars"></div><div class="bigmoon">🌙</div><div class="c"><div class="k">Moon mode</div><div class="moon">🌙</div><h2>Okay. Just for a moment.</h2><p>No work.<br>No deadlines.<br>No overthinking.</p><div class="breathe">Breathe in…<br>Breathe out…</div><p>You don't have to solve everything tonight.</p><p class="small">Just take the tiny break you probably didn't give yourself.</p><button class="primary" onclick="go('s5')">Break complete ✨</button></div></section>
+  .moon:after {
+    content: "";
+    position: absolute;
+    width: 105px; height: 105px;
+    border-radius: 50%;
+    left: 27px; top: -10px;
+    background: #071326;
+  }
 
-<section class="s" id="s5"><div class="sky"><div class="stars"></div></div><div class="c"><div class="crown">👑</div><div class="k">Official report</div><h1>30-second break complete.</h1><div class="card"><p>Unfortunately…</p><p><b>the work is still waiting.</b> 😭</p></div><p>But hopefully you're feeling at least 1% better.</p><p style="font-size:21px">Now go conquer the world, Madam. 👑</p><p>But maybe have something tasty first. 😌</p><div style="font-size:35px">🌙 🍕 🍜 ❤️</div><p class="small">— Your completely unofficial relaxation department</p><button onclick="location.reload()">↺ Take another break</button></div></section>
+  .stars { position: absolute; inset: 0; }
+  .star {
+    position: absolute;
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: #fff;
+    opacity: .65;
+    animation: twinkle 2.5s infinite ease-in-out;
+  }
+
+  @keyframes twinkle {
+    0%,100% { opacity: .2; transform: scale(.8); }
+    50% { opacity: 1; transform: scale(1.4); }
+  }
+
+  .card {
+    position: relative;
+    width: min(92vw, 680px);
+    min-height: 72vh;
+    margin: 6vh auto 0;
+    padding: 42px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: rgba(4, 12, 26, .52);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 28px;
+    box-shadow: 0 20px 70px rgba(0,0,0,.35);
+    backdrop-filter: blur(5px);
+  }
+
+  .eyebrow {
+    font-size: 14px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: .65;
+    margin-bottom: 18px;
+  }
+
+  h1 {
+    font-family: "Great Vibes", cursive;
+    font-size: clamp(46px, 11vw, 76px);
+    font-weight: 400;
+    margin: 0 0 12px;
+    line-height: 1.05;
+  }
+
+  .intro {
+    max-width: 500px;
+    font-size: clamp(20px, 4.5vw, 27px);
+    line-height: 1.35;
+    opacity: .92;
+    margin: 0 auto 28px;
+  }
+
+  .note {
+    min-height: 245px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .word {
+    font-size: clamp(42px, 10vw, 68px);
+    font-weight: 600;
+    margin: 0 0 18px;
+    letter-spacing: 1px;
+  }
+
+  .reason {
+    max-width: 520px;
+    font-size: clamp(20px, 4.6vw, 28px);
+    line-height: 1.4;
+    margin: 0;
+    opacity: .9;
+  }
+
+  .final-word {
+    font-family: "Great Vibes", cursive;
+    font-size: clamp(65px, 17vw, 115px);
+    font-weight: 400;
+    margin: 5px 0 12px;
+    line-height: 1;
+    text-shadow: 0 0 28px rgba(255,255,255,.18);
+  }
+
+  .final-note {
+    max-width: 540px;
+    font-size: clamp(20px, 4.7vw, 29px);
+    line-height: 1.45;
+    margin: 0;
+  }
+
+  .hint {
+    position: absolute;
+    bottom: 23px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    opacity: .55;
+    text-transform: uppercase;
+  }
+
+  button {
+    border: 1px solid rgba(255,255,255,.25);
+    background: rgba(255,255,255,.08);
+    color: #f8f1df;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-family: inherit;
+    font-size: 17px;
+    cursor: pointer;
+    transition: .25s ease;
+    margin-top: 20px;
+  }
+
+  button:hover {
+    background: rgba(255,255,255,.15);
+    transform: translateY(-2px);
+  }
+
+  .fade {
+    animation: fadeIn .9s ease both;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px) scale(.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .heart {
+    display: inline-block;
+    margin-left: 5px;
+    animation: heartbeat 1.6s infinite;
+  }
+
+  @keyframes heartbeat {
+    0%,100% { transform: scale(1); }
+    15% { transform: scale(1.18); }
+    30% { transform: scale(1); }
+  }
+
+  .hidden { display: none; }
+
+  @media (max-width: 600px) {
+    .card {
+      min-height: 78vh;
+      margin-top: 4vh;
+      padding: 34px 22px 45px;
+    }
+    .moon { width: 75px; height: 75px; right: 7%; top: 5%; }
+    .moon:after { width: 75px; height: 75px; left: 20px; top: -8px; }
+    .note { min-height: 270px; }
+  }
+</style>
+</head>
+
+<body>
+<div class="sky">
+  <div class="moon"></div>
+  <div class="stars" id="stars"></div>
+</div>
+
+<main class="card" id="card">
+  <div id="content" class="fade">
+    <div class="eyebrow">A little something for you</div>
+    <h1>You asked me…</h1>
+    <p class="intro">
+      “Describe me in one word.”
+      <br>
+      I tried to find just one… but honestly,
+      <br>you made that surprisingly difficult. <span class="heart">♥</span>
+    </p>
+    <button id="nextBtn">Okay… show me ✨</button>
+  </div>
+  <div class="hint" id="hint">Tap to continue</div>
+</main>
 
 <script>
-let started=false,sec=30;
-function stars(){document.querySelectorAll('.stars').forEach(b=>{for(let i=0;i<60;i++){let x=document.createElement('i');x.className='star';x.style.left=Math.random()*100+'%';x.style.top=Math.random()*100+'%';b.appendChild(x)}})}
-function go(id){document.querySelectorAll('.s').forEach(x=>x.classList.remove('on'));document.getElementById(id).classList.add('on');if(id==='s1'&&!started)timer()}
-function timer(){started=true;let c=document.getElementById('count'),m=document.getElementById('meter');let t=setInterval(()=>{sec--;c.textContent=sec;m.style.width=sec/30*100+'%';if(sec<=0){clearInterval(t);setTimeout(()=>go('s2'),600)}},1000)}
-let msgs=["Okay. Breathe. The moon isn't asking for a presentation. 🌙","Important question: what are we eating? 🍕","Excellent. You're finally doing something productive: absolutely nothing. 😌","Congratulations. You pressed something stupid. 😂"];
-function pick(i){let x=document.getElementById('toast');x.textContent=msgs[i];x.classList.add('show');clearTimeout(window.z);window.z=setTimeout(()=>x.classList.remove('show'),3000)}
-function ignoreWork(){let x=document.getElementById('wt');x.innerHTML='<b>WORK HAS BEEN IGNORED SUCCESSFULLY.</b><br><span class="small">(Unfortunately, it will still be there later.) 😂</span>';x.classList.add('show');setTimeout(()=>go('s3'),2300)}
-stars();
-</script></body></html>
+const slides = [
+  {
+    word: "Ambitious",
+    reason: "Because you don't just dream… you actually want to build the life you've imagined."
+  },
+  {
+    word: "Independent",
+    reason: "Because you know how to stand on your own… even when you secretly deserve someone to hold your hand."
+  },
+  {
+    word: "Graceful",
+    reason: "There's something about the way you carry yourself… effortlessly you."
+  },
+  {
+    word: "Radiant",
+    reason: "Because you have this way of making ordinary moments feel a little brighter."
+  },
+  {
+    word: "Extraordinary",
+    reason: "Because there's something about you that isn't quite ordinary… and I don't think it ever will be."
+  }
+];
+
+let index = -1;
+const content = document.getElementById("content");
+const button = document.getElementById("nextBtn");
+const hint = document.getElementById("hint");
+
+function renderIntro() {
+  content.innerHTML = `
+    <div class="eyebrow">A little something for you</div>
+    <h1>You asked me…</h1>
+    <p class="intro">
+      “Describe me in one word.”
+      <br>
+      I tried to find just one… but honestly,
+      <br>you made that surprisingly difficult. <span class="heart">♥</span>
+    </p>
+    <button id="nextBtn">Okay… show me ✨</button>
+  `;
+  document.getElementById("nextBtn").onclick = next;
+}
+
+function renderSlide(slide) {
+  content.className = "fade";
+  content.innerHTML = `
+    <div class="eyebrow">I could describe you as…</div>
+    <div class="note">
+      <div class="word">${slide.word}</div>
+      <p class="reason">“${slide.reason}”</p>
+    </div>
+    <button id="nextBtn">${index === slides.length - 1 ? "But there’s one more… ✨" : "Next ✨"}</button>
+  `;
+  document.getElementById("nextBtn").onclick = next;
+}
+
+function renderFinal() {
+  content.className = "fade";
+  content.innerHTML = `
+    <div class="eyebrow">If I really had to choose just ONE…</div>
+    <div class="note">
+      <div class="final-word">Enchanting</div>
+      <p class="final-note">
+        Because you're a little bit of everything above…
+        <br>
+        and somehow, all of it together becomes <i>you.</i> ♥
+      </p>
+    </div>
+    <button id="nextBtn" onclick="restart()">Read it again 🌙</button>
+  `;
+  hint.textContent = "The one word I couldn't replace";
+  createExtraStars();
+}
+
+function next() {
+  index++;
+  if (index < slides.length) {
+    renderSlide(slides[index]);
+    hint.textContent = "Tap to continue";
+  } else {
+    renderFinal();
+  }
+}
+
+function restart() {
+  index = -1;
+  hint.textContent = "Tap to continue";
+  renderIntro();
+}
+
+function createStars() {
+  const container = document.getElementById("stars");
+  for (let i = 0; i < 75; i++) {
+    const s = document.createElement("span");
+    s.className = "star";
+    s.style.left = Math.random() * 100 + "%";
+    s.style.top = Math.random() * 100 + "%";
+    s.style.animationDelay = (Math.random() * 3) + "s";
+    s.style.animationDuration = (1.8 + Math.random() * 2.8) + "s";
+    container.appendChild(s);
+  }
+}
+
+function createExtraStars() {
+  const container = document.getElementById("stars");
+  for (let i = 0; i < 25; i++) {
+    const s = document.createElement("span");
+    s.className = "star";
+    s.style.left = Math.random() * 100 + "%";
+    s.style.top = Math.random() * 100 + "%";
+    s.style.animationDelay = (Math.random() * 2) + "s";
+    s.style.animationDuration = (1.5 + Math.random() * 2) + "s";
+    container.appendChild(s);
+  }
+}
+
+createStars();
+document.getElementById("nextBtn").onclick = next;
+</script>
+</body>
+</html>
