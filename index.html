@@ -2,138 +2,429 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Little Date Invite ✨</title>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+
+<title>One Last Little Thing — Komal</title>
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&display=swap');
-*{box-sizing:border-box}
-html,body{margin:0;min-height:100%;font-family:"Cormorant Garamond",serif;color:#f7f1e5}
-body{background:radial-gradient(circle at 50% 12%,rgba(255,255,255,.08),transparent 23%),linear-gradient(180deg,#07162a 0%,#0b1a2e 55%,#020711 100%);overflow-x:hidden}
-.sky{position:fixed;inset:0;pointer-events:none;overflow:hidden}
-.moon{position:absolute;right:9%;top:5%;width:78px;height:78px;border-radius:50%;background:#fff8da;box-shadow:0 0 38px rgba(255,248,218,.3)}
-.moon:after{content:"";position:absolute;left:22px;top:-7px;width:78px;height:78px;border-radius:50%;background:#07162a}
-.star{position:absolute;width:2px;height:2px;border-radius:50%;background:#fff;opacity:.5;animation:tw 3s infinite}
-@keyframes tw{0%,100%{opacity:.15}50%{opacity:.9;transform:scale(1.5)}}
-.wrap{width:min(94vw,680px);margin:auto;padding:34px 0 50px;position:relative}
-.card{background:rgba(2,10,22,.62);border:1px solid rgba(255,255,255,.12);border-radius:28px;padding:34px 23px 38px;box-shadow:0 22px 80px rgba(0,0,0,.38);backdrop-filter:blur(7px)}
-.kicker{text-align:center;text-transform:uppercase;letter-spacing:4px;font-size:12px;opacity:.55}
-h1{font-family:"Great Vibes",cursive;font-weight:400;text-align:center;font-size:clamp(54px,14vw,82px);line-height:1;margin:12px 0 8px}
-.subtitle{text-align:center;font-size:22px;line-height:1.35;opacity:.88;margin:0 auto 30px;max-width:540px}
-.section{padding:20px 0;border-top:1px solid rgba(255,255,255,.1)}
-.section:first-of-type{border-top:0}
-h2{font-size:29px;font-weight:500;margin:0 0 8px}
-.note{font-size:18px;opacity:.68;line-height:1.35;margin:0 0 15px}
-.option-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-label.option{position:relative;display:block}
-.option input{position:absolute;opacity:0}
-.option span{display:block;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.045);border-radius:15px;padding:13px 12px;text-align:center;font-size:18px;cursor:pointer;transition:.2s}
-.option input:checked+span{border-color:rgba(255,255,255,.55);background:rgba(255,255,255,.11);transform:translateY(-1px)}
-input[type=date]{width:100%;font:inherit;font-size:20px;color:#f7f1e5;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:13px}
-input[type=date]::-webkit-calendar-picker-indicator{filter:invert(1);opacity:.75}
-.fixed-time{text-align:center;border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:15px;font-size:22px;background:rgba(255,255,255,.045)}
-button{width:100%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.09);color:#f7f1e5;font:inherit;font-size:19px;border-radius:30px;padding:13px 20px;cursor:pointer;margin-top:10px;transition:.2s}
-button:hover{background:rgba(255,255,255,.15);transform:translateY(-1px)}
-.small{text-align:center;font-size:15px;opacity:.48;margin-top:12px;line-height:1.35}
-#result{display:none;text-align:center;padding-top:20px}
-.result-title{font-family:"Great Vibes",cursive;font-size:56px;font-weight:400;margin:4px 0 12px}
-.summary{font-size:19px;line-height:1.55;opacity:.88}
-.wa{display:block;text-decoration:none;color:#f7f1e5;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.09);border-radius:30px;padding:13px 20px;font-size:19px;margin-top:20px}
-@media(max-width:500px){.wrap{padding:18px 0 35px}.card{padding:27px 17px 32px}.option-grid{grid-template-columns:1fr}}
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    background: #020811;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    color: #f4d69a;
+    overflow-x: hidden;
+}
+
+/* =========================
+   MAIN PAGE
+========================= */
+
+.page {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 8px 7px 45px;
+}
+
+.heading {
+    text-align: center;
+    padding: 12px 5px 10px;
+}
+
+.heading h1 {
+    margin: 0;
+    font-size: clamp(25px, 5vw, 42px);
+    font-weight: 500;
+}
+
+.heading p {
+    margin: 5px 0 0;
+    color: #d7cdbd;
+    font-size: clamp(13px, 2.5vw, 18px);
+    font-style: italic;
+}
+
+/* =========================
+   SLIDES
+========================= */
+
+.slides {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.slide {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1.53 / 1;
+
+    border: 1px solid rgba(240, 204, 139, 0.28);
+    border-radius: 8px;
+    overflow: hidden;
+
+    background-color: #020811;
+
+    box-shadow:
+        0 8px 28px rgba(0,0,0,.45),
+        inset 0 0 30px rgba(255,255,255,.02);
+
+    cursor: zoom-in;
+}
+
+/*
+   IMPORTANT:
+
+   Upload the screenshot/template image to the SAME
+   GitHub repository as this HTML file.
+
+   Rename it:
+
+   memories-template.png
+
+   The image is the 3 x 3 layout you provided.
+*/
+
+.slide {
+    background-image: url("memories-template.png");
+    background-repeat: no-repeat;
+
+    /*
+       The original image is approximately 3 columns x 3 rows.
+       Each slide therefore uses 1/3 of the source image.
+    */
+    background-size: 300% 300%;
+}
+
+/* Row 1 */
+
+.slide:nth-child(1) {
+    background-position: 0% 0%;
+}
+
+.slide:nth-child(2) {
+    background-position: 50% 0%;
+}
+
+.slide:nth-child(3) {
+    background-position: 100% 0%;
+}
+
+/* Row 2 */
+
+.slide:nth-child(4) {
+    background-position: 0% 50%;
+}
+
+.slide:nth-child(5) {
+    background-position: 50% 50%;
+}
+
+.slide:nth-child(6) {
+    background-position: 100% 50%;
+}
+
+/* Row 3 */
+
+.slide:nth-child(7) {
+    background-position: 0% 100%;
+}
+
+.slide:nth-child(8) {
+    background-position: 50% 100%;
+}
+
+/* =========================
+   FULL SCREEN VIEW
+========================= */
+
+.viewer {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0,0,0,.96);
+
+    padding:
+        max(10px, env(safe-area-inset-top))
+        10px
+        max(10px, env(safe-area-inset-bottom))
+        10px;
+}
+
+.viewer.active {
+    display: flex;
+}
+
+.viewer-slide {
+    width: min(96vw, 1100px);
+    aspect-ratio: 1.53 / 1;
+
+    background-image: url("memories-template.png");
+    background-repeat: no-repeat;
+    background-size: 300% 300%;
+
+    border-radius: 7px;
+    box-shadow: 0 20px 80px rgba(0,0,0,.8);
+}
+
+/* Positions inside viewer */
+
+.viewer-slide.pos1 { background-position: 0% 0%; }
+.viewer-slide.pos2 { background-position: 50% 0%; }
+.viewer-slide.pos3 { background-position: 100% 0%; }
+
+.viewer-slide.pos4 { background-position: 0% 50%; }
+.viewer-slide.pos5 { background-position: 50% 50%; }
+.viewer-slide.pos6 { background-position: 100% 50%; }
+
+.viewer-slide.pos7 { background-position: 0% 100%; }
+
+/* =========================
+   CLOSE BUTTON
+========================= */
+
+.close {
+    position: fixed;
+    top: max(12px, env(safe-area-inset-top));
+    right: 14px;
+
+    width: 43px;
+    height: 43px;
+
+    border-radius: 50%;
+    border: 1px solid rgba(240,204,139,.55);
+
+    background: #07111d;
+    color: #f4d69a;
+
+    font-size: 27px;
+    line-height: 40px;
+
+    z-index: 10000;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .page {
+        padding: 4px 4px 35px;
+    }
+
+    .heading {
+        padding: 9px 5px 8px;
+    }
+
+    .slides {
+        gap: 7px;
+    }
+
+    .slide {
+        border-radius: 6px;
+    }
+
+    /*
+       Keep the complete slide visible on mobile.
+       No fixed height is used.
+    */
+    .viewer-slide {
+        width: 96vw;
+        max-width: 96vw;
+    }
+}
+
+/* =========================
+   VERY SMALL PHONES
+========================= */
+
+@media (max-width: 360px) {
+
+    .heading h1 {
+        font-size: 23px;
+    }
+
+    .heading p {
+        font-size: 12px;
+    }
+
+    .slide {
+        aspect-ratio: 1.50 / 1;
+    }
+
+    .viewer-slide {
+        aspect-ratio: 1.50 / 1;
+    }
+}
+
+/* =========================
+   LANDSCAPE MOBILE
+========================= */
+
+@media (max-height: 500px) and (orientation: landscape) {
+
+    .viewer {
+        padding: 5px;
+    }
+
+    .viewer-slide {
+        height: 94vh;
+        width: auto;
+    }
+}
 </style>
 </head>
+
 <body>
-<div class="sky" id="sky"><div class="moon"></div></div>
-<div class="wrap"><main class="card">
 
-<div id="form">
-<div class="kicker">A small invitation</div>
-<h1>One evening?</h1>
-<p class="subtitle">You choose the day.<br>I'll take care of the rest. ✨</p>
+<div class="page">
 
-<div class="section">
-<h2>📅 Pick the date</h2>
-<p class="note">The time is already decided — because some things don't need a committee meeting. 😌</p>
-<input type="date" id="date" required>
-</div>
+    <header class="heading">
+        <h1>One Last Little Thing ♡</h1>
+        <p>A few memories, kept quietly.</p>
+    </header>
 
-<div class="section">
-<h2>🕢 The time</h2>
-<div class="fixed-time">7:30 PM — 9:00 PM</div>
-</div>
+    <main class="slides">
 
-<div class="section">
-<h2>🎮 The plan</h2>
-<p class="note">A little competition, a little chaos, and hopefully a good evening.</p>
-<div class="option-grid">
-<label class="option"><input type="checkbox" name="plan" value="1–2 arcade games"><span>🕹️ Arcade</span></label>
-<label class="option"><input type="checkbox" name="plan" value="1-on-1 bowling"><span>🎳 Bowling</span></label>
-<label class="option"><input type="checkbox" name="plan" value="winner chooses dessert"><span>🏆 Winner chooses dessert</span></label>
-<label class="option"><input type="checkbox" name="plan" value="quick snack/dinner nearby"><span>🍴 Bistupur food stop</span></label>
-</div>
-</div>
+        <!-- 1 -->
+        <div class="slide"
+             onclick="openViewer(1)"
+             aria-label="A few memories">
+        </div>
 
-<div class="section">
-<h2>🍰 Your dessert vote</h2>
-<p class="note">The bowling winner gets the final say… but you can still tell me what you're secretly hoping for.</p>
-<div class="option-grid">
-<label class="option"><input type="radio" name="dessert" value="Chocolate / brownie"><span>🍫 Chocolate</span></label>
-<label class="option"><input type="radio" name="dessert" value="Pancakes / waffles"><span>🥞 Pancakes</span></label>
-<label class="option"><input type="radio" name="dessert" value="Ice cream"><span>🍦 Ice cream</span></label>
-<label class="option"><input type="radio" name="dessert" value="You decide"><span>✨ Surprise me</span></label>
-</div>
-</div>
+        <!-- 2 -->
+        <div class="slide"
+             onclick="openViewer(2)"
+             aria-label="Your birthday gift">
+        </div>
 
-<div class="section">
-<h2>🍕 If we're hungry…</h2>
-<div class="option-grid">
-<label class="option"><input type="radio" name="food" value="Just dessert"><span>Just dessert</span></label>
-<label class="option"><input type="radio" name="food" value="Quick snacks"><span>Quick snacks</span></label>
-<label class="option"><input type="radio" name="food" value="Proper dinner"><span>Proper dinner</span></label>
-<label class="option"><input type="radio" name="food" value="We'll decide there"><span>Decide there</span></label>
-</div>
-</div>
+        <!-- 3 -->
+        <div class="slide"
+             onclick="openViewer(3)"
+             aria-label="The one and only time I said I love you">
+        </div>
 
-<button onclick="showResult()">Okay, here's my answer ✨</button>
-<p class="small">Your answers will be shown at the end, with an option to send them to me on WhatsApp.</p>
-</div>
+        <!-- 4 -->
+        <div class="slide"
+             onclick="openViewer(4)"
+             aria-label="Our one and only hug">
+        </div>
 
-<div id="result">
-<div class="kicker">Your little plan</div>
-<div class="result-title">Sounds good. 🌙</div>
-<div class="summary" id="summary"></div>
-<a class="wa" id="wa" href="#" target="_blank" rel="noopener">Send my choices on WhatsApp →</a>
-<button onclick="editAnswers()">Change my answers</button>
-<p class="small">Replace the WhatsApp number in the HTML before uploading.</p>
+        <!-- 5 -->
+        <div class="slide"
+             onclick="openViewer(5)"
+             aria-label="The little things">
+        </div>
+
+        <!-- 6 -->
+        <div class="slide"
+             onclick="openViewer(6)"
+             aria-label="I know I wasn't always easy">
+        </div>
+
+        <!-- 7 -->
+        <div class="slide"
+             onclick="openViewer(7)"
+             aria-label="Your new chapter">
+        </div>
+
+    </main>
+
 </div>
 
-</main></div>
+
+<!-- =========================
+     FULL SCREEN IMAGE VIEWER
+========================= -->
+
+<div class="viewer"
+     id="viewer"
+     onclick="closeViewer()">
+
+    <button class="close"
+            onclick="event.stopPropagation(); closeViewer();">
+        ×
+    </button>
+
+    <div id="viewerSlide"
+         class="viewer-slide"
+         onclick="event.stopPropagation();">
+    </div>
+
+</div>
+
 
 <script>
-/* Replace with Satyam's WhatsApp number, international format, no + or spaces. */
-const SATYAM_WHATSAPP = "917979093616";
 
-function pad(n){return String(n).padStart(2,"0")}
-function localDateString(d){return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate())}
-const dateInput=document.getElementById("date");
-const tomorrow=new Date(); tomorrow.setDate(tomorrow.getDate()+1);
-dateInput.min=localDateString(tomorrow);
+function openViewer(number) {
 
-function getChecked(name){return [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(x=>x.value)}
-function getOne(name){const x=document.querySelector(`input[name="${name}"]:checked`);return x?x.value:"Not specified"}
-function niceDate(v){const d=new Date(v+"T00:00:00");return d.toLocaleDateString("en-IN",{day:"numeric",month:"long",year:"numeric"})}
+    const viewer = document.getElementById("viewer");
+    const viewerSlide = document.getElementById("viewerSlide");
 
-function showResult(){
- if(!dateInput.value){alert("Pick a date first 😊");dateInput.focus();return}
- const plans=getChecked("plan"), dessert=getOne("dessert"), food=getOne("food"), date=niceDate(dateInput.value);
- document.getElementById("summary").innerHTML=
- `<b>📅 Date:</b> ${date}<br><b>🕢 Time:</b> 7:30 PM – 9:00 PM<br><b>🎮 Plan:</b> ${plans.length?plans.join(" • "):"We'll decide there"}<br><b>🍰 Dessert:</b> ${dessert}<br><b>🍴 Food:</b> ${food}`;
- const message=`Hey Satyam! ✨\n\nI checked the date plan.\n\n📅 Date: ${date}\n🕢 Time: 7:30 PM – 9:00 PM\n🎮 Plan: ${plans.length?plans.join(", "):"We'll decide there"}\n🍰 Dessert preference: ${dessert}\n🍴 Food: ${food}\n\nSee you then. 🌙`;
- document.getElementById("wa").href=`https://wa.me/${SATYAM_WHATSAPP}?text=${encodeURIComponent(message)}`;
- document.getElementById("form").style.display="none";
- document.getElementById("result").style.display="block";
+    viewerSlide.className = "viewer-slide pos" + number;
+
+    viewer.classList.add("active");
+
+    document.body.style.overflow = "hidden";
 }
-function editAnswers(){document.getElementById("result").style.display="none";document.getElementById("form").style.display="block"}
-for(let i=0;i<65;i++){const s=document.createElement("span");s.className="star";s.style.left=Math.random()*100+"%";s.style.top=Math.random()*100+"%";s.style.animationDelay=Math.random()*3+"s";document.getElementById("sky").appendChild(s)}
+
+
+function closeViewer() {
+
+    const viewer = document.getElementById("viewer");
+
+    viewer.classList.remove("active");
+
+    document.body.style.overflow = "";
+}
+
+
+/* Close with phone/desktop Escape key */
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+        closeViewer();
+    }
+
+});
+
+
+/* Prevent accidental browser zoom while double tapping */
+
+let lastTouchEnd = 0;
+
+document.addEventListener("touchend", function(event) {
+
+    const now = Date.now();
+
+    if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+    }
+
+    lastTouchEnd = now;
+
+}, { passive: false });
+
 </script>
+
 </body>
 </html>
