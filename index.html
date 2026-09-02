@@ -8,286 +8,624 @@
 <title>One Last Little Thing — Komal</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
+:root{
+    --bg:#020811;
+    --bg2:#071522;
+    --gold:#e8c783;
+    --gold2:#f5d99a;
+    --cream:#eee5d6;
+    --muted:#aaa294;
+    --line:rgba(232,199,131,.32);
+    --pink:#e99a91;
 }
 
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 100%;
-    background: #020811;
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
 }
 
-body {
-    font-family: Georgia, "Times New Roman", serif;
-    color: #f4d69a;
-    overflow-x: hidden;
+html,body{
+    margin:0;
+    width:100%;
+    height:100%;
+    background:#020811;
 }
 
-/* =========================
-   MAIN PAGE
-========================= */
-
-.page {
-    width: 100%;
-    max-width: 1100px;
-    margin: auto;
-    padding: 8px 7px 45px;
+body{
+    overflow:hidden;
+    font-family:Georgia,"Times New Roman",serif;
+    color:var(--cream);
 }
 
-.heading {
-    text-align: center;
-    padding: 12px 5px 10px;
+/* ================================
+   BACKGROUND
+================================ */
+
+.app{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 50% 10%,
+            #152a42 0%,
+            #071522 34%,
+            #020811 78%);
 }
 
-.heading h1 {
-    margin: 0;
-    font-size: clamp(25px, 5vw, 42px);
-    font-weight: 500;
+.stars{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    opacity:.75;
+
+    background-image:
+        radial-gradient(circle at 7% 11%,#fff 0 1px,transparent 1.6px),
+        radial-gradient(circle at 17% 24%,#fff 0 1px,transparent 1.6px),
+        radial-gradient(circle at 27% 8%,#fff 0 1px,transparent 1.6px),
+        radial-gradient(circle at 38% 18%,#fff 0 1px,transparent 1.6px),
+        radial-gradient(circle at 51% 7%,#fff 0 1px,transparent 1.6px),
+        radial-gradient(circle at 64% 16%,#fff 0 1px,transparent 1.6px),
+        radial-gradient(circle at 77% 8%,#fff 0 1px,transparent 1.6px),
+        radial-gradient(circle at 89% 21%,#fff 0 1px,transparent 1.6px),
+        radial-gradient(circle at 13% 82%,#fff 0 1px,transparent 1.6px),
+        radial-gradient(circle at 91% 77%,#fff 0 1px,transparent 1.6px);
 }
 
-.heading p {
-    margin: 5px 0 0;
-    color: #d7cdbd;
-    font-size: clamp(13px, 2.5vw, 18px);
-    font-style: italic;
-}
-
-/* =========================
-   SLIDES
-========================= */
-
-.slides {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.slide {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 1.53 / 1;
-
-    border: 1px solid rgba(240, 204, 139, 0.28);
-    border-radius: 8px;
-    overflow: hidden;
-
-    background-color: #020811;
-
+.moon{
+    position:absolute;
+    top:22px;
+    left:22px;
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    background:#f4e9c9;
     box-shadow:
-        0 8px 28px rgba(0,0,0,.45),
-        inset 0 0 30px rgba(255,255,255,.02);
-
-    cursor: zoom-in;
+        0 0 18px rgba(244,233,201,.25),
+        0 0 45px rgba(244,233,201,.08);
 }
 
-/*
-   IMPORTANT:
-
-   Upload the screenshot/template image to the SAME
-   GitHub repository as this HTML file.
-
-   Rename it:
-
-   memories-template.png
-
-   The image is the 3 x 3 layout you provided.
-*/
-
-.slide {
-    background-image: url("memories-template.png");
-    background-repeat: no-repeat;
-
-    /*
-       The original image is approximately 3 columns x 3 rows.
-       Each slide therefore uses 1/3 of the source image.
-    */
-    background-size: 300% 300%;
+.moon:after{
+    content:"";
+    position:absolute;
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    left:15px;
+    top:-6px;
+    background:#071522;
 }
 
-/* Row 1 */
+/* ================================
+   HEADER
+================================ */
 
-.slide:nth-child(1) {
-    background-position: 0% 0%;
+.top{
+    position:absolute;
+    top:14px;
+    left:50%;
+    transform:translateX(-50%);
+    width:calc(100% - 130px);
+    text-align:center;
+    z-index:50;
 }
 
-.slide:nth-child(2) {
-    background-position: 50% 0%;
+.top-small{
+    color:var(--gold);
+    font:10px Arial,sans-serif;
+    letter-spacing:3px;
+    text-transform:uppercase;
 }
 
-.slide:nth-child(3) {
-    background-position: 100% 0%;
+.top-title{
+    color:var(--gold2);
+    font-size:clamp(17px,3vw,25px);
+    margin-top:3px;
 }
 
-/* Row 2 */
+/* ================================
+   SLIDER
+================================ */
 
-.slide:nth-child(4) {
-    background-position: 0% 50%;
+.slider{
+    position:absolute;
+    inset:0;
 }
 
-.slide:nth-child(5) {
-    background-position: 50% 50%;
-}
+.slide{
+    position:absolute;
+    inset:0;
 
-.slide:nth-child(6) {
-    background-position: 100% 50%;
-}
-
-/* Row 3 */
-
-.slide:nth-child(7) {
-    background-position: 0% 100%;
-}
-
-.slide:nth-child(8) {
-    background-position: 50% 100%;
-}
-
-/* =========================
-   FULL SCREEN VIEW
-========================= */
-
-.viewer {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-
-    display: none;
-    align-items: center;
-    justify-content: center;
-
-    background: rgba(0,0,0,.96);
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
     padding:
-        max(10px, env(safe-area-inset-top))
-        10px
-        max(10px, env(safe-area-inset-bottom))
-        10px;
+        70px
+        12px
+        65px;
+
+    opacity:0;
+    pointer-events:none;
+
+    transform:translateX(35px);
+
+    transition:
+        opacity .35s ease,
+        transform .35s ease;
 }
 
-.viewer.active {
-    display: flex;
+.slide.active{
+    opacity:1;
+    pointer-events:auto;
+    transform:translateX(0);
 }
 
-.viewer-slide {
-    width: min(96vw, 1100px);
-    aspect-ratio: 1.53 / 1;
+.card{
+    width:min(1080px,100%);
+    max-height:100%;
 
-    background-image: url("memories-template.png");
-    background-repeat: no-repeat;
-    background-size: 300% 300%;
+    overflow:auto;
 
-    border-radius: 7px;
-    box-shadow: 0 20px 80px rgba(0,0,0,.8);
+    padding:
+        clamp(15px,2vw,27px);
+
+    border-radius:17px;
+
+    border:1px solid var(--line);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(9,24,40,.97),
+            rgba(2,9,17,.97)
+        );
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.55),
+        inset 0 0 40px rgba(255,255,255,.015);
 }
 
-/* Positions inside viewer */
+/* ================================
+   TEXT
+================================ */
 
-.viewer-slide.pos1 { background-position: 0% 0%; }
-.viewer-slide.pos2 { background-position: 50% 0%; }
-.viewer-slide.pos3 { background-position: 100% 0%; }
-
-.viewer-slide.pos4 { background-position: 0% 50%; }
-.viewer-slide.pos5 { background-position: 50% 50%; }
-.viewer-slide.pos6 { background-position: 100% 50%; }
-
-.viewer-slide.pos7 { background-position: 0% 100%; }
-
-/* =========================
-   CLOSE BUTTON
-========================= */
-
-.close {
-    position: fixed;
-    top: max(12px, env(safe-area-inset-top));
-    right: 14px;
-
-    width: 43px;
-    height: 43px;
-
-    border-radius: 50%;
-    border: 1px solid rgba(240,204,139,.55);
-
-    background: #07111d;
-    color: #f4d69a;
-
-    font-size: 27px;
-    line-height: 40px;
-
-    z-index: 10000;
+.number{
+    text-align:center;
+    color:var(--gold);
+    font:11px Arial,sans-serif;
+    letter-spacing:2px;
+    text-transform:uppercase;
 }
 
-/* =========================
+h1{
+    margin:5px 0 3px;
+    text-align:center;
+
+    color:var(--gold2);
+
+    font-size:clamp(25px,4.2vw,44px);
+    line-height:1.08;
+    font-weight:500;
+}
+
+.subtitle{
+    text-align:center;
+    color:#d7cec0;
+
+    font-size:clamp(13px,2vw,18px);
+    font-style:italic;
+
+    margin-bottom:17px;
+}
+
+/* ================================
+   MEMORY PHOTO STRIP
+================================ */
+
+.photos{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:10px;
+    margin:8px 0 17px;
+}
+
+.photo{
+    position:relative;
+
+    min-width:0;
+
+    padding:6px 6px 8px;
+
+    background:#eee4cf;
+
+    color:#272019;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.45);
+
+    transform:rotate(-1.5deg);
+}
+
+.photo:nth-child(2){
+    transform:rotate(1.4deg);
+}
+
+.photo:nth-child(3){
+    transform:rotate(-.7deg);
+}
+
+.photo:nth-child(4){
+    transform:rotate(1.6deg);
+}
+
+.photo:nth-child(5){
+    transform:rotate(-1deg);
+}
+
+.photo-art{
+    width:100%;
+    aspect-ratio:4/3;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+
+    position:relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            #24374a,
+            #0a1420
+        );
+}
+
+/* little visual details */
+
+.photo-art:before{
+    content:"";
+    position:absolute;
+    width:50px;
+    height:50px;
+    border-radius:50%;
+
+    background:#f3dfae;
+
+    opacity:.75;
+
+    top:12%;
+    right:12%;
+
+    box-shadow:
+        0 0 22px rgba(243,223,174,.3);
+}
+
+.photo-art:after{
+    content:"";
+    position:absolute;
+
+    width:140%;
+    height:50%;
+
+    bottom:-25%;
+    left:-20%;
+
+    background:#101d2b;
+
+    border-radius:50% 50% 0 0;
+}
+
+.photo-symbol{
+    position:relative;
+    z-index:3;
+
+    font-size:clamp(23px,4vw,42px);
+
+    filter:drop-shadow(0 4px 8px #0008);
+}
+
+.photo-label{
+    text-align:center;
+
+    padding-top:6px;
+
+    font-size:clamp(8px,1.15vw,13px);
+
+    line-height:1.1;
+}
+
+/* ================================
+   MEMORY TEXT
+================================ */
+
+.story{
+    max-width:900px;
+    margin:0 auto;
+
+    text-align:center;
+
+    color:#e4dbcd;
+
+    font-size:clamp(13px,1.7vw,18px);
+
+    line-height:1.5;
+}
+
+.highlight{
+    color:var(--gold2);
+    font-size:1.08em;
+}
+
+.quote{
+    margin:10px auto;
+
+    color:#f3d39b;
+
+    font-size:clamp(17px,2.5vw,27px);
+
+    font-style:italic;
+}
+
+.heart{
+    color:var(--pink);
+}
+
+/* ================================
+   NAVIGATION
+================================ */
+
+.navigation{
+    position:absolute;
+
+    left:0;
+    right:0;
+
+    bottom:
+        max(10px,env(safe-area-inset-bottom));
+
+    z-index:100;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:14px;
+}
+
+.nav-btn{
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    border:1px solid var(--line);
+
+    background:rgba(3,12,21,.94);
+
+    color:var(--gold2);
+
+    font-size:23px;
+
+    cursor:pointer;
+}
+
+.dots{
+    display:flex;
+    gap:6px;
+}
+
+.dot{
+    width:7px;
+    height:7px;
+
+    padding:0;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:#55595c;
+}
+
+.dot.active{
+    background:var(--gold2);
+    transform:scale(1.35);
+}
+
+/* ================================
+   SWIPE HINT
+================================ */
+
+.hint{
+    position:absolute;
+
+    left:50%;
+    bottom:57px;
+
+    transform:translateX(-50%);
+
+    z-index:80;
+
+    white-space:nowrap;
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    border:1px solid rgba(232,199,131,.25);
+
+    background:rgba(2,8,17,.84);
+
+    color:#cfc5b7;
+
+    font:10px Arial,sans-serif;
+
+    transition:opacity .5s ease;
+}
+
+.hint.hide{
+    opacity:0;
+}
+
+/* ================================
    MOBILE
-========================= */
+================================ */
 
-@media (max-width: 600px) {
+@media(max-width:700px){
 
-    .page {
-        padding: 4px 4px 35px;
+    .moon{
+        width:40px;
+        height:40px;
+        top:16px;
+        left:15px;
     }
 
-    .heading {
-        padding: 9px 5px 8px;
+    .moon:after{
+        width:40px;
+        height:40px;
+        left:11px;
+        top:-4px;
     }
 
-    .slides {
-        gap: 7px;
+    .top{
+        top:11px;
+        width:calc(100% - 105px);
     }
 
-    .slide {
-        border-radius: 6px;
+    .top-small{
+        font-size:8px;
+        letter-spacing:2px;
     }
 
-    /*
-       Keep the complete slide visible on mobile.
-       No fixed height is used.
-    */
-    .viewer-slide {
-        width: 96vw;
-        max-width: 96vw;
+    .top-title{
+        font-size:16px;
+    }
+
+    .slide{
+        padding:
+            59px
+            6px
+            57px;
+    }
+
+    .card{
+        padding:12px 9px;
+        border-radius:13px;
+
+        max-height:
+            calc(100svh - 116px);
+    }
+
+    h1{
+        font-size:23px;
+    }
+
+    .subtitle{
+        font-size:11px;
+        margin-bottom:10px;
+    }
+
+    .number{
+        font-size:9px;
+    }
+
+    .photos{
+        gap:4px;
+        margin-bottom:10px;
+    }
+
+    .photo{
+        padding:3px 3px 5px;
+    }
+
+    .photo-label{
+        font-size:7px;
+        padding-top:4px;
+    }
+
+    .story{
+        font-size:11.5px;
+        line-height:1.42;
+    }
+
+    .quote{
+        font-size:17px;
+        margin:7px auto;
+    }
+
+    .navigation{
+        gap:9px;
+    }
+
+    .nav-btn{
+        width:38px;
+        height:38px;
+        font-size:20px;
+    }
+
+    .dot{
+        width:6px;
+        height:6px;
+    }
+
+    .hint{
+        bottom:53px;
+        font-size:9px;
     }
 }
 
-/* =========================
-   VERY SMALL PHONES
-========================= */
+/* ================================
+   SMALL PHONES
+================================ */
 
-@media (max-width: 360px) {
+@media(max-width:380px){
 
-    .heading h1 {
-        font-size: 23px;
+    .card{
+        padding:10px 7px;
     }
 
-    .heading p {
-        font-size: 12px;
+    h1{
+        font-size:20px;
     }
 
-    .slide {
-        aspect-ratio: 1.50 / 1;
+    .subtitle{
+        font-size:10px;
     }
 
-    .viewer-slide {
-        aspect-ratio: 1.50 / 1;
+    .story{
+        font-size:10.5px;
+    }
+
+    .photo-label{
+        font-size:6px;
     }
 }
 
-/* =========================
-   LANDSCAPE MOBILE
-========================= */
+/* ================================
+   LANDSCAPE PHONES
+================================ */
 
-@media (max-height: 500px) and (orientation: landscape) {
+@media(max-height:600px) and (orientation:landscape){
 
-    .viewer {
-        padding: 5px;
+    .slide{
+        padding:
+            52px
+            12px
+            48px;
     }
 
-    .viewer-slide {
-        height: 94vh;
-        width: auto;
+    .card{
+        max-height:calc(100svh - 100px);
+    }
+
+    .photos{
+        gap:6px;
+    }
+
+    .story{
+        font-size:12px;
     }
 }
 </style>
@@ -295,134 +633,890 @@ body {
 
 <body>
 
-<div class="page">
+<div class="app">
 
-    <header class="heading">
-        <h1>One Last Little Thing ♡</h1>
-        <p>A few memories, kept quietly.</p>
-    </header>
+<div class="stars"></div>
+<div class="moon"></div>
 
-    <main class="slides">
+<header class="top">
+    <div class="top-small">For Komal</div>
+    <div class="top-title">One Last Little Thing ♡</div>
+</header>
 
-        <!-- 1 -->
-        <div class="slide"
-             onclick="openViewer(1)"
-             aria-label="A few memories">
-        </div>
 
-        <!-- 2 -->
-        <div class="slide"
-             onclick="openViewer(2)"
-             aria-label="Your birthday gift">
-        </div>
+<main class="slider">
 
-        <!-- 3 -->
-        <div class="slide"
-             onclick="openViewer(3)"
-             aria-label="The one and only time I said I love you">
-        </div>
 
-        <!-- 4 -->
-        <div class="slide"
-             onclick="openViewer(4)"
-             aria-label="Our one and only hug">
-        </div>
+<!-- =====================================================
+     SLIDE 1
+===================================================== -->
 
-        <!-- 5 -->
-        <div class="slide"
-             onclick="openViewer(5)"
-             aria-label="The little things">
-        </div>
+<section class="slide active">
 
-        <!-- 6 -->
-        <div class="slide"
-             onclick="openViewer(6)"
-             aria-label="I know I wasn't always easy">
-        </div>
+<div class="card">
 
-        <!-- 7 -->
-        <div class="slide"
-             onclick="openViewer(7)"
-             aria-label="Your new chapter">
-        </div>
+<div class="number">01 · A few memories</div>
 
-    </main>
+<h1>Some dates are more than dates.</h1>
+
+<div class="subtitle">
+And some ordinary moments quietly stay with you.
+</div>
+
+<div class="photos">
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">🎂</span>
+</div>
+<div class="photo-label">24 August</div>
+</div>
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">🥛</span>
+</div>
+<div class="photo-label">24 July</div>
+</div>
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">✨</span>
+</div>
+<div class="photo-label">Little moments</div>
+</div>
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">☕</span>
+</div>
+<div class="photo-label">Ordinary days</div>
+</div>
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">♡</span>
+</div>
+<div class="photo-label">The memories</div>
+</div>
 
 </div>
 
+<div class="story">
 
-<!-- =========================
-     FULL SCREEN IMAGE VIEWER
-========================= -->
+<span class="highlight">24 August</span> —
+your promotion, your happiness,
+and that first piece of cake you fed me from your hands.
 
-<div class="viewer"
-     id="viewer"
-     onclick="closeViewer()">
+<br><br>
 
-    <button class="close"
-            onclick="event.stopPropagation(); closeViewer();">
-        ×
-    </button>
+<span class="highlight">24 July</span> —
+an office group, a lassi,
+and one ordinary moment that somehow became memorable.
 
-    <div id="viewerSlide"
-         class="viewer-slide"
-         onclick="event.stopPropagation();">
-    </div>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     SLIDE 2
+===================================================== -->
+
+<section class="slide">
+
+<div class="card">
+
+<div class="number">02 · Your birthday</div>
+
+<h1>The gift was chocolates.</h1>
+
+<div class="subtitle">
+But the memory was much more than the gift.
+</div>
+
+<div class="photos">
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">🎂</span>
+</div>
+<div class="photo-label">10 November</div>
+</div>
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">🍰</span>
+</div>
+<div class="photo-label">Brown Bunch</div>
+</div>
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">☕</span>
+</div>
+<div class="photo-label">That day</div>
+</div>
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">🍫</span>
+</div>
+<div class="photo-label">Your gift</div>
+</div>
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">♡</span>
+</div>
+<div class="photo-label">A little memory</div>
+</div>
+
+</div>
+
+<div class="story">
+
+<span class="highlight">10 November.</span>
+
+Your birthday.
+
+Nothing extravagant.
+
+Just Brown Bunch,
+cutting a pastry,
+sharing it…
+
+and a moment I still remember.
+
+<br><br>
+
+And yes —
+a ridiculous variety of chocolates,
+
+because apparently
+one kind was never going to be enough. 😅
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     SLIDE 3
+===================================================== -->
+
+<section class="slide">
+
+<div class="card">
+
+<div class="number">03 · That one bite</div>
+
+<h1>Just once. Somehow, I still remember it.</h1>
+
+<div class="subtitle">
+Some gestures are tiny. Their meaning isn't.
+</div>
+
+<div class="photos">
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">🥄</span>
+</div>
+<div class="photo-label">My spoon</div>
+</div>
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">🍰</span>
+</div>
+<div class="photo-label">One bite</div>
+</div>
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">♡</span>
+</div>
+<div class="photo-label">Your turn</div>
+</div>
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">☺</span>
+</div>
+<div class="photo-label">The smile</div>
+</div>
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">✦</span>
+</div>
+<div class="photo-label">Remembered</div>
+</div>
+
+</div>
+
+<div class="story">
+
+I fed you the first bite
+with my spoon.
+
+<br>
+
+Later,
+you fed me one with yours.
+
+<br><br>
+
+<span class="highlight">Just once.</span>
+
+Nothing dramatic.
+
+Somehow,
+it became one of those little memories
+I know I'll keep.
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     SLIDE 4 — I LOVE YOU
+===================================================== -->
+
+<section class="slide">
+
+<div class="card">
+
+<div class="number">04 · The one and only time</div>
+
+<h1>I said “I love you” to you.</h1>
+
+<div class="subtitle">
+Very quietly. Because I meant it.
+</div>
+
+<div class="photos">
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">🍫</span>
+</div>
+<div class="photo-label">Chocolate Room</div>
+</div>
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">🍔</span>
+</div>
+<div class="photo-label">One burger</div>
+</div>
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">🍰</span>
+</div>
+<div class="photo-label">Our pastry</div>
+</div>
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">☺</span>
+</div>
+<div class="photo-label">We laughed</div>
+</div>
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">♡</span>
+</div>
+<div class="photo-label">That moment</div>
+</div>
+
+</div>
+
+<div class="story">
+
+I had told you about my plan —
+
+<span class="highlight">
+Chocolate Room, Bistupur.
+</span>
+
+One burger.
+
+Our special pastry.
+
+<br><br>
+
+We laughed.
+
+You already knew.
+
+You had always suspected.
+
+<br><br>
+
+This time,
+I finally told you in person.
+
+I sat next to you and,
+after confessing my feelings,
+said those three special words
+close to your ear…
+
+in a very low tone,
+
+so that only you could hear.
+
+<div class="quote">
+“I love you.”
+</div>
+
+I said it quietly
+because <span class="highlight">I meant it.</span>
+
+Because you deserve to be loved.
+
+Because you are special.
+
+And I wanted you to feel special.
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     SLIDE 5 — HUG
+===================================================== -->
+
+<section class="slide">
+
+<div class="card">
+
+<div class="number">05 · Our 1 & only hug</div>
+
+<h1>For a little while, everything felt still.</h1>
+
+<div class="subtitle">
+Late after office. Dim lights. Everyone had gone home.
+</div>
+
+<div class="photos">
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">🌙</span>
+</div>
+<div class="photo-label">Late after office</div>
+</div>
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">🤍</span>
+</div>
+<div class="photo-label">The first two</div>
+</div>
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">♾</span>
+</div>
+<div class="photo-label">The third time</div>
+</div>
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">⌂</span>
+</div>
+<div class="photo-label">It felt like home</div>
+</div>
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">♡</span>
+</div>
+<div class="photo-label">A safe place</div>
+</div>
+
+</div>
+
+<div class="story">
+
+I wanted that hug because you once said
+you don't really feel anything by a hug…
+
+and I wanted you to feel
+what I couldn't put into words.
+
+<br><br>
+
+We hugged twice,
+
+but both times
+a random surrounding sound disturbed us.
+
+<br><br>
+
+The <span class="highlight">third time</span>,
+our hug was complete.
+
+<br><br>
+
+It gave me an everlasting peace
+and comfort beyond words.
+
+It felt like home.
+
+Like I had achieved everything.
+
+Like I had felt loved
+after a very long time.
+
+<br><br>
+
+Our arms were around each other.
+
+It felt like a safe place to me —
+
+and I hope it felt like a safe place
+to you too.
+
+<br><br>
+
+And before I let you go…
+
+I rubbed my cheeks against yours.
+
+Just a tiny,
+silly attempt
+to make sure you felt something. ☺
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     SLIDE 6
+===================================================== -->
+
+<section class="slide">
+
+<div class="card">
+
+<div class="number">06 · The little things</div>
+
+<h1>That made everything better.</h1>
+
+<div class="subtitle">
+The memories I didn't know I was collecting.
+</div>
+
+<div class="photos">
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">☺</span>
+</div>
+<div class="photo-label">Pulling my cheeks</div>
+</div>
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">🍫</span>
+</div>
+<div class="photo-label">You & me</div>
+</div>
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">🍕</span>
+</div>
+<div class="photo-label">Food & laughs</div>
+</div>
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">🥄</span>
+</div>
+<div class="photo-label">One more bite</div>
+</div>
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">∞</span>
+</div>
+<div class="photo-label">Everything between</div>
+</div>
+
+</div>
+
+<div class="story">
+
+Pulling my cheeks.
+
+Laughing.
+
+Food.
+
+Conversations.
+
+Annoying each other.
+
+Supporting each other.
+
+<br><br>
+
+The little things
+were never really little to me.
+
+<br><br>
+
+They are the moments
+that made everything feel warmer —
+
+and the ones
+I think I'll remember the longest.
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     SLIDE 7
+===================================================== -->
+
+<section class="slide">
+
+<div class="card">
+
+<div class="number">07 · Your new chapter</div>
+
+<h1>Go make Kolkata yours, Komal. ♡</h1>
+
+<div class="subtitle">
+New city. New people. New opportunities. Bigger dreams.
+</div>
+
+<div class="photos">
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">🌉</span>
+</div>
+<div class="photo-label">A new view</div>
+</div>
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">🌃</span>
+</div>
+<div class="photo-label">New beginnings</div>
+</div>
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">☕</span>
+</div>
+<div class="photo-label">New days</div>
+</div>
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">✦</span>
+</div>
+<div class="photo-label">Bigger dreams</div>
+</div>
+
+<div class="photo">
+<div class="photo-art">
+<span class="photo-symbol">♡</span>
+</div>
+<div class="photo-label">Keep shining</div>
+</div>
+
+</div>
+
+<div class="story">
+
+You're ambitious.
+
+You're independent.
+
+You have bigger dreams.
+
+<br><br>
+
+Kolkata is simply
+the next chapter.
+
+<br><br>
+
+I hope the city gives you
+new people,
+new opportunities,
+and many reasons to smile.
+
+<br><br>
+
+<span class="highlight">
+Go make Kolkata yours.
+</span>
+
+<br><br>
+
+I'll always be cheering for you from here.
+
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<!-- ================================
+     NAVIGATION
+================================ -->
+
+<div class="navigation">
+
+<button class="nav-btn" id="prev">‹</button>
+
+<div class="dots" id="dots">
+
+<button class="dot active" data-slide="0"></button>
+<button class="dot" data-slide="1"></button>
+<button class="dot" data-slide="2"></button>
+<button class="dot" data-slide="3"></button>
+<button class="dot" data-slide="4"></button>
+<button class="dot" data-slide="5"></button>
+<button class="dot" data-slide="6"></button>
+
+</div>
+
+<button class="nav-btn" id="next">›</button>
+
+</div>
+
+<div class="hint" id="hint">
+Swipe left / right
+</div>
 
 </div>
 
 
 <script>
 
-function openViewer(number) {
+const slides = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".dot");
 
-    const viewer = document.getElementById("viewer");
-    const viewerSlide = document.getElementById("viewerSlide");
+let current = 0;
 
-    viewerSlide.className = "viewer-slide pos" + number;
+let startX = 0;
+let startY = 0;
 
-    viewer.classList.add("active");
 
-    document.body.style.overflow = "hidden";
+/* ================================
+   SHOW SLIDE
+================================ */
+
+function showSlide(index){
+
+    current = (index + slides.length) % slides.length;
+
+    slides.forEach((slide,i)=>{
+
+        slide.classList.toggle(
+            "active",
+            i === current
+        );
+
+    });
+
+    dots.forEach((dot,i)=>{
+
+        dot.classList.toggle(
+            "active",
+            i === current
+        );
+
+    });
+
 }
 
 
-function closeViewer() {
+/* ================================
+   NEXT / PREVIOUS
+================================ */
 
-    const viewer = document.getElementById("viewer");
+function nextSlide(){
 
-    viewer.classList.remove("active");
+    showSlide(current + 1);
 
-    document.body.style.overflow = "";
+}
+
+function previousSlide(){
+
+    showSlide(current - 1);
+
 }
 
 
-/* Close with phone/desktop Escape key */
+document
+.getElementById("next")
+.addEventListener(
+    "click",
+    nextSlide
+);
 
-document.addEventListener("keydown", function(event) {
+document
+.getElementById("prev")
+.addEventListener(
+    "click",
+    previousSlide
+);
 
-    if (event.key === "Escape") {
-        closeViewer();
-    }
+
+/* ================================
+   DOTS
+================================ */
+
+dots.forEach(dot=>{
+
+    dot.addEventListener(
+        "click",
+        ()=>{
+
+            showSlide(
+                Number(dot.dataset.slide)
+            );
+
+        }
+    );
 
 });
 
 
-/* Prevent accidental browser zoom while double tapping */
+/* ================================
+   KEYBOARD
+================================ */
 
-let lastTouchEnd = 0;
+document.addEventListener(
+    "keydown",
+    event=>{
 
-document.addEventListener("touchend", function(event) {
+        if(event.key === "ArrowRight"){
+            nextSlide();
+        }
 
-    const now = Date.now();
+        if(event.key === "ArrowLeft"){
+            previousSlide();
+        }
 
-    if (now - lastTouchEnd <= 300) {
-        event.preventDefault();
     }
+);
 
-    lastTouchEnd = now;
 
-}, { passive: false });
+/* ================================
+   SWIPE
+================================ */
+
+document.addEventListener(
+    "touchstart",
+    event=>{
+
+        startX =
+            event.changedTouches[0].screenX;
+
+        startY =
+            event.changedTouches[0].screenY;
+
+    },
+    {passive:true}
+);
+
+
+document.addEventListener(
+    "touchend",
+    event=>{
+
+        const endX =
+            event.changedTouches[0].screenX;
+
+        const endY =
+            event.changedTouches[0].screenY;
+
+        const dx =
+            endX - startX;
+
+        const dy =
+            endY - startY;
+
+        /*
+           Only treat it as a swipe when
+           horizontal movement is dominant.
+        */
+
+        if(
+            Math.abs(dx) > 45 &&
+            Math.abs(dx) > Math.abs(dy)
+        ){
+
+            if(dx < 0){
+
+                nextSlide();
+
+            }else{
+
+                previousSlide();
+
+            }
+
+        }
+
+    },
+    {passive:true}
+);
+
+
+/* ================================
+   HIDE SWIPE HINT
+================================ */
+
+setTimeout(
+    ()=>{
+        document
+        .getElementById("hint")
+        .classList.add("hide");
+    },
+    4500
+);
+
+
+/* ================================
+   INITIAL
+================================ */
+
+showSlide(0);
 
 </script>
 
