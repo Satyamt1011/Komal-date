@@ -2,630 +2,504 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
-
-<title>One Last Little Thing — Komal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#080d18">
+<title>A Little Time Capsule — For Komal</title>
 
 <style>
-:root{
-    --bg:#020811;
-    --bg2:#071522;
-    --gold:#e8c783;
-    --gold2:#f5d99a;
-    --cream:#eee5d6;
-    --muted:#aaa294;
-    --line:rgba(232,199,131,.32);
-    --pink:#e99a91;
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-*{
-    box-sizing:border-box;
-    -webkit-tap-highlight-color:transparent;
+html {
+    scroll-behavior: smooth;
 }
 
-html,body{
-    margin:0;
-    width:100%;
-    height:100%;
-    background:#020811;
-}
-
-body{
-    overflow:hidden;
-    font-family:Georgia,"Times New Roman",serif;
-    color:var(--cream);
-}
-
-/* ================================
-   BACKGROUND
-================================ */
-
-.app{
-    position:fixed;
-    inset:0;
-    overflow:hidden;
+body {
+    min-height: 100vh;
     background:
-        radial-gradient(circle at 50% 10%,
-            #152a42 0%,
-            #071522 34%,
-            #020811 78%);
+        radial-gradient(circle at 50% 10%, rgba(80,100,145,.18), transparent 35%),
+        linear-gradient(160deg, #050812, #0a1020 50%, #050811);
+    color: #eeeae1;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
 }
 
-.stars{
-    position:absolute;
-    inset:0;
-    pointer-events:none;
-    opacity:.75;
+/* ---------- BACKGROUND ---------- */
 
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
     background-image:
-        radial-gradient(circle at 7% 11%,#fff 0 1px,transparent 1.6px),
-        radial-gradient(circle at 17% 24%,#fff 0 1px,transparent 1.6px),
-        radial-gradient(circle at 27% 8%,#fff 0 1px,transparent 1.6px),
-        radial-gradient(circle at 38% 18%,#fff 0 1px,transparent 1.6px),
-        radial-gradient(circle at 51% 7%,#fff 0 1px,transparent 1.6px),
-        radial-gradient(circle at 64% 16%,#fff 0 1px,transparent 1.6px),
-        radial-gradient(circle at 77% 8%,#fff 0 1px,transparent 1.6px),
-        radial-gradient(circle at 89% 21%,#fff 0 1px,transparent 1.6px),
-        radial-gradient(circle at 13% 82%,#fff 0 1px,transparent 1.6px),
-        radial-gradient(circle at 91% 77%,#fff 0 1px,transparent 1.6px);
+        radial-gradient(circle at 20% 25%, rgba(255,255,255,.45) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 70% 18%, rgba(255,255,255,.3) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 85% 55%, rgba(255,255,255,.35) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 30% 75%, rgba(255,255,255,.25) 0 1px, transparent 1.5px),
+        radial-gradient(circle at 55% 90%, rgba(255,255,255,.25) 0 1px, transparent 1.5px);
+    background-size: 240px 240px, 310px 310px, 270px 270px, 360px 360px, 420px 420px;
+    opacity: .45;
+    z-index: 0;
 }
 
-.moon{
-    position:absolute;
-    top:22px;
-    left:22px;
-    width:55px;
-    height:55px;
-    border-radius:50%;
-    background:#f4e9c9;
+/* ---------- MAIN ---------- */
+
+.container {
+    position: relative;
+    z-index: 1;
+    width: min(900px, 92%);
+    margin: auto;
+    padding: 70px 0 80px;
+}
+
+/* ---------- INTRO ---------- */
+
+.intro {
+    text-align: center;
+    margin-bottom: 55px;
+}
+
+.moon {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 28px;
+    border-radius: 50%;
+    background: #eee9d7;
     box-shadow:
-        0 0 18px rgba(244,233,201,.25),
-        0 0 45px rgba(244,233,201,.08);
+        0 0 25px rgba(238,233,215,.25),
+        0 0 70px rgba(238,233,215,.08);
+    position: relative;
 }
 
-.moon:after{
-    content:"";
-    position:absolute;
-    width:55px;
-    height:55px;
-    border-radius:50%;
-    left:15px;
-    top:-6px;
-    background:#071522;
+.moon::after {
+    content: "";
+    position: absolute;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: #080d18;
+    left: 19px;
+    top: -9px;
 }
 
-/* ================================
-   HEADER
-================================ */
-
-.top{
-    position:absolute;
-    top:14px;
-    left:50%;
-    transform:translateX(-50%);
-    width:calc(100% - 130px);
-    text-align:center;
-    z-index:50;
+.kicker {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #a9a59b;
+    margin-bottom: 18px;
 }
 
-.top-small{
-    color:var(--gold);
-    font:10px Arial,sans-serif;
-    letter-spacing:3px;
-    text-transform:uppercase;
+h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(42px, 8vw, 72px);
+    line-height: .95;
+    letter-spacing: -.5px;
 }
 
-.top-title{
-    color:var(--gold2);
-    font-size:clamp(17px,3vw,25px);
-    margin-top:3px;
+.intro-line {
+    width: 45px;
+    height: 1px;
+    background: rgba(210,190,145,.55);
+    margin: 28px auto;
 }
 
-/* ================================
-   SLIDER
-================================ */
-
-.slider{
-    position:absolute;
-    inset:0;
+.subtitle {
+    max-width: 570px;
+    margin: auto;
+    color: #aaa9a7;
+    font-size: 14px;
+    line-height: 1.9;
+    font-weight: 300;
 }
 
-.slide{
-    position:absolute;
-    inset:0;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    padding:
-        70px
-        12px
-        65px;
-
-    opacity:0;
-    pointer-events:none;
-
-    transform:translateX(35px);
-
-    transition:
-        opacity .35s ease,
-        transform .35s ease;
+.subtitle em {
+    color: #d7d0c2;
 }
 
-.slide.active{
-    opacity:1;
-    pointer-events:auto;
-    transform:translateX(0);
+/* ---------- CAPSULE BOX ---------- */
+
+.capsule {
+    border: 1px solid rgba(210,190,145,.16);
+    background: rgba(255,255,255,.025);
+    padding: 22px;
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.25),
+        inset 0 1px rgba(255,255,255,.025);
 }
 
-.card{
-    width:min(1080px,100%);
-    max-height:100%;
+.capsule-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 4px 22px;
+    border-bottom: 1px solid rgba(255,255,255,.07);
+    margin-bottom: 20px;
+}
 
-    overflow:auto;
+.capsule-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    color: #d9d1c1;
+}
 
-    padding:
-        clamp(15px,2vw,27px);
+.capsule-date {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #777a82;
+    text-transform: uppercase;
+}
 
-    border-radius:17px;
+/* ---------- ENVELOPES ---------- */
 
-    border:1px solid var(--line);
+.envelopes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
 
+.envelope {
+    position: relative;
+    min-height: 185px;
+    padding: 28px 24px;
+    border: 1px solid rgba(255,255,255,.08);
     background:
-        linear-gradient(
-            145deg,
-            rgba(9,24,40,.97),
-            rgba(2,9,17,.97)
-        );
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.55),
-        inset 0 0 40px rgba(255,255,255,.015);
+        linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.015));
+    cursor: pointer;
+    transition: .35s ease;
+    overflow: hidden;
 }
 
-/* ================================
-   TEXT
-================================ */
-
-.number{
-    text-align:center;
-    color:var(--gold);
-    font:11px Arial,sans-serif;
-    letter-spacing:2px;
-    text-transform:uppercase;
+.envelope::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        transparent 45%,
+        rgba(210,190,145,.055) 50%,
+        transparent 55%
+    );
+    transform: translateX(-100%);
+    transition: .7s ease;
 }
 
-h1{
-    margin:5px 0 3px;
-    text-align:center;
-
-    color:var(--gold2);
-
-    font-size:clamp(25px,4.2vw,44px);
-    line-height:1.08;
-    font-weight:500;
+.envelope:hover {
+    transform: translateY(-5px);
+    border-color: rgba(210,190,145,.28);
+    box-shadow: 0 15px 35px rgba(0,0,0,.2);
 }
 
-.subtitle{
-    text-align:center;
-    color:#d7cec0;
-
-    font-size:clamp(13px,2vw,18px);
-    font-style:italic;
-
-    margin-bottom:17px;
+.envelope:hover::before {
+    transform: translateX(100%);
 }
 
-/* ================================
-   MEMORY PHOTO STRIP
-================================ */
-
-.photos{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:10px;
-    margin:8px 0 17px;
+.envelope-number {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #6f737d;
+    margin-bottom: 20px;
 }
 
-.photo{
-    position:relative;
-
-    min-width:0;
-
-    padding:6px 6px 8px;
-
-    background:#eee4cf;
-
-    color:#272019;
-
-    box-shadow:
-        0 8px 20px rgba(0,0,0,.45);
-
-    transform:rotate(-1.5deg);
+.envelope-icon {
+    font-size: 25px;
+    margin-bottom: 16px;
+    filter: grayscale(.2);
 }
 
-.photo:nth-child(2){
-    transform:rotate(1.4deg);
+.envelope h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    line-height: 1.05;
+    font-weight: 500;
+    color: #e3ded3;
+    margin-bottom: 12px;
 }
 
-.photo:nth-child(3){
-    transform:rotate(-.7deg);
+.envelope p {
+    font-size: 11px;
+    line-height: 1.7;
+    color: #858891;
 }
 
-.photo:nth-child(4){
-    transform:rotate(1.6deg);
+.open-label {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #a59a83;
 }
 
-.photo:nth-child(5){
-    transform:rotate(-1deg);
+/* ---------- FINAL NOTE ---------- */
+
+.final-note {
+    text-align: center;
+    padding: 65px 20px 20px;
 }
 
-.photo-art{
-    width:100%;
-    aspect-ratio:4/3;
+.final-note .small {
+    color: #70737b;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+}
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+.final-note h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 31px;
+    color: #dcd6ca;
+    margin-bottom: 15px;
+}
 
-    overflow:hidden;
+.final-note p {
+    max-width: 500px;
+    margin: auto;
+    color: #858891;
+    font-size: 13px;
+    line-height: 1.9;
+}
 
-    position:relative;
+.signature {
+    margin-top: 30px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: #bdb29e;
+}
 
+/* ---------- MODAL ---------- */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(1,4,9,.88);
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s ease;
+}
+
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-card {
+    width: min(620px, 100%);
+    max-height: 88vh;
+    overflow-y: auto;
+    border: 1px solid rgba(210,190,145,.2);
     background:
-        linear-gradient(
-            145deg,
-            #24374a,
-            #0a1420
-        );
+        radial-gradient(circle at 50% 0%, rgba(110,125,160,.12), transparent 45%),
+        #0b111f;
+    padding: 42px 38px;
+    position: relative;
+    box-shadow: 0 30px 100px rgba(0,0,0,.55);
+    transform: translateY(20px) scale(.98);
+    transition: .35s ease;
 }
 
-/* little visual details */
-
-.photo-art:before{
-    content:"";
-    position:absolute;
-    width:50px;
-    height:50px;
-    border-radius:50%;
-
-    background:#f3dfae;
-
-    opacity:.75;
-
-    top:12%;
-    right:12%;
-
-    box-shadow:
-        0 0 22px rgba(243,223,174,.3);
+.modal.active .modal-card {
+    transform: translateY(0) scale(1);
 }
 
-.photo-art:after{
-    content:"";
-    position:absolute;
-
-    width:140%;
-    height:50%;
-
-    bottom:-25%;
-    left:-20%;
-
-    background:#101d2b;
-
-    border-radius:50% 50% 0 0;
+.close {
+    position: absolute;
+    right: 18px;
+    top: 16px;
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 50%;
+    background: transparent;
+    color: #aaa;
+    font-size: 18px;
+    cursor: pointer;
 }
 
-.photo-symbol{
-    position:relative;
-    z-index:3;
-
-    font-size:clamp(23px,4vw,42px);
-
-    filter:drop-shadow(0 4px 8px #0008);
+.close:hover {
+    color: white;
+    border-color: rgba(210,190,145,.35);
 }
 
-.photo-label{
-    text-align:center;
-
-    padding-top:6px;
-
-    font-size:clamp(8px,1.15vw,13px);
-
-    line-height:1.1;
+.modal-icon {
+    font-size: 31px;
+    margin-bottom: 22px;
 }
 
-/* ================================
-   MEMORY TEXT
-================================ */
-
-.story{
-    max-width:900px;
-    margin:0 auto;
-
-    text-align:center;
-
-    color:#e4dbcd;
-
-    font-size:clamp(13px,1.7vw,18px);
-
-    line-height:1.5;
+.modal-kicker {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #9d917a;
+    margin-bottom: 12px;
 }
 
-.highlight{
-    color:var(--gold2);
-    font-size:1.08em;
+.modal-card h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(34px, 7vw, 50px);
+    line-height: 1;
+    color: #e8e1d4;
+    margin-bottom: 28px;
 }
 
-.quote{
-    margin:10px auto;
-
-    color:#f3d39b;
-
-    font-size:clamp(17px,2.5vw,27px);
-
-    font-style:italic;
+.modal-text {
+    color: #b1b0ad;
+    font-size: 14px;
+    line-height: 2;
+    font-weight: 300;
 }
 
-.heart{
-    color:var(--pink);
+.modal-text p {
+    margin-bottom: 18px;
 }
 
-/* ================================
-   NAVIGATION
-================================ */
-
-.navigation{
-    position:absolute;
-
-    left:0;
-    right:0;
-
-    bottom:
-        max(10px,env(safe-area-inset-bottom));
-
-    z-index:100;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    gap:14px;
+.modal-text .highlight {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    line-height: 1.45;
+    color: #d8d0c1;
+    margin: 28px 0;
 }
 
-.nav-btn{
-    width:42px;
-    height:42px;
-
-    border-radius:50%;
-
-    border:1px solid var(--line);
-
-    background:rgba(3,12,21,.94);
-
-    color:var(--gold2);
-
-    font-size:23px;
-
-    cursor:pointer;
+.modal-sign {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,.07);
+    color: #9a968d;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
 }
 
-.dots{
-    display:flex;
-    gap:6px;
+/* ---------- FOOTER ---------- */
+
+.footer {
+    text-align: center;
+    padding-top: 45px;
+    color: #4f535c;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
-.dot{
-    width:7px;
-    height:7px;
+/* ---------- MOBILE ---------- */
 
-    padding:0;
+@media (max-width: 650px) {
 
-    border:0;
-
-    border-radius:50%;
-
-    background:#55595c;
-}
-
-.dot.active{
-    background:var(--gold2);
-    transform:scale(1.35);
-}
-
-/* ================================
-   SWIPE HINT
-================================ */
-
-.hint{
-    position:absolute;
-
-    left:50%;
-    bottom:57px;
-
-    transform:translateX(-50%);
-
-    z-index:80;
-
-    white-space:nowrap;
-
-    padding:6px 12px;
-
-    border-radius:999px;
-
-    border:1px solid rgba(232,199,131,.25);
-
-    background:rgba(2,8,17,.84);
-
-    color:#cfc5b7;
-
-    font:10px Arial,sans-serif;
-
-    transition:opacity .5s ease;
-}
-
-.hint.hide{
-    opacity:0;
-}
-
-/* ================================
-   MOBILE
-================================ */
-
-@media(max-width:700px){
-
-    .moon{
-        width:40px;
-        height:40px;
-        top:16px;
-        left:15px;
+    .container {
+        width: 92%;
+        padding: 48px 0 55px;
     }
 
-    .moon:after{
-        width:40px;
-        height:40px;
-        left:11px;
-        top:-4px;
+    .moon,
+    .moon::after {
+        width: 58px;
+        height: 58px;
     }
 
-    .top{
-        top:11px;
-        width:calc(100% - 105px);
+    .moon {
+        margin-bottom: 23px;
     }
 
-    .top-small{
-        font-size:8px;
-        letter-spacing:2px;
+    .moon::after {
+        left: 15px;
+        top: -7px;
     }
 
-    .top-title{
-        font-size:16px;
+    .intro {
+        margin-bottom: 38px;
     }
 
-    .slide{
-        padding:
-            59px
-            6px
-            57px;
+    .subtitle {
+        font-size: 13px;
+        line-height: 1.8;
     }
 
-    .card{
-        padding:12px 9px;
-        border-radius:13px;
-
-        max-height:
-            calc(100svh - 116px);
+    .capsule {
+        padding: 12px;
     }
 
-    h1{
-        font-size:23px;
+    .capsule-top {
+        padding: 8px 6px 18px;
     }
 
-    .subtitle{
-        font-size:11px;
-        margin-bottom:10px;
+    .capsule-label {
+        font-size: 21px;
     }
 
-    .number{
-        font-size:9px;
+    .capsule-date {
+        font-size: 8px;
     }
 
-    .photos{
-        gap:4px;
-        margin-bottom:10px;
+    .envelopes {
+        grid-template-columns: 1fr;
+        gap: 11px;
     }
 
-    .photo{
-        padding:3px 3px 5px;
+    .envelope {
+        min-height: 165px;
+        padding: 24px 20px;
     }
 
-    .photo-label{
-        font-size:7px;
-        padding-top:4px;
+    .envelope h2 {
+        font-size: 25px;
+        max-width: 260px;
     }
 
-    .story{
-        font-size:11.5px;
-        line-height:1.42;
+    .open-label {
+        bottom: 18px;
+        right: 18px;
     }
 
-    .quote{
-        font-size:17px;
-        margin:7px auto;
+    .modal {
+        padding: 12px;
+        align-items: flex-end;
     }
 
-    .navigation{
-        gap:9px;
+    .modal-card {
+        max-height: 91vh;
+        padding: 35px 24px 30px;
     }
 
-    .nav-btn{
-        width:38px;
-        height:38px;
-        font-size:20px;
+    .modal-card h2 {
+        font-size: 39px;
     }
 
-    .dot{
-        width:6px;
-        height:6px;
+    .modal-text {
+        font-size: 13px;
+        line-height: 1.9;
     }
 
-    .hint{
-        bottom:53px;
-        font-size:9px;
+    .modal-text .highlight {
+        font-size: 22px;
+    }
+
+    .final-note {
+        padding-top: 50px;
     }
 }
 
-/* ================================
-   SMALL PHONES
-================================ */
+/* ---------- REDUCED MOTION ---------- */
 
-@media(max-width:380px){
-
-    .card{
-        padding:10px 7px;
-    }
-
-    h1{
-        font-size:20px;
-    }
-
-    .subtitle{
-        font-size:10px;
-    }
-
-    .story{
-        font-size:10.5px;
-    }
-
-    .photo-label{
-        font-size:6px;
-    }
-}
-
-/* ================================
-   LANDSCAPE PHONES
-================================ */
-
-@media(max-height:600px) and (orientation:landscape){
-
-    .slide{
-        padding:
-            52px
-            12px
-            48px;
-    }
-
-    .card{
-        max-height:calc(100svh - 100px);
-    }
-
-    .photos{
-        gap:6px;
-    }
-
-    .story{
-        font-size:12px;
+@media (prefers-reduced-motion: reduce) {
+    * {
+        scroll-behavior: auto !important;
+        transition: none !important;
     }
 }
 </style>
@@ -633,892 +507,649 @@ h1{
 
 <body>
 
-<div class="app">
+<div class="container">
 
-<div class="stars"></div>
-<div class="moon"></div>
+    <!-- INTRO -->
 
-<header class="top">
-    <div class="top-small">For Komal</div>
-    <div class="top-title">One Last Little Thing ♡</div>
-</header>
+    <section class="intro">
 
+        <div class="moon"></div>
 
-<main class="slider">
+        <div class="kicker">A private little thing</div>
 
+        <h1>A Little<br>Time Capsule</h1>
 
-<!-- =====================================================
-     SLIDE 1
-===================================================== -->
+        <div class="intro-line"></div>
 
-<section class="slide active">
+        <p class="subtitle">
+            For whenever life gets a little too busy,
+            a little overwhelming, or you simply
+            <em>randomly remember us.</em>
+        </p>
 
-<div class="card">
+    </section>
 
-<div class="number">01 · A few memories</div>
 
-<h1>Some dates are more than dates.</h1>
+    <!-- CAPSULE -->
 
-<div class="subtitle">
-And some ordinary moments quietly stay with you.
-</div>
-
-<div class="photos">
-
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">🎂</span>
-</div>
-<div class="photo-label">24 August</div>
-</div>
-
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">🥛</span>
-</div>
-<div class="photo-label">24 July</div>
-</div>
-
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">✨</span>
-</div>
-<div class="photo-label">Little moments</div>
-</div>
-
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">☕</span>
-</div>
-<div class="photo-label">Ordinary days</div>
-</div>
-
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">♡</span>
-</div>
-<div class="photo-label">The memories</div>
-</div>
-
-</div>
-
-<div class="story">
-
-<span class="highlight">24 August</span> —
-your promotion, your happiness,
-and that first piece of cake you fed me from your hands.
-
-<br><br>
-
-<span class="highlight">24 July</span> —
-an office group, a lassi,
-and one ordinary moment that somehow became memorable.
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     SLIDE 2
-===================================================== -->
-
-<section class="slide">
-
-<div class="card">
-
-<div class="number">02 · Your birthday</div>
-
-<h1>The gift was chocolates.</h1>
-
-<div class="subtitle">
-But the memory was much more than the gift.
-</div>
-
-<div class="photos">
-
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">🎂</span>
-</div>
-<div class="photo-label">10 November</div>
-</div>
-
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">🍰</span>
-</div>
-<div class="photo-label">Brown Bunch</div>
-</div>
-
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">☕</span>
-</div>
-<div class="photo-label">That day</div>
-</div>
-
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">🍫</span>
-</div>
-<div class="photo-label">Your gift</div>
-</div>
-
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">♡</span>
-</div>
-<div class="photo-label">A little memory</div>
-</div>
-
-</div>
-
-<div class="story">
-
-<span class="highlight">10 November.</span>
-
-Your birthday.
-
-Nothing extravagant.
-
-Just Brown Bunch,
-cutting a pastry,
-sharing it…
-
-and a moment I still remember.
-
-<br><br>
-
-And yes —
-a ridiculous variety of chocolates,
-
-because apparently
-one kind was never going to be enough. 😅
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     SLIDE 3
-===================================================== -->
-
-<section class="slide">
-
-<div class="card">
-
-<div class="number">03 · That one bite</div>
-
-<h1>Just once. Somehow, I still remember it.</h1>
-
-<div class="subtitle">
-Some gestures are tiny. Their meaning isn't.
-</div>
-
-<div class="photos">
-
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">🥄</span>
-</div>
-<div class="photo-label">My spoon</div>
-</div>
-
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">🍰</span>
-</div>
-<div class="photo-label">One bite</div>
-</div>
-
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">♡</span>
-</div>
-<div class="photo-label">Your turn</div>
-</div>
-
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">☺</span>
-</div>
-<div class="photo-label">The smile</div>
-</div>
-
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">✦</span>
-</div>
-<div class="photo-label">Remembered</div>
-</div>
-
-</div>
-
-<div class="story">
-
-I fed you the first bite
-with my spoon.
-
-<br>
-
-Later,
-you fed me one with yours.
-
-<br><br>
-
-<span class="highlight">Just once.</span>
-
-Nothing dramatic.
-
-Somehow,
-it became one of those little memories
-I know I'll keep.
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     SLIDE 4 — I LOVE YOU
-===================================================== -->
-
-<section class="slide">
-
-<div class="card">
-
-<div class="number">04 · The one and only time</div>
-
-<h1>I said “I love you” to you.</h1>
-
-<div class="subtitle">
-Very quietly. Because I meant it.
-</div>
-
-<div class="photos">
-
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">🍫</span>
-</div>
-<div class="photo-label">Chocolate Room</div>
-</div>
-
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">🍔</span>
-</div>
-<div class="photo-label">One burger</div>
-</div>
-
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">🍰</span>
-</div>
-<div class="photo-label">Our pastry</div>
-</div>
-
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">☺</span>
-</div>
-<div class="photo-label">We laughed</div>
-</div>
-
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">♡</span>
-</div>
-<div class="photo-label">That moment</div>
-</div>
-
-</div>
-
-<div class="story">
-
-I had told you about my plan —
-
-<span class="highlight">
-Chocolate Room, Bistupur.
-</span>
-
-One burger.
-
-Our special pastry.
-
-<br><br>
-
-We laughed.
-
-You already knew.
-
-You had always suspected.
-
-<br><br>
-
-This time,
-I finally told you in person.
-
-I sat next to you and,
-after confessing my feelings,
-said those three special words
-close to your ear…
-
-in a very low tone,
-
-so that only you could hear.
-
-<div class="quote">
-“I love you.”
-</div>
-
-I said it quietly
-because <span class="highlight">I meant it.</span>
-
-Because you deserve to be loved.
-
-Because you are special.
-
-And I wanted you to feel special.
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     SLIDE 5 — HUG
-===================================================== -->
-
-<section class="slide">
-
-<div class="card">
-
-<div class="number">05 · Our 1 & only hug</div>
-
-<h1>For a little while, everything felt still.</h1>
-
-<div class="subtitle">
-Late after office. Dim lights. Everyone had gone home.
-</div>
-
-<div class="photos">
-
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">🌙</span>
-</div>
-<div class="photo-label">Late after office</div>
-</div>
-
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">🤍</span>
-</div>
-<div class="photo-label">The first two</div>
-</div>
-
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">♾</span>
-</div>
-<div class="photo-label">The third time</div>
-</div>
-
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">⌂</span>
-</div>
-<div class="photo-label">It felt like home</div>
-</div>
-
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">♡</span>
-</div>
-<div class="photo-label">A safe place</div>
-</div>
-
-</div>
-
-<div class="story">
+    <section class="capsule">
 
-I wanted that hug because you once said
-you don't really feel anything by a hug…
+        <div class="capsule-top">
+            <div class="capsule-label">Open When...</div>
+            <div class="capsule-date">For Komal</div>
+        </div>
 
-and I wanted you to feel
-what I couldn't put into words.
 
-<br><br>
+        <div class="envelopes">
 
-We hugged twice,
 
-but both times
-a random surrounding sound disturbed us.
+            <!-- 1 -->
 
-<br><br>
+            <div class="envelope" onclick="openLetter(1)">
 
-The <span class="highlight">third time</span>,
-our hug was complete.
+                <div class="envelope-number">01</div>
 
-<br><br>
+                <div class="envelope-icon">🌧️</div>
 
-It gave me an everlasting peace
-and comfort beyond words.
+                <h2>When Kolkata feels overwhelming</h2>
 
-It felt like home.
+                <p>
+                    For the days when everything feels new,
+                    unfamiliar and slightly too much.
+                </p>
 
-Like I had achieved everything.
+                <div class="open-label">Open me →</div>
 
-Like I had felt loved
-after a very long time.
+            </div>
 
-<br><br>
 
-Our arms were around each other.
+            <!-- 2 -->
 
-It felt like a safe place to me —
+            <div class="envelope" onclick="openLetter(2)">
 
-and I hope it felt like a safe place
-to you too.
+                <div class="envelope-number">02</div>
 
-<br><br>
+                <div class="envelope-icon">☕</div>
 
-And before I let you go…
+                <h2>When you miss JSR</h2>
 
-I rubbed my cheeks against yours.
+                <p>
+                    A tiny reminder that some places
+                    become special because of the people in them.
+                </p>
 
-Just a tiny,
-silly attempt
-to make sure you felt something. ☺
+                <div class="open-label">Open me →</div>
 
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     SLIDE 6
-===================================================== -->
-
-<section class="slide">
+            </div>
 
-<div class="card">
-
-<div class="number">06 · The little things</div>
-
-<h1>That made everything better.</h1>
-
-<div class="subtitle">
-The memories I didn't know I was collecting.
-</div>
-
-<div class="photos">
-
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">☺</span>
-</div>
-<div class="photo-label">Pulling my cheeks</div>
-</div>
 
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">🍫</span>
-</div>
-<div class="photo-label">You & me</div>
-</div>
+            <!-- 3 -->
 
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">🍕</span>
-</div>
-<div class="photo-label">Food & laughs</div>
-</div>
+            <div class="envelope" onclick="openLetter(3)">
 
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">🥄</span>
-</div>
-<div class="photo-label">One more bite</div>
-</div>
+                <div class="envelope-number">03</div>
 
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">∞</span>
-</div>
-<div class="photo-label">Everything between</div>
-</div>
+                <div class="envelope-icon">😂</div>
 
-</div>
+                <h2>When you need something stupid to smile at</h2>
 
-<div class="story">
+                <p>
+                    No life advice. No serious thoughts.
+                    Just something mildly ridiculous.
+                </p>
 
-Pulling my cheeks.
+                <div class="open-label">Open me →</div>
 
-Laughing.
+            </div>
 
-Food.
 
-Conversations.
+            <!-- 4 -->
 
-Annoying each other.
+            <div class="envelope" onclick="openLetter(4)">
 
-Supporting each other.
+                <div class="envelope-number">04</div>
 
-<br><br>
+                <div class="envelope-icon">🌙</div>
 
-The little things
-were never really little to me.
+                <h2>When you can't sleep</h2>
 
-<br><br>
+                <p>
+                    For those unnecessarily late nights
+                    when your brain refuses to switch off.
+                </p>
 
-They are the moments
-that made everything feel warmer —
+                <div class="open-label">Open me →</div>
 
-and the ones
-I think I'll remember the longest.
+            </div>
 
-</div>
 
-</div>
+            <!-- 5 -->
 
-</section>
+            <div class="envelope" onclick="openLetter(5)">
 
+                <div class="envelope-number">05</div>
 
-<!-- =====================================================
-     SLIDE 7
-===================================================== -->
+                <div class="envelope-icon">✨</div>
 
-<section class="slide">
+                <h2>When something amazing happens</h2>
 
-<div class="card">
+                <p>
+                    For the promotions, achievements,
+                    big dreams and little victories.
+                </p>
 
-<div class="number">07 · Your new chapter</div>
+                <div class="open-label">Open me →</div>
 
-<h1>Go make Kolkata yours, Komal. ♡</h1>
+            </div>
 
-<div class="subtitle">
-New city. New people. New opportunities. Bigger dreams.
-</div>
 
-<div class="photos">
+            <!-- 6 -->
 
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">🌉</span>
-</div>
-<div class="photo-label">A new view</div>
-</div>
+            <div class="envelope" onclick="openLetter(6)">
 
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">🌃</span>
-</div>
-<div class="photo-label">New beginnings</div>
-</div>
+                <div class="envelope-number">06</div>
 
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">☕</span>
-</div>
-<div class="photo-label">New days</div>
-</div>
+                <div class="envelope-icon">📦</div>
 
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">✦</span>
-</div>
-<div class="photo-label">Bigger dreams</div>
-</div>
+                <h2>When you randomly remember us</h2>
 
-<div class="photo">
-<div class="photo-art">
-<span class="photo-symbol">♡</span>
-</div>
-<div class="photo-label">Keep shining</div>
-</div>
+                <p>
+                    This one is probably the most dangerous.
+                    Proceed only when you're feeling nostalgic.
+                </p>
 
-</div>
+                <div class="open-label">Open me →</div>
 
-<div class="story">
+            </div>
 
-You're ambitious.
+        </div>
 
-You're independent.
+    </section>
 
-You have bigger dreams.
 
-<br><br>
+    <!-- FINAL -->
 
-Kolkata is simply
-the next chapter.
+    <section class="final-note">
 
-<br><br>
+        <div class="small">One last little note</div>
 
-I hope the city gives you
-new people,
-new opportunities,
-and many reasons to smile.
+        <h3>You don't have to open them all.</h3>
 
-<br><br>
+        <p>
+            That's actually the whole point.
+            They're here whenever you happen to need one.
+            Some today. Some months from now.
+            Maybe some never.
+        </p>
 
-<span class="highlight">
-Go make Kolkata yours.
-</span>
+        <div class="signature">
+            — Satyam
+        </div>
 
-<br><br>
+    </section>
 
-I'll always be cheering for you from here.
 
-</div>
+    <div class="footer">
+        Some things are better kept quietly.
+    </div>
 
 </div>
-
-</section>
 
 
-</main>
+<!-- ========================================================= -->
+<!-- MODAL -->
+<!-- ========================================================= -->
 
+<div class="modal" id="letterModal">
 
-<!-- ================================
-     NAVIGATION
-================================ -->
+    <div class="modal-card">
 
-<div class="navigation">
+        <button class="close" onclick="closeLetter()">×</button>
 
-<button class="nav-btn" id="prev">‹</button>
+        <div class="modal-icon" id="modalIcon"></div>
 
-<div class="dots" id="dots">
+        <div class="modal-kicker" id="modalKicker"></div>
 
-<button class="dot active" data-slide="0"></button>
-<button class="dot" data-slide="1"></button>
-<button class="dot" data-slide="2"></button>
-<button class="dot" data-slide="3"></button>
-<button class="dot" data-slide="4"></button>
-<button class="dot" data-slide="5"></button>
-<button class="dot" data-slide="6"></button>
+        <h2 id="modalTitle"></h2>
 
-</div>
-
-<button class="nav-btn" id="next">›</button>
+        <div class="modal-text" id="modalText"></div>
 
-</div>
+        <div class="modal-sign">
+            — Satyam
+        </div>
 
-<div class="hint" id="hint">
-Swipe left / right
-</div>
+    </div>
 
 </div>
 
 
 <script>
 
-const slides = document.querySelectorAll(".slide");
-const dots = document.querySelectorAll(".dot");
+/* =========================================================
+   LETTER CONTENT
+   ========================================================= */
 
-let current = 0;
+const letters = {
 
-let startX = 0;
-let startY = 0;
+    1: {
+        icon: "🌧️",
+        kicker: "Open when...",
+        title: "Kolkata feels overwhelming",
+
+        text: `
+            <p>
+                Hey.
+            </p>
+
+            <p>
+                If you're reading this, I'm guessing one of those
+                days has arrived.
+            </p>
+
+            <p>
+                New city. New people. New routines.
+                And probably a hundred things to figure out at once.
+            </p>
+
+            <p class="highlight">
+                You don't have to have everything figured out immediately.
+            </p>
+
+            <p>
+                You wanted bigger dreams.
+                You wanted new opportunities.
+                And now you've got a whole new chapter in front of you.
+            </p>
+
+            <p>
+                So take a breath.
+                One day at a time.
+                You'll find your rhythm.
+            </p>
+
+            <p>
+                And if one day feels particularly terrible,
+                remember that even the most ambitious people
+                are allowed to have bad days.
+            </p>
+
+            <p>
+                Tomorrow can be better.
+            </p>
+        `
+    },
 
 
-/* ================================
-   SHOW SLIDE
-================================ */
+    2: {
+        icon: "☕",
+        kicker: "Open when...",
+        title: "You miss JSR",
 
-function showSlide(index){
+        text: `
+            <p>
+                Jamshedpur probably won't feel quite the same
+                once you're away from it.
+            </p>
 
-    current = (index + slides.length) % slides.length;
+            <p>
+                You'll probably miss some places.
+                Some people.
+                Some completely ordinary days.
+            </p>
 
-    slides.forEach((slide,i)=>{
+            <p class="highlight">
+                Funny how ordinary moments become memories later.
+            </p>
 
-        slide.classList.toggle(
-            "active",
-            i === current
-        );
+            <p>
+                There was the lassi.
+                The office group.
+                The birthday at Brown Bunch.
+                Random food.
+                Random conversations.
+                And all the little moments that weren't
+                supposed to become memories.
+            </p>
 
-    });
+            <p>
+                But they did.
+            </p>
 
-    dots.forEach((dot,i)=>{
+            <p>
+                So whenever you miss JSR,
+                don't just remember the city.
+                Remember the little things that made it yours.
+            </p>
 
-        dot.classList.toggle(
-            "active",
-            i === current
-        );
+            <p>
+                And yes...
+                somewhere in those memories,
+                there is me too. :)
+            </p>
+        `
+    },
 
-    });
 
+    3: {
+        icon: "😂",
+        kicker: "Open when...",
+        title: "You need something stupid to smile at",
+
+        text: `
+            <p>
+                Congratulations.
+            </p>
+
+            <p>
+                You have successfully opened the least serious
+                envelope in this entire time capsule.
+            </p>
+
+            <p class="highlight">
+                First of all — Kolkata hasn't made you too classy yet, right?
+            </p>
+
+            <p>
+                Because somewhere out there is still the girl
+                who can eat, sleep, complain about waking up early,
+                get annoyed with me, call me cringe...
+                and then somehow continue talking to me anyway.
+            </p>
+
+            <p>
+                That's a fairly impressive skill.
+            </p>
+
+            <p>
+                Also, if you're smiling right now,
+                technically this envelope has completed its job.
+            </p>
+
+            <p>
+                You may close it now.
+                Go be productive.
+            </p>
+
+            <p>
+                Or don't.
+                I won't tell anyone.
+            </p>
+        `
+    },
+
+
+    4: {
+        icon: "🌙",
+        kicker: "Open when...",
+        title: "You can't sleep",
+
+        text: `
+            <p>
+                It's probably late.
+            </p>
+
+            <p>
+                And knowing you,
+                your brain has probably decided that
+                midnight is the perfect time to think about
+                absolutely everything.
+            </p>
+
+            <p class="highlight">
+                So for tonight, you don't need to solve anything.
+            </p>
+
+            <p>
+                Put the phone down for a bit.
+                Take a slow breath.
+                Let tomorrow deal with tomorrow.
+            </p>
+
+            <p>
+                Whatever is bothering you right now
+                will probably look a little smaller in the morning.
+            </p>
+
+            <p>
+                And if it doesn't...
+                well, morning-you can deal with it.
+            </p>
+
+            <p>
+                Tonight-you gets to rest.
+            </p>
+
+            <p>
+                Goodnight, Komal.
+                🌙
+            </p>
+        `
+    },
+
+
+    5: {
+        icon: "✨",
+        kicker: "Open when...",
+        title: "Something amazing happens",
+
+        text: `
+            <p>
+                Okay.
+            </p>
+
+            <p>
+                Before anything else —
+                <strong>I'm proud of you.</strong>
+            </p>
+
+            <p>
+                Whatever happened,
+                I'm guessing you worked for it.
+            </p>
+
+            <p class="highlight">
+                You always had bigger dreams.
+                Don't make them smaller just because they're difficult.
+            </p>
+
+            <p>
+                Whether it's a promotion,
+                a new opportunity,
+                a huge achievement,
+                or something only you understand...
+            </p>
+
+            <p>
+                stop for a second and actually enjoy it.
+            </p>
+
+            <p>
+                You've earned that moment.
+            </p>
+
+            <p>
+                And then,
+                after you've celebrated,
+                go chase the next thing.
+            </p>
+
+            <p>
+                Because knowing you,
+                there will definitely be a next thing.
+            </p>
+
+            <p>
+                Keep going.
+            </p>
+        `
+    },
+
+
+    6: {
+        icon: "📦",
+        kicker: "Open when...",
+        title: "You randomly remember us",
+
+        text: `
+            <p>
+                Well...
+            </p>
+
+            <p>
+                You actually opened this one.
+            </p>
+
+            <p>
+                So I guess you're officially nostalgic now. :)
+            </p>
+
+            <p>
+                Maybe you remembered the promotion party.
+                The cake you fed me.
+            </p>
+
+            <p>
+                Maybe the lassi day.
+                Or Brown Bunch.
+                Or some completely random conversation.
+            </p>
+
+            <p>
+                Maybe pizza.
+                That chocolate truffle pastry.
+                That one bite from your spoon.
+            </p>
+
+            <p class="highlight">
+                Or maybe... that one hug.
+            </p>
+
+            <p>
+                There are some memories that don't really need
+                an explanation.
+                You just remember them.
+            </p>
+
+            <p>
+                I have a few of those with you.
+            </p>
+
+            <p>
+                And then there are those three quiet words
+                I said to you once.
+            </p>
+
+            <p>
+                I meant them.
+            </p>
+
+            <p>
+                I don't need anything from you because of them.
+                I just wanted you to know that they were real.
+            </p>
+
+            <p class="highlight">
+                Some people simply become part of your memories
+                in a way you didn't plan.
+            </p>
+
+            <p>
+                You became one of those people for me.
+            </p>
+
+            <p>
+                So if you ever randomly remember us,
+                I hope you smile a little.
+            </p>
+
+            <p>
+                That's enough.
+            </p>
+        `
+    }
+
+};
+
+
+/* =========================================================
+   OPEN LETTER
+   ========================================================= */
+
+function openLetter(number) {
+
+    const letter = letters[number];
+
+    document.getElementById("modalIcon").innerHTML = letter.icon;
+    document.getElementById("modalKicker").innerHTML = letter.kicker;
+    document.getElementById("modalTitle").innerHTML = letter.title;
+    document.getElementById("modalText").innerHTML = letter.text;
+
+    document.getElementById("letterModal").classList.add("active");
+
+    document.body.style.overflow = "hidden";
 }
 
 
-/* ================================
-   NEXT / PREVIOUS
-================================ */
+/* =========================================================
+   CLOSE LETTER
+   ========================================================= */
 
-function nextSlide(){
+function closeLetter() {
 
-    showSlide(current + 1);
+    document.getElementById("letterModal").classList.remove("active");
 
-}
-
-function previousSlide(){
-
-    showSlide(current - 1);
-
+    document.body.style.overflow = "";
 }
 
 
-document
-.getElementById("next")
-.addEventListener(
-    "click",
-    nextSlide
-);
+/* =========================================================
+   CLICK OUTSIDE MODAL
+   ========================================================= */
 
-document
-.getElementById("prev")
-.addEventListener(
-    "click",
-    previousSlide
-);
+document.getElementById("letterModal").addEventListener("click", function(e) {
 
-
-/* ================================
-   DOTS
-================================ */
-
-dots.forEach(dot=>{
-
-    dot.addEventListener(
-        "click",
-        ()=>{
-
-            showSlide(
-                Number(dot.dataset.slide)
-            );
-
-        }
-    );
+    if (e.target === this) {
+        closeLetter();
+    }
 
 });
 
 
-/* ================================
-   KEYBOARD
-================================ */
+/* =========================================================
+   ESCAPE KEY
+   ========================================================= */
 
-document.addEventListener(
-    "keydown",
-    event=>{
+document.addEventListener("keydown", function(e) {
 
-        if(event.key === "ArrowRight"){
-            nextSlide();
-        }
-
-        if(event.key === "ArrowLeft"){
-            previousSlide();
-        }
-
+    if (e.key === "Escape") {
+        closeLetter();
     }
-);
+
+});
 
 
-/* ================================
-   SWIPE
-================================ */
+/* =========================================================
+   SWIPE DOWN TO CLOSE ON MOBILE
+   ========================================================= */
 
-document.addEventListener(
-    "touchstart",
-    event=>{
+let touchStartY = 0;
 
-        startX =
-            event.changedTouches[0].screenX;
+document.querySelector(".modal-card").addEventListener("touchstart", function(e) {
+    touchStartY = e.touches[0].clientY;
+}, {passive:true});
 
-        startY =
-            event.changedTouches[0].screenY;
+document.querySelector(".modal-card").addEventListener("touchend", function(e) {
 
-    },
-    {passive:true}
-);
+    const touchEndY = e.changedTouches[0].clientY;
 
+    if (touchEndY - touchStartY > 100) {
+        closeLetter();
+    }
 
-document.addEventListener(
-    "touchend",
-    event=>{
-
-        const endX =
-            event.changedTouches[0].screenX;
-
-        const endY =
-            event.changedTouches[0].screenY;
-
-        const dx =
-            endX - startX;
-
-        const dy =
-            endY - startY;
-
-        /*
-           Only treat it as a swipe when
-           horizontal movement is dominant.
-        */
-
-        if(
-            Math.abs(dx) > 45 &&
-            Math.abs(dx) > Math.abs(dy)
-        ){
-
-            if(dx < 0){
-
-                nextSlide();
-
-            }else{
-
-                previousSlide();
-
-            }
-
-        }
-
-    },
-    {passive:true}
-);
-
-
-/* ================================
-   HIDE SWIPE HINT
-================================ */
-
-setTimeout(
-    ()=>{
-        document
-        .getElementById("hint")
-        .classList.add("hide");
-    },
-    4500
-);
-
-
-/* ================================
-   INITIAL
-================================ */
-
-showSlide(0);
+}, {passive:true});
 
 </script>
 
 </body>
 </html>
+      
